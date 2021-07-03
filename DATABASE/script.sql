@@ -21,6 +21,40 @@ idcompte_utilisateur INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8;
 
+
+
+
+CREATE TABLE IF NOT EXISTS articles (
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  non VARCHAR(100) NOT NULL,
+  prix_ht FLOAT NOT NULL,
+  URLImage VARCHAR(250) NULL,
+  quantite INT not null,
+  nombreConsultation INT null,
+  nombreVendu INT null
+)
+ENGINE = InnoDB 
+DEFAULT CHARACTER SET = utf8;
+
+
+CREATE TABLE IF NOT EXISTS livres (
+  ISBN VARCHAR(13) PRIMARY KEY NOT NULL,
+poids VARCHAR(45) NULL,
+  dimension VARCHAR(45) NULL,
+  editeur VARCHAR(100) NULL ,
+  date_parution  Date NULL ,
+  nombre__page INT NOT NULL ,
+ArticleID int NOT NULL,
+ CONSTRAINT fk_livres_articles FOREIGN KEY (ArticleID) REFERENCES articles(id) ON DELETE CASCADE
+
+)ENGINE = InnoDB 
+DEFAULT CHARACTER SET = utf8;
+
+
+
+
+
+
 CREATE TABLE IF NOT EXISTS `septièmeArche`.`administrateur` (
   `idadmnistrateur` INT(11) NOT NULL,
   `privilège` INT(11) NULL DEFAULT NULL,
@@ -83,45 +117,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`article` (
-  `idarticle` INT(11) NOT NULL,
-  `nom` VARCHAR(45) NULL DEFAULT NULL,
-  `prix HT` FLOAT(11) NULL DEFAULT NULL,
-  `URL image` VARCHAR(250) NULL DEFAULT NULL,
-  `livre_id_livre` INT(11) NULL DEFAULT NULL,
-  `quantite` INT(11) NULL DEFAULT NULL,
-  `nombre_Consultation` INT(11) NULL DEFAULT NULL,
-  `nombre_vendu` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`idarticle`),
-  INDEX `fk_article_livre1_idx` (`livre_id_livre` ASC),
-  CONSTRAINT `fk_article_livre1`
-    FOREIGN KEY (`livre_id_livre`)
-    REFERENCES `septièmeArche`.`livre` (`id_livre`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`livre` (
-  `id_livre` INT(11) NOT NULL,
-  `ISBN` VARCHAR(134) NULL DEFAULT NULL,
-  `poids` VARCHAR(45) NULL DEFAULT NULL,
-  `dimension` VARCHAR(45) NULL DEFAULT NULL,
-  `editeur` VARCHAR(45) NULL DEFAULT NULL,
-  `date de parution` VARCHAR(45) NULL DEFAULT NULL,
-  `nombre_de_page` INT(11) NULL DEFAULT NULL,
-  `nombre_de_consultation` INT(11) NULL DEFAULT NULL,
-  `nombre_de_vente` INT(11) NULL DEFAULT NULL,
-  `genre_idgenre` INT(11) NOT NULL,
-  PRIMARY KEY (`id_livre`, `genre_idgenre`),
-  INDEX `fk_livre_genre1_idx` (`genre_idgenre` ASC),
-  CONSTRAINT `fk_livre_genre1`
-    FOREIGN KEY (`genre_idgenre`)
-    REFERENCES `septièmeArche`.`genre` (`idgenre`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `septièmeArche`.`auteur` (

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/GeoffroyAlarcon/Septieme_Arche/issues"
   },
-  "homepage": "https://github.com/GeoffroyAlarcon/Septieme_Arche#readme"
+  "homepage": "https://github.com/GeoffroyAlarcon/Septieme_Arche#readme",
+  "dependencies": {
+    "bootstrap": "^5.0.1"
+  }
 }

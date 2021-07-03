@@ -1,6 +1,7 @@
 ﻿using api.models;
 using api.Repository;
 using api.services;
+using api.services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,16 +14,17 @@ namespace api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+
     public class UserController : ControllerBase
     {
-        public MySqlConnector Db { get; }
-
+        private MySqlConnector Db { get; }
+       private readonly IUserService _userService;
         private readonly ILogger<UserController> _logger;
 
-        public UserController(  MySqlConnector db)
-        {
-  
-            Db = db;
+        public UserController(IUserService userService, ILogger<UserController> logger) {
+            _userService = userService;
+     
+            _logger = logger;
         }
 
       
@@ -36,17 +38,16 @@ namespace api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Route("auth")]
-        public async Task<IActionResult> Auth()
+        public  IActionResult Auth()
         {
 
-            await Db.Connection.OpenAsync();
-            var query = new UserRepository(Db);
-            var result = await query.Auth();
-            if (result is null)
+         
+            var result = _userService.auth();
+            if (result is null) { 
                 return new NotFoundResult();
+            }
+
             return new OkObjectResult(result);
-
-
 
         }
         }

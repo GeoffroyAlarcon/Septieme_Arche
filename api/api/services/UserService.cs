@@ -1,5 +1,7 @@
 ﻿using api.models;
 using api.Repository;
+using api.Repository.Interfaces;
+using api.services.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -8,31 +10,29 @@ using System.Threading.Tasks;
 
 namespace api.services
 {
-    public class UserService
+    public class UserService:IUserService
     {
-        private ILogger Logger;
-        private readonly UserRepository _userRepository;
+     private readonly   IUserRepository _userRepository; 
 
-        public UserService(ILogger logger, UserRepository userRepository)
+
+    
+        public UserService( IUserRepository userRepository)
         {
-            Logger = logger;
             _userRepository = userRepository;
         }
 
-        public  async Task<List<User>> auth()
+        public User Auth()
         {
-        
+            User result = new User();
             try {
-                Logger.LogInformation($"{DateTime.UtcNow} Tentative de récupération des informations détaillées");
-               var   result =   await _userRepository.Auth();
-                return result;
+                  result =   _userRepository.auth();
+             
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex, "{0} - {1}", DateTime.UtcNow, ex.Message);
                 throw;
             }
-         
+            return result;
         }
 
     }

@@ -7,7 +7,7 @@ namespace api.models
 {
     public class User
     {
-        private readonly int _id;
+        private readonly int? _id;
         private String _firstName;
         private String _lastName;
         private String _email;
@@ -15,6 +15,12 @@ namespace api.models
      
         public User()
         {
+        }
+
+        public User(string password, string email)
+        {
+            Password = password;
+            Email = email;
         }
 
         public User(string firstName, string lastName, string emailAdress, string password)

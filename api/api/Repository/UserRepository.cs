@@ -6,41 +6,39 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Data.Common;
+using api.Repository.Interfaces;
 
 namespace api.Repository
 {
-    public class UserRepository
+    public class UserRepository:IUserRepository 
     {
-        internal MySqlConnector Db { get; set; }
-       internal UserRepository(MySqlConnector db) {
+        public MySqlConnector Db { get; }
+        public UserRepository(MySqlConnector db) {
             Db = db;
         }
-        public async Task<List<User>>Auth()
+        public  User auth()
         {
-          
-            //     string email = user.Email;
-            //   string password =   SHA1.Create(user.Password).ToString(); ;
+            User findUser = new User();
+            Db.Connection.Open();
             using var cmd = Db.Connection.CreateCommand();
-            string query = "select email, password from  compte_utilisateur where password = 'test' &&  email = 'zlatan@gmail.com'";
-            List<User> users = new List<User>();
+            string query = "select email, password from  compte_utilisateur";
             cmd.CommandText = query;
             DbDataReader myReader;
-            myReader = await cmd.ExecuteReaderAsync();
-         
-                while (await myReader.ReadAsync())
-            {
-             
-                User findUser = new User();
-                findUser.Email = myReader.GetString(0);
-                findUser.Password = myReader.GetString(1);
-                users.Add( findUser);
+            myReader = cmd.ExecuteReader();
+           
+                while (myReader.Read())
+                {
+                    findUser.Email = myReader.GetString(0);
+                    findUser.Password = myReader.GetString(1);
+
                 }
-       
-            return users;
-            }
+            Db.Connection.Close();
 
 
-        }
+            return findUser;
+
+
+       } }
 
 
     }
