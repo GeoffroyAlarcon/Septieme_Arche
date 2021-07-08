@@ -11,7 +11,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 
 CREATE SCHEMA IF NOT EXISTS `septiemeArche` DEFAULT CHARACTER SET utf8 ;
 
-CREATE TABLE IF NOT EXISTS `septiemeArche`.`compte_utilisateur` (
+DROP TABLE IF EXISTS compte_utilisateur;
+CREATE TABLE`septiemeArche`.`compte_utilisateur` (
 idcompte_utilisateur INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nom VARCHAR(100) NOT NULL,
   prenom VARCHAR(100) NOT NULL,
@@ -23,10 +24,10 @@ DEFAULT CHARACTER SET = utf8;
 
 
 
-
-CREATE TABLE IF NOT EXISTS articles (
+DROP TABLE IF EXISTS articles;
+CREATE TABLE articles (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  non VARCHAR(100) NOT NULL,
+  nom VARCHAR(100) NULL,
   prix_ht FLOAT NOT NULL,
   URLImage VARCHAR(250) NULL,
   quantite INT not null,
@@ -36,12 +37,13 @@ id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8;
 
-
-CREATE TABLE IF NOT EXISTS livres (
+DROP TABLE IF EXISTS livres;
+CREATE TABLE livres (
   ISBN VARCHAR(13) PRIMARY KEY NOT NULL,
+titre varchar(250) not null,
 poids VARCHAR(45) NULL,
   dimension VARCHAR(45) NULL,
-  editeur VARCHAR(100) NULL ,
+  editeur VARCHAR(100) not NULL ,
   date_parution  Date NULL ,
   nombre__page INT NOT NULL ,
 ArticleID int NOT NULL,
@@ -53,9 +55,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 
+drop table if exists adminstrateur
 
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`administrateur` (
+CREATE TABLE `septièmeArche`.`administrateur` (
   `idadmnistrateur` INT(11) NOT NULL,
   `privilège` INT(11) NULL DEFAULT NULL,
   `nom` VARCHAR(45) NULL DEFAULT NULL,

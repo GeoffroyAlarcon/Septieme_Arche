@@ -1,4 +1,5 @@
 ﻿using api.models;
+using api.Repository.Interfaces;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace api.Repository
 {
-    public class BookRepository : IItem<Book>
+    public class BookRepository : IBookRepository
     {
 
 
@@ -20,8 +21,9 @@ namespace api.Repository
 
         public List<Book> findAllBook()
         {
+           
             List<Book> books = new List<Book>();
-            string query = "";
+            string query = "select isb,nom, titre,prix, auteur, format, poidsenCM,image from livres";
             Db.Connection.Open();
             using var cmd = Db.Connection.CreateCommand();
 
@@ -38,25 +40,49 @@ namespace api.Repository
                 book.Prix = myReader.GetDecimal(1);
                 book.Isbn = myReader.GetString(0);
 
+                books.Add(book);
             }
 
 
-                throw new NotImplementedException();
-        
+            return Book;        
         
         
         }
 
         public Book findById(int isbn)
         {
-            string query = "select isb,nom, titre,prix, auteur, format, poidsenCM,image from livre where isbn =" + isbn + "";
-            MySqlConnection conn = connection.connection();
-            MySqlCommand cmd = new MySqlCommand(query, conn);
+            string query = "select isb,nom, titre,prix, auteur, format, poidsenCM,image from livres where isbn =" + isbn + "";
+
+            Book book = new Book();
+            Db.Connection.Open();
+            using var cmd = Db.Connection.CreateCommand();
+
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
 
             }
+            return book;
+            throw new NotImplementedException();
+        }
+
+        public Book findBookById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void saveBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void deleteBook(int id)
+        {
             throw new NotImplementedException();
         }
     }

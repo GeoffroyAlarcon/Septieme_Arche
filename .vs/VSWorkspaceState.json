@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\api"
+    "\\api",
+    "\\DATABASE"
   ],
-  "SelectedNode": "\\api\\api.sln",
+  "SelectedNode": "\\DATABASE\\initDatabase.sql",
   "PreviewInSolutionExplorer": false
 }
