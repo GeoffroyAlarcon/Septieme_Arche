@@ -11,6 +11,15 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 
 CREATE SCHEMA IF NOT EXISTS `septiemeArche` DEFAULT CHARACTER SET utf8 ;
 
+
+drop table livre_has_auteur;
+drop table auteurs;
+drop tables livres;
+drop tables articles;
+
+
+
+
 DROP TABLE IF EXISTS compte_utilisateur;
 CREATE TABLE`septiemeArche`.`compte_utilisateur` (
 idcompte_utilisateur INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -23,12 +32,12 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
-
 DROP TABLE IF EXISTS articles;
 CREATE TABLE articles (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nom VARCHAR(100) NULL,
   prix_ht FLOAT NOT NULL,
+dateAjoutArticle Datetime DEFAULT  NOW(),
   URLImage VARCHAR(250) NULL,
   quantite INT not null,
   nombreConsultation INT null,
@@ -41,16 +50,48 @@ DROP TABLE IF EXISTS livres;
 CREATE TABLE livres (
   ISBN VARCHAR(13) PRIMARY KEY NOT NULL,
 titre varchar(250) not null,
+resume text not null,
 poids VARCHAR(45) NULL,
   dimension VARCHAR(45) NULL,
   editeur VARCHAR(100) not NULL ,
   date_parution  Date NULL ,
-  nombre__page INT NOT NULL ,
+  nombre_page INT NOT NULL ,
 ArticleID int NOT NULL,
  CONSTRAINT fk_livres_articles FOREIGN KEY (ArticleID) REFERENCES articles(id) ON DELETE CASCADE
 
 )ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8;
+
+
+
+
+DROP TABLE IF EXISTS  auteurs;
+CREATE TABLE auteurs(
+ id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  nom VARCHAR(45) NULL,
+  prenom VARCHAR(45) NULL,
+  description VARCHAR(1000) null
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+DROP TABLE IF EXISTS livre_has_auteur;
+CREATE TABLE livre_has_auteur (
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  ISBN VARCHAR(13) NOT NULL,
+  auteurId INT NOT NULL,
+FOREIGN KEY ( ISBN) REFERENCES livres(ISBN) ON DELETE CASCADE,
+FOREIGN KEY ( auteurId) REFERENCES auteurs(id) ON DELETE CASCADE
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+
+
+
+
 
 
 
@@ -72,6 +113,12 @@ CREATE TABLE `septièmeArche`.`administrateur` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+
+
+
+
+
 
 
 
@@ -117,37 +164,6 @@ CREATE TABLE IF NOT EXISTS `septièmeArche`.`adresse de livraison` (
   PRIMARY KEY (`idadresse_de_livraison`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
-
-
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`auteur` (
-  `idauteur` INT(11) NOT NULL,
-  `nom` VARCHAR(45) NULL DEFAULT NULL,
-  `prenom` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`idauteur`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`livre_has_auteur` (
-  `livre_id_livre` INT(11) NOT NULL,
-  `auteur_idauteur` INT(11) NOT NULL,
-  PRIMARY KEY (`livre_id_livre`, `auteur_idauteur`),
-  INDEX `fk_livre_has_auteur_auteur1_idx` (`auteur_idauteur` ASC),
-  INDEX `fk_livre_has_auteur_livre1_idx` (`livre_id_livre` ASC) ,
-  CONSTRAINT `fk_livre_has_auteur_livre1`
-    FOREIGN KEY (`livre_id_livre`)
-    REFERENCES `septièmeArche`.`livre` (`id_livre`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_livre_has_auteur_auteur1`
-    FOREIGN KEY (`auteur_idauteur`)
-    REFERENCES `septièmeArche`.`auteur` (`idauteur`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
 
 CREATE TABLE IF NOT EXISTS `septièmeArche`.`commande` (
   `idcommande` INT(11) NOT NULL,

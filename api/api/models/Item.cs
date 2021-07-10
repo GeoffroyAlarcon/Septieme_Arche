@@ -13,12 +13,9 @@ namespace api.models
         public string Nom { get; set; }
 
         public string Image { get; set; }
-
-        public decimal Prix { get; set; }
         public long ClickNumber { get; set; }
         public int Stock { get; set; }
-        public int PriceExcludingTax { get; set; }
-        public int PriceWithTax { get; set; }
+        public decimal PriceExcludingTax { get; set; }
 
 
 

@@ -42,7 +42,7 @@ namespace api.Controllers
         {
 
          
-            var result = _userService.auth();
+            var result = _userService.Auth();
             if (result is null) { 
                 return new NotFoundResult();
             }

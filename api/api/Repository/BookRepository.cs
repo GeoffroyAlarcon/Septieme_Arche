@@ -19,45 +19,45 @@ namespace api.Repository
             Db = db;
         }
 
-        public List<Book> findAllBook()
+        public async Task<List<Book>> findAllBook()
         {
            
             List<Book> books = new List<Book>();
-            string query = "select isb,nom, titre,prix, auteur, format, poidsenCM,image from livres";
+            string query = "select titre,URLImage,prix_ht from livres  join articles on articles.id = livres.articleid ORDER BY articles.dateAjoutArticle LIMIT 50  ";
             Db.Connection.Open();
-            using var cmd = Db.Connection.CreateCommand();
+
+             using var cmd = Db.Connection.CreateCommand();
 
             cmd.CommandText = query;
             DbDataReader myReader;
-            myReader = cmd.ExecuteReader();
+            myReader = await cmd.ExecuteReaderAsync();
 
             while (myReader.Read())
             {
 
-             
-
+         
                 Book book = new Book();
-                book.Prix = myReader.GetDecimal(1);
-                book.Isbn = myReader.GetString(0);
-
+                book.Title = myReader.GetString(1);
+                book.Image = myReader.GetString(2);
+                book.PriceExcludingTax = myReader.GetDecimal(3);
                 books.Add(book);
-            }
+           }
 
-
-            return Book;        
+         await   cmd.DisposeAsync();
+            return books;        
         
         
         }
 
-        public Book findById(int isbn)
+        public async Task<Book> findBookById(int isbn)
         {
             string query = "select isb,nom, titre,prix, auteur, format, poidsenCM,image from livres where isbn =" + isbn + "";
 
             Book book = new Book();
-            Db.Connection.Open();
+          await Db.Connection.OpenAsync();
             using var cmd = Db.Connection.CreateCommand();
-
-            MySqlDataReader rdr = cmd.ExecuteReader();
+            DbDataReader rdr;
+            rdr = await cmd.ExecuteReaderAsync();
             while (rdr.Read())
             {
 
