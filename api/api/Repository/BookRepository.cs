@@ -53,10 +53,13 @@ namespace api.Repository
 
         
 
-        public  Book findBookById(int isbn)
+        public  Book findBookByISBN(string isbn)
         {
-            string query = " isbn, titre,prix_ht,date_parution,nombre_page,editeur,  dimension,URLimage from livres join articles on livres.articleId = articles.id where isbn ="+isbn;
+            Db.Connection.Open();
+
+            string query = "select isbn, titre,prix_ht,date_parution,nombre_page,editeur,  dimension,URLimage from livres join articles on livres.articleId = articles.id where isbn ="+isbn;
             Book book = new Book();
+            book.Publishing = new Publishing();
                         using var cmd = Db.Connection.CreateCommand();
             AuthorRepository authorRepo = new AuthorRepository(Db);
             cmd.CommandText = query;
@@ -72,14 +75,12 @@ namespace api.Repository
                 book.Publishing.Name = myReader["editeur"].ToString();
                 book.Format = myReader["dimension"].ToString();
                 book.Image = myReader["URLimage"].ToString();
-                book.Image = myReader["URLImage"].ToString();
                 book.PriceExcludingTax = (float)myReader["prix_ht"];
             }
             Db.Connection.Close();
            book.Authors=  authorRepo.AuthorsByISBN(book.Isbn);
 
             return book;
-            throw new NotImplementedException();
         }
 
 

@@ -23,9 +23,10 @@ namespace api.services
 
         }
 
-        public Task<Book> findBookById(int id)
+        public  Book findBookByISBN(string isbn)
         {
-            throw new NotImplementedException();
+            var result = _bookRepository.findBookByISBN(isbn);
+            return result;
         }
 
         public void saveBook(Book book)

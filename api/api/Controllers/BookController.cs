@@ -41,12 +41,21 @@ namespace api.Controllers
 
 
         }
-
-
-
-        public IActionResult FindAllBook(int id)
-        {
-            var result = _bookService.findBookById(id);
+        /// <summary>
+        /// Cette méthode permet de récupérer un livre en fonction de son ISBN.
+        /// </summary>
+        /// /// <param name="isbn">Id de la demande d'enlèvement</param>
+        /// <returns>livre avec son isbn</returns>
+        /// <response code="200">Succès</response>
+        /// <response code="204">Echec : Pas de contenu</response>
+        /// <response code="500">Echec : Erreur interne</response> 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("api/book/findBookByISBN/{isbn}")]
+        public IActionResult findBookByISBN(string isbn){
+            var result = _bookService.findBookByISBN( isbn); ;
             if (result == null)
             {
                 return NoContent();
