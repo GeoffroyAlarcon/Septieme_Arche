@@ -27,6 +27,9 @@ namespace api
             Configuration = configuration;
         }
 
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+     
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -35,12 +38,24 @@ namespace api
             // to connect to MySql database.
             services.AddTransient<MySqlConnector>(_ => new MySqlConnector(Configuration["ConnectionStrings:MySqlDatabase"]));
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:4200")
+                                          .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                                  });
+            });
+            // services.AddResponseCaching();
+        services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api", Version = "v1" });
             });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             RegisterServices(services);
+            RegisterRepository(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +65,7 @@ namespace api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
+                app.UseCors(MyAllowSpecificOrigins);
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "api v1"));
             }
 
@@ -69,7 +85,8 @@ namespace api
         private void RegisterServices(IServiceCollection services)
         {
             services.AddTransient<IUserService, UserService>();
-          
+            services.AddTransient<IBookService, BookService>();
+
         }
         private void RegisterRepository(IServiceCollection services)
         {

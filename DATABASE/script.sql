@@ -48,7 +48,7 @@ DEFAULT CHARACTER SET = utf8;
 
 DROP TABLE IF EXISTS livres;
 CREATE TABLE livres (
-  ISBN VARCHAR(13) PRIMARY KEY NOT NULL,
+  ISBN VARCHAR(13) PRIMARY KEY NOT NULL unique,
 titre varchar(250) not null,
 resume text not null,
 poids VARCHAR(45) NULL,
@@ -63,6 +63,16 @@ ArticleID int NOT NULL,
 DEFAULT CHARACTER SET = utf8;
 
 
+drop TABLE if EXITS livres_numerique;
+CREATE TABLE livres_numerique(
+ISBN varchar(13) PRIMARY KEY unique,
+string format not null,
+
+
+FOREIGN KEY ( ISBN) REFERENCES livres(ISBN) ON DELETE CASCADE
+)
+ENGINE = InnoDB 
+DEFAULT CHARACTER SET = utf8;
 
 
 DROP TABLE IF EXISTS  auteurs;

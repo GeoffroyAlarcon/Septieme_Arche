@@ -29,24 +29,31 @@ namespace api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("findAllBook")]
-        public async Task<IActionResult> FindAllBook()
+        [Route("api/book/findAllBook")]
+        public IActionResult FindAllBook()
         {
-
-            try { 
-            var result = await _bookService.findAllBook();
-                if (result == null)
-                {
-                    return NoContent();
-                }
-               return Ok(result);
-            }
-            catch(Exception ex)
+            var result = _bookService.findAllBook();
+            if (result == null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+                return NoContent();
             }
+            return Ok(result);
+
 
         }
 
+
+
+        public IActionResult FindAllBook(int id)
+        {
+            var result = _bookService.findBookById(id);
+            if (result == null)
+            {
+                return NoContent();
+            }
+            return Ok(result);
+
+
+        }
     }
 }

@@ -7,9 +7,9 @@ namespace api.models
 {
     public class Publishing
     {
-        private int id;
-        private string nom;
-        private Adress address;
+        public int id;
+        public string Name { get; set; }
+        public Adress Address { get; set; }
         
     }
 }

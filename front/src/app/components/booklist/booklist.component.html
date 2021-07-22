@@ -1,0 +1,20 @@
+<section class="pt-5 pb-5">
+
+    <div class="container" *ngFor="let book of books; let index = index;">
+    <div class="row">
+      <a href=""></a>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{book.title}}</h5>
+        <p class="card-text" *ngFor="let elt of book.authors; let index=index">
+        {{elt.firstName}} {{elt.lastName}} <span *ngIf="index + 1 !=  book.authors.length">, </span>  </p>
+      </div>
+      <p class="card-text"> {{book.priceExcludingTax}} euros</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+</section>

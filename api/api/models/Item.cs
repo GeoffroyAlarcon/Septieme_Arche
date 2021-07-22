@@ -13,9 +13,10 @@ namespace api.models
         public string Nom { get; set; }
 
         public string Image { get; set; }
-        public long ClickNumber { get; set; }
+        public long? NumberOfClicks { get; set; }
+        public int? NumberOfSales { get; set; }
         public int Stock { get; set; }
-        public decimal PriceExcludingTax { get; set; }
+        public float? PriceExcludingTax { get; set; }
 
 
 

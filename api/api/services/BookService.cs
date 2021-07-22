@@ -1,4 +1,5 @@
 ﻿using api.models;
+using api.Repository.Interfaces;
 using api.services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,17 @@ namespace api.services
 {
     public class BookService : IBookService
     {
-  
+  private readonly IBookRepository _bookRepository;
 
-        public Task<List<Book>> findAllBook()
+        public BookService(IBookRepository bookRepository)
         {
-            throw new NotImplementedException();
+            _bookRepository = bookRepository;
+        }
+        public List<Book> findAllBook()
+        {
+            var result = _bookRepository.findAllBook();
+            return result;
+
         }
 
         public Task<Book> findBookById(int id)

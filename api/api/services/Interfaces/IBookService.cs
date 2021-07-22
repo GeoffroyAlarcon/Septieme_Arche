@@ -8,7 +8,7 @@ namespace api.services.Interfaces
 {
    public interface IBookService
     {
-        public Task<List<Book>> findAllBook();
+        public List<Book> findAllBook();
         public Task<Book> findBookById(int id);
         public void saveBook(Book book);
         public void updateBook(Book book);
