@@ -86,12 +86,13 @@ namespace api
         {
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IBookService, BookService>();
-
+            services.AddTransient<IOrderRepository, OrderRepository>();  
         }
         private void RegisterRepository(IServiceCollection services)
         {
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
         }
 
     }

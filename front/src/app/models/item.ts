@@ -2,19 +2,20 @@
 export class Item{
     private _name: string;
    private _priceExcludingTax: number;
-
+    private _id: number;
    private _numberOfClicks: number;
    private _stock: number;
    private _numberOfSales: number;
    private _image: string;
 
-constructor(name:string, PriceExcludingTax:number,numberOfClicks:number,stock:number,numberOfSales:number,image:string){
+constructor(id:number,name:string, PriceExcludingTax:number,numberOfClicks:number,stock:number,numberOfSales:number,image:string){
 this._name = name;
     this._priceExcludingTax = PriceExcludingTax;
 this._numberOfClicks=numberOfClicks;
 this._stock=stock; 
 this._numberOfSales = numberOfSales;
 this._image = image;
+this._id = id;
 
 }
 
@@ -23,7 +24,12 @@ public get stock(): number {
     return this._stock;
 }
 
-
+public get id(): number {
+    return this._id;
+}
+public set id(value: number) {
+    this._id = value;
+}
 public set stock(value: number) {
     this._stock = value;
 }

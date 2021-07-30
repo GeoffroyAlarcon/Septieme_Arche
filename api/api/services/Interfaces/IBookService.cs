@@ -10,8 +10,7 @@ namespace api.services.Interfaces
     {
         public List<Book> findAllBook();
         public Book findBookByISBN(string isbn);
-        public void saveBook(Book book);
-        public void updateBook(Book book);
-        public void deleteBook(int id);
+        public List<Book> findBytitleOrAuthor(string search);
+
     }
 }

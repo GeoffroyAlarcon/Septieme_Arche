@@ -11,6 +11,8 @@ import { BookService } from './services/BookService';
 import { HttpClientModule } from '@angular/common/http';
 import { SingleBookComponent } from './components/single-book/single-book.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { BookListSearchComponent } from './components/book-list-search/book-list-search.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,15 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     NavComponent,
     BooklistComponent,
     SingleBookComponent,
-    HomePageComponent
+    HomePageComponent,
+    BookListSearchComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
     FormsModule
   ],

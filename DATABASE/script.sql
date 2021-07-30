@@ -5,18 +5,15 @@
 -- Project: SeptièmeArche
 -- Author: Geoffroy
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
 CREATE SCHEMA IF NOT EXISTS `septiemeArche` DEFAULT CHARACTER SET utf8 ;
-
-
+drop genrelivre;
+drop table livre_has_genreLivre;
 drop table livre_has_auteur;
+drop table livres_numerique;
 drop table auteurs;
-drop tables livres;
-drop tables articles;
-
+drop table livres;
+drop table articles;
+drop table genresLivre;
 
 
 
@@ -56,6 +53,7 @@ poids VARCHAR(45) NULL,
   editeur VARCHAR(100) not NULL ,
   date_parution  Date NULL ,
   nombre_page INT NOT NULL ,
+estNumerique tinyint not null default 0,
 ArticleID int NOT NULL,
  CONSTRAINT fk_livres_articles FOREIGN KEY (ArticleID) REFERENCES articles(id) ON DELETE CASCADE
 
@@ -66,10 +64,8 @@ DEFAULT CHARACTER SET = utf8;
 drop TABLE if EXITS livres_numerique;
 CREATE TABLE livres_numerique(
 ISBN varchar(13) PRIMARY KEY unique,
-string format not null,
-
-
-FOREIGN KEY ( ISBN) REFERENCES livres(ISBN) ON DELETE CASCADE
+format varchar(200) not null,
+FOREIGN KEY (ISBN) REFERENCES livres(ISBN) ON DELETE CASCADE
 )
 ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8;
@@ -97,6 +93,26 @@ FOREIGN KEY ( auteurId) REFERENCES auteurs(id) ON DELETE CASCADE
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
+DROP TABLE IF EXISTS  genresLivre;
+CREATE TABLE genresLivre(
+ id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  libelle VARCHAR(250) NULL
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+
+DROP TABLE IF EXISTS livre_has_genreLivre;
+CREATE TABLE livre_has_genreLivre (
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  ISBN VARCHAR(13) NOT NULL,
+  genreLivreId  int NOT NULL,
+FOREIGN KEY (ISBN) REFERENCES livres(ISBN) ON DELETE CASCADE,
+FOREIGN KEY (genreLivreId) REFERENCES genreLivre(id) ON DELETE CASCADE
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
 
 
@@ -105,8 +121,7 @@ DEFAULT CHARACTER SET = utf8;
 
 
 
-
-drop table if exists adminstrateur
+drop table if exists adminstrateurc
 
 CREATE TABLE `septièmeArche`.`administrateur` (
   `idadmnistrateur` INT(11) NOT NULL,
@@ -223,14 +238,3 @@ CREATE TABLE IF NOT EXISTS `septièmeArche`.`facture` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`genre` (
-  `idgenre` INT(11) NOT NULL,
-  `nom` VARCHAR(100) NULL DEFAULT NULL,
-  PRIMARY KEY (`idgenre`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

@@ -2,6 +2,7 @@ import { Author } from "./author";
 import { Item } from "./item";
 import{Publishing} from"./publishing"
 export class Book extends Item{
+    private _isDigital: boolean;
 
     private _isbn: string;
    
@@ -22,8 +23,8 @@ export class Book extends Item{
     private _publishing: Publishing;
   
 
-constructor(isbn:string,title:string,authors:Author[],price:number,clickNumber:number, stock:number,numberSalesItem:number,image:string,bookGenres: Array<string>,resume:string,numberOfPages:number,format:string,weight:number,publishing:Publishing){
-    super('',price,clickNumber,stock,numberSalesItem,image)
+constructor(isbn:string,title:string,authors:Author[],price:number,clickNumber:number, stock:number,numberSalesItem:number,image:string,bookGenres: Array<string>,resume:string,numberOfPages:number,format:string,weight:number,publishing:Publishing,id:number){
+    super(id,'',price,clickNumber,stock,numberSalesItem,image)
 this._isbn = isbn;
 this._title = title;
 this._authors = authors;
@@ -90,5 +91,11 @@ public get numberOfPages(): number {
 }
 public set numberOfPages(value: number) {
     this._numberOfPages = value;
+}
+public get isDigital(): boolean {
+    return this._isDigital;
+}
+public set isDigital(value: boolean) {
+    this._isDigital = value;
 }
 }

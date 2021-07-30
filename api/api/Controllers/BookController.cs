@@ -44,7 +44,7 @@ namespace api.Controllers
         /// <summary>
         /// Cette méthode permet de récupérer un livre en fonction de son ISBN.
         /// </summary>
-        /// /// <param name="isbn">Id de la demande d'enlèvement</param>
+        /// /// <param name="isbn">ISBN</param>
         /// <returns>livre avec son isbn</returns>
         /// <response code="200">Succès</response>
         /// <response code="204">Echec : Pas de contenu</response>
@@ -61,8 +61,32 @@ namespace api.Controllers
                 return NoContent();
             }
             return Ok(result);
+        }
+
+        /// <summary>
+        /// Cette méthode permet de récupérer une liste de livres en fonction d'un mot clé présent dans le titre d'un livre ou de son auteur.
+        /// </summary>
+        /// /// <param name="search">élément recherché dans la bdd</param>
+        /// <returns>livre avec son isbn</returns>
+        /// <response code="200">Succès</response>
+        /// <response code="204">Echec : Pas de contenu</response>
+        /// <response code="500">Echec : Erreur interne</response> 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("api/book/findByTitleOrAuthor/{search}")]
+        public IActionResult finbByTitleOrAuthor(string search)
+        {
+            var result = _bookService.findBytitleOrAuthor(search); ;
+            if (result == null)
+            {
+                return NoContent();
+            }
+            return Ok(result);
 
 
         }
+      
     }
 }

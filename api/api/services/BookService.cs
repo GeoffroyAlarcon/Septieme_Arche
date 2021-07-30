@@ -3,6 +3,7 @@ using api.Repository.Interfaces;
 using api.services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,23 +26,19 @@ namespace api.services
 
         public  Book findBookByISBN(string isbn)
         {
+
             var result = _bookRepository.findBookByISBN(isbn);
+
+
             return result;
         }
 
-        public void saveBook(Book book)
+        public List<Book> findBytitleOrAuthor(string search)
         {
-            throw new NotImplementedException();
-        }
+            var result = _bookRepository.findBytitleOrAuthor(search);
 
-        public void updateBook(Book book)
-        {
-            throw new NotImplementedException();
-        }
+            return result;
 
-        public void deleteBook(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

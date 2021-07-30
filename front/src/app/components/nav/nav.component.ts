@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
   constructor() { }
-
+_sessionLength:number= sessionStorage.length
   ngOnInit(): void {
   }
 

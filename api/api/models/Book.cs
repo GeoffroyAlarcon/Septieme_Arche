@@ -15,7 +15,7 @@ namespace api.models
         }
 
         public string Isbn  {get; set;}
-
+        public bool isDigital { get; set; }
         public int Weight { get; set; }
         public string Format { get; set; }
         public string Title { get; set; }

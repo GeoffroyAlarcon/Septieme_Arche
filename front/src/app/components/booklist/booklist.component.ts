@@ -13,6 +13,7 @@ constructor(private _bookService:BookService){
 }
 authorsToString:string[] =[]
    books: Book[] = [];
+
   
   ngOnInit(): void { 
     this.displayGetAll();
@@ -21,8 +22,7 @@ authorsToString:string[] =[]
   displayGetAll() {
     this._bookService.getAllNewBook().subscribe((res) => {
       this.books = res;
-console.log(res)
- 
+
 });
 }
 }
