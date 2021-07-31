@@ -96,7 +96,7 @@ namespace api.Repository
 
             Db.Connection.Open();
                 List<Book> books = new List<Book>();
-            string query = " select livres.ISBN, titre,URLImage,prix_ht from livres  join articles on articles.id = livres.articleid join livre_has_auteur on livres.isbn = livre_has_auteur.isbn join auteurs on livre_has_auteur.auteurId = auteurs.id  where titre like @search or auteurs.nom like @search ORDER BY articles.dateAjoutArticle LIMIT 20" ;
+            string query = " select livres.ISBN, titre,URLImage,prix_ht from livres  left join articles on articles.id = livres.articleid left join livre_has_auteur on livres.isbn = livre_has_auteur.isbn left join auteurs on livre_has_auteur.auteurId = auteurs.id  where titre like @search or auteurs.nom like @search ORDER BY articles.dateAjoutArticle LIMIT 20" ;
             using var cmd = Db.Connection.CreateCommand();
          
             AuthorRepository authorRepo = new AuthorRepository(Db);

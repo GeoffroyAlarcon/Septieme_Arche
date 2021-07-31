@@ -10,13 +10,13 @@
 
 
                   </ul>
-                  <form class="d-flex">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  <form class="d-flex" [formGroup]="_searchForm" (ngSubmit)="onSubmitForm()">
+                    <input class="form-control mr-sm-2" type="text" id="search" placeholder=" titre livre ou nom auteur" aria-label="Search" formControlName="search">
+                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
                   </form>
               
-                <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
+                <form class="d-flex" >
+                    <button class="btn btn-outline-dark  mx-5" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
                         <span class="badge bg-dark text-white ms-1 rounded-pill">{{_sessionLength}}</span>

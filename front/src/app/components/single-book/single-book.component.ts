@@ -41,7 +41,6 @@ amount:0
 }
 onSubmitForm(){
   const formValue = this._addCartForm.value
-console.log(formValue["amount"]);
 this._cartLine.amount=formValue["amount"]; 
 this._cartLine.item= this._book;
  this.addArticle(this._cartLine);

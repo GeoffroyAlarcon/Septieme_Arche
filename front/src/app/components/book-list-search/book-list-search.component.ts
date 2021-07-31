@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/BookService';
 
@@ -9,15 +10,20 @@ import { BookService } from 'src/app/services/BookService';
 })
 export class BookListSearchComponent implements OnInit {
  _books:Book[] = []
-  constructor(private _bookService:BookService ) { }
+
+  constructor(private _bookService:BookService,private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    this.getallResultBySearch();
+    this.route.paramMap.subscribe((value) => {
+    let search= value.get("search")??"".toString();
+      this.getallResultBySearch(search);
+    });
+ 
   }
 
-getallResultBySearch(){
+getallResultBySearch(_search:string){
 
-this._bookService.getBooksByAuthorOrTitle('le').subscribe((res)=>{
+ this._bookService.getBooksByAuthorOrTitle(_search).subscribe((res)=>{
 this._books= res;
 })
 }

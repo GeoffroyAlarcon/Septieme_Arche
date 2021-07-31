@@ -7,7 +7,7 @@ import { SingleBookComponent } from './components/single-book/single-book.compon
 const routes: Routes = [
   { path:"",component:HomePageComponent},
 {path:"book/:isbn",component:SingleBookComponent},
-{path:"booksbySearch", component:   BookListSearchComponent}
+{path:"booksbySearch/:search", component:   BookListSearchComponent}
 ];
 
 @NgModule({
