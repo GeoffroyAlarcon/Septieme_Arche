@@ -4,18 +4,21 @@ CREATE PROCEDURE afficher_livre(in p_isbn varchar(13) )
 BEGIN
 declare isbn2 varchar(13);
 set isbn2 =  p_isbn;
+
+update articles  join livres on articles.id=livres.articleid  set nombreConsultation = nombreConsultation + 1 where isbn = p_isbn;
     SELECT livres.isbn,
  titre,
 estnumerique,
 articles.id,
  titre,
 prix_ht,
+editeur,
 date_parution,
 nombre_page,editeur,
 articles.quantite, 
  dimension,
 URLimage,  
-GROUP_CONCAT(auteurs.prenom, '+',auteurs.nom ORDER BY prenom ASC SEPARATOR ',') as listAuteurs,
+GROUP_CONCAT(IFNULL(auteurs.prenom,''), '+',IFNULL(auteurs.nom,'') ORDER BY prenom ASC SEPARATOR ',') as listAuteur,
 GROUP_CONCAT(genreLivre.libelle ORDER BY genreLivre.libelle ASC SEPARATOR ',') as listGenres
 from livres
  inner join livre_has_auteur on livre_has_auteur.isbn = livres.isbn

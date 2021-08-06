@@ -8,6 +8,7 @@ namespace api.Repository.Interfaces
 {
     public interface IBookRepository
     {
+        public bool isDigital(string isbn);
         public List<Book> findAllBook();
         public Book findBookByISBN(string isbn);
         public List<Book> findBytitleOrAuthor(string search);
