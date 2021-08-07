@@ -47,11 +47,16 @@ this._cartLine.item= this._book;
  }
 addArticle(cartLine:CartLine){
   if(sessionStorage.getItem(cartLine.item.id.toString()) != null){
-    alert("vous avez déjà ajouté cet article à votre panier ");
+    alert("vous avez déjà ajouté cet article à votre panier "); return 
+  }
+  if(this._cartLine.amount == 0 ){
+    alert(" veuillez saisir une quantité supérieure à 0 ");
   return 
   }
   else
   sessionStorage.setItem(cartLine.item.id.toString(), JSON.stringify(cartLine));
+  location.reload();
+
 }
 }
 

@@ -6,20 +6,21 @@
 -- Author: Geoffroy
 
 CREATE SCHEMA IF NOT EXISTS `septiemeArche` DEFAULT CHARACTER SET utf8 ;
-drop genrelivre;
-drop table livre_has_genreLivre;
-drop table livre_has_auteur;
-drop table livres_numerique;
-drop table auteurs;
-drop table livres;
-drop table articles;
-drop table genresLivre;
+DROP TABLE  IF EXISTS CLIENT;
+drop IF EXISTS genrelivre;
+drop IF EXISTS table livre_has_genreLivre;
+drop IF EXISTS table livre_has_auteur;
+drop IF EXISTS table livres_numerique;
+drop IF EXISTS table auteurs;
+drop IF EXISTS table livres;
+drop IF EXISTS table articles;
+drop IF EXISTS table genresLivre;
 
 
 
 DROP TABLE IF EXISTS compte_utilisateur;
 CREATE TABLE`septiemeArche`.`compte_utilisateur` (
-idcompte_utilisateur INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nom VARCHAR(100) NOT NULL,
   prenom VARCHAR(100) NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
@@ -118,10 +119,23 @@ DEFAULT CHARACTER SET = utf8;
 
 
 
+DROP TABLE  IF EXISTS CLIENT; 
+CREATE TABLE Client (
+  `idClient` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `nom` VARCHAR(45) NULL DEFAULT NULL,	
+  `prenom` VARCHAR(45) NULL DEFAULT NULL,
+  `compte_utilisateurId` INT NOT NULL,
+ FOREIGN KEY (compte_utilisateurId) REFERENCES compte_utilisateur(id) ON DELETE CASCADE
+
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
 
 
-drop table if exists adminstrateurc
+
+
+drop table if exists adminstrateur
 
 CREATE TABLE `septièmeArche`.`administrateur` (
   `idadmnistrateur` INT(11) NOT NULL,
@@ -147,24 +161,6 @@ DEFAULT CHARACTER SET = utf8;
 
 
 
-
-
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`Client` (
-  `idClient` INT(11) NOT NULL,
-  `nom` VARCHAR(45) NULL DEFAULT NULL,
-  `prenom` VARCHAR(45) NULL DEFAULT NULL,
-  `compte_utilisateur_idcompte_utilisateur` INT(11) NOT NULL,
-  PRIMARY KEY (`idClient`),
-  UNIQUE INDEX `idClient_UNIQUE` (`idClient` ASC) VISIBLE,
-  INDEX `fk_Client_compte_utilisateur1_idx` (`compte_utilisateur_idcompte_utilisateur` ASC) VISIBLE,
-  CONSTRAINT `fk_Client_compte_utilisateur1`
-    FOREIGN KEY (`compte_utilisateur_idcompte_utilisateur`)
-    REFERENCES `septièmeArche`.`compte_utilisateur` (`idcompte_utilisateur`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `septièmeArche`.`adresse de facturation` (
   `idadresse_de_facturation` INT(11) NOT NULL,

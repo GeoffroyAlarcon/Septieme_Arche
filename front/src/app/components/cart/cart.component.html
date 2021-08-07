@@ -1,1 +1,41 @@
-<p>cart works!</p>
+
+<div class="row" *ngFor="let cartLine of this._cart;; index as i">
+  <div class="col-md-2 text-center">
+    <p>
+      Nom de l'article :
+      {{cartLine.item.name}}
+    </p>
+  </div>
+  <div class="col-md-2 text-center">
+    <p>
+      prix de l'article :
+      {{cartLine.item.priceExcludingTax}}
+    </p>
+  </div>
+
+<div class="col-md-2 text-center">
+  <p>
+    Quantité commandée :
+{{cartLine.amount}}
+  </p>
+</div>
+<div class="col-md-3 text-center">
+  <p>
+    Prix total :
+    {{ (cartLine.item.priceExcludingTax) * cartLine.amount}}
+  </p>
+</div>
+<div class="col-md-2 text-center">
+ 
+    <button class="btn btn-primary" type="button" (click)="deleteItemStorage(i)" >
+      Supprimez
+      article
+    </button>
+
+
+    <button class="btn btn-primary" type="button">
+      modifier
+      quantité
+    </button>
+</div>
+  </div>

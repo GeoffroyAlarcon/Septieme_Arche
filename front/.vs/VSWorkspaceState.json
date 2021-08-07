@@ -4,8 +4,11 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\nav"
+    "\\src\\app\\components\\booklist",
+    "\\src\\app\\components\\cart",
+    "\\src\\app\\components\\nav",
+    "\\src\\app\\models"
   ],
-  "SelectedNode": "\\src\\app\\components\\nav\\nav.component.ts",
+  "SelectedNode": "\\src\\app\\components\\nav\\nav.component.scss",
   "PreviewInSolutionExplorer": false
 }

@@ -10,10 +10,10 @@ insert into compte_utilisateur (prenom,nom,email,password) Values
 
 
 
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('livre',12.21,5,0,0);
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('livre',40.50,5,0,0);
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('livre',45,5,0,0);
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('livre',45,5,0,0);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('la grande histoire du 7ieme art-L.DELMAS',12.21,5,0,0);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('Tout sur le cinéma-P.Kemp',40.50,5,0,0);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('Kubrick-M.Ciment',45,5,0,0);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('1001 films à voir avant de mourir-Collectif',45,5,0,0);
 
 insert into livres VALUES ('2035941725','La grande histoire du 7ème art','lorem ipsum testa ','1,42 Kg','19,70 x 25,00 x 2,80 cm','Larousse','2019-05-01',384,0,1);
 insert into livres VALUES ('2081266164','Tout sur le cinéma','lorem ipsum testa ','1,77 Kg','18,30 x 25,70 x 4,30 cm','Flammarion','2019-05-01',576,0,2);
