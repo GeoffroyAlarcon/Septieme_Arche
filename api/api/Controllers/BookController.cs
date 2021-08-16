@@ -50,7 +50,6 @@ namespace api.Controllers
         /// <response code="204">Echec : Pas de contenu</response>
         /// <response code="500">Echec : Erreur interne</response> 
         [HttpGet]
-        [Produces(["application/JSON", "application/xml"])]
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
