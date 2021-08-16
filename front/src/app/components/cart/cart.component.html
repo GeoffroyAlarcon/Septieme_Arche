@@ -13,29 +13,19 @@
     </p>
   </div>
 
-<div class="col-md-2 text-center">
-  <p>
-    Quantité commandée :
-{{cartLine.amount}}
-  </p>
+<div class="col-md-2 text-center"> 
+  <label for="input{{cartLine.item.id}}"> quantité</label>
+  <input type="numer" class=" mx-3 amount_input" value = "{{cartLine.amount}}"  name="input{{cartLine.item.id}}" (change)="updateAmount(cartLine.item.id,$event)">
 </div>
-<div class="col-md-3 text-center">
+<div class="col-md-2 text-center">
   <p>
     Prix total :
-    {{ (cartLine.item.priceExcludingTax) * cartLine.amount}}
+    {{  cartLine.amount * 100 * cartLine.item.priceExcludingTax/100 }}
   </p>
 </div>
-<div class="col-md-2 text-center">
+<div class="col-md-1 text-center">
  
-    <button class="btn btn-primary" type="button" (click)="deleteItemStorage(i)" >
-      Supprimez
-      article
-    </button>
-
-
-    <button class="btn btn-primary" type="button">
-      modifier
-      quantité
-    </button>
+<img  class="trash" src="../../../assets/img/trash-solid.svg" alt="" (click)="deleteItemStorage(i)">
+ 
 </div>
-  </div>
+</div>

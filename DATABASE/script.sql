@@ -1,4 +1,4 @@
--- MySQL Workbench Synchronization
+﻿-- MySQL Workbench Synchronization
 -- Generated: 2021-05-02 19:03
 -- Model: New Model
 -- Version: 1.0
@@ -6,6 +6,7 @@
 -- Author: Geoffroy
 
 CREATE SCHEMA IF NOT EXISTS `septiemeArche` DEFAULT CHARACTER SET utf8 ;
+use `septiemeArche` ;
 DROP TABLE  IF EXISTS CLIENT;
 drop IF EXISTS genrelivre;
 drop IF EXISTS table livre_has_genreLivre;
@@ -110,7 +111,7 @@ id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   ISBN VARCHAR(13) NOT NULL,
   genreLivreId  int NOT NULL,
 FOREIGN KEY (ISBN) REFERENCES livres(ISBN) ON DELETE CASCADE,
-FOREIGN KEY (genreLivreId) REFERENCES genreLivre(id) ON DELETE CASCADE
+FOREIGN KEY (genreLivreId) REFERENCES genresLivre(id) ON DELETE CASCADE
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

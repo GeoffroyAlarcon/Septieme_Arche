@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/BookService';
 
@@ -11,7 +11,7 @@ import { BookService } from 'src/app/services/BookService';
 export class BookListSearchComponent implements OnInit {
  _books:Book[] = []
 
-  constructor(private _bookService:BookService,private route: ActivatedRoute ) { }
+  constructor(private _bookService:BookService,private route:ActivatedRoute, private router : Router ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((value) => {
@@ -27,4 +27,5 @@ getallResultBySearch(_search:string){
 this._books= res;
 })
 }
-}
+
+ }

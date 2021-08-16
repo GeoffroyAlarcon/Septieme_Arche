@@ -20,7 +20,7 @@ namespace api.Repository
         {
             List<Author> authors = new List<Author>();
             Db.Connection.Open();
-            string query = "select nom , prenom, description from auteurs join livre_has_auteur on auteurs.id = livre_has_auteur.auteurid where isbn="+isbn;
+            string query = "select nom , prenom, description from auteurs left join livre_has_auteur on auteurs.id = livre_has_auteur.auteurid where isbn="+isbn;
             using var cmd = Db.Connection.CreateCommand();
             cmd.CommandText = query;
             MySqlDataReader myReader;

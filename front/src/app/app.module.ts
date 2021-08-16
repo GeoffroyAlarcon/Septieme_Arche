@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { BooklistComponent } from './components/booklist/booklist.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookService } from './services/BookService';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,6 +12,7 @@ import { SingleBookComponent } from './components/single-book/single-book.compon
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { BookListSearchComponent } from './components/book-list-search/book-list-search.component';
 import { CartComponent } from './components/cart/cart.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { CartComponent } from './components/cart/cart.component';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent, BookService]

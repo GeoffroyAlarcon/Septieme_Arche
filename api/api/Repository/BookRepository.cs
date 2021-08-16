@@ -80,7 +80,7 @@ namespace api.Repository
                     book.Publishing.Name = myReader["editeur"].ToString();
                     book.Format = myReader["dimension"].ToString();
                     book.Image = myReader["URLimage"].ToString();
-                book.Name = myReader["articleNom"].ToString();
+                book.Name = myReader["titre"].ToString();
                     book.PriceExcludingTax = (float)myReader["prix_ht"];
                     book.Stock = (int)myReader["quantite"];
                 string[] subsListAuhors = myReader["listAuteur"].ToString().Split(',');

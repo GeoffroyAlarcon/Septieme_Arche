@@ -1,4 +1,4 @@
-
+﻿
 
 insert into compte_utilisateur (prenom,nom,email,password) Values
 ('Jean','Dupont','jeandupont@gmail.com', SHA1('azerty')),
@@ -40,9 +40,9 @@ insert into livre_has_auteur(isbn,auteurid) VALUES('2081266164', 2);
 insert into livre_has_auteur(isbn,auteurid) VALUES('2702142001', 3);
 insert into livre_has_auteur(isbn,auteurid) VALUES('2258161428', 4);
 
-insert into genreLivre(libelle)VALUES("classement de films");
-insert into genreLivre(libelle)VALUES("biographie");
-insert into genreLivre(libelle)VALUES("histoire du cinéma");
+insert into genresLivre(libelle)VALUES("classement de films");
+insert into genresLivre(libelle)VALUES("biographie");
+insert into genresLivre(libelle)VALUES("histoire du cinéma");
 
 
 insert into livre_has_genreLivre(isbn,genrelivreId)values('2035941725,3');

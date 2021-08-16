@@ -32,4 +32,14 @@ sessionStorage.removeItem(sessionStorage.key(index) || "");
 location.reload();
 
 }
+updateAmount(inputId:number, event:any){
+ var inputValue:number = event.target.value;
+  let cartlineJSON:any
+ cartlineJSON = JSON.parse( sessionStorage.getItem(inputId.toString()) || "");
+cartlineJSON["_amount"] = inputValue;
+console.log(cartlineJSON);
+sessionStorage.setItem(inputId.toString(), JSON.stringify(cartlineJSON));
+location.reload();
+  }
+  
 }

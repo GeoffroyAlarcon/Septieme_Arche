@@ -10,6 +10,7 @@ const routes: Routes = [
   { path:"",component:HomePageComponent},
 {path:"book/:isbn",component:SingleBookComponent},
 {path:"booksbySearch/:search", component:   BookListSearchComponent},
+{path:"booksbySearch/:search/book/:isbn",component:SingleBookComponent}, // retourne une URL pour aller sur une page détail après une recherche
 {path:"cart",component:CartComponent}
 ];
 
