@@ -8,6 +8,6 @@ namespace api.Repository.Interfaces
 {
    public interface IUserRepository
     {
-        public User auth();
+        public User auth(string email, string password);
     }
 }

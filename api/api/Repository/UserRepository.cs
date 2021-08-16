@@ -16,7 +16,7 @@ namespace api.Repository
         public UserRepository(MySqlConnector db) {
             Db = db;
         }
-        public  User auth()
+        public  User auth(string email,string password)
         {
             User findUser = new User();
             Db.Connection.Open();

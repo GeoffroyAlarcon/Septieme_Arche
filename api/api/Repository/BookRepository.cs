@@ -13,8 +13,6 @@ namespace api.Repository
 {
     public class BookRepository : IBookRepository
     {
-
-
         public MySqlConnector Db { get; }
         public BookRepository(MySqlConnector db)
         {
@@ -107,13 +105,11 @@ namespace api.Repository
             Db.Connection.Open();
 
 
-            MySqlCommand cmd = new MySqlCommand("afficher_livre", Db.Connection);
+            MySqlCommand cmd = new MySqlCommand("afficher_livre_digital", Db.Connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             MySqlParameter param = new MySqlParameter("p_isbn", MySqlDbType.VarChar);
             cmd.Parameters.Add(param).Value = isbn;
-
-
             MySqlDataReader myReader = cmd.ExecuteReader();
             if(myReader.Read())
             {
@@ -127,7 +123,7 @@ namespace api.Repository
                 book.Publishing.Name = myReader["editeur"].ToString();
                 book.Format = myReader["dimension"].ToString();
                 book.Image = myReader["URLimage"].ToString();
-
+                book.formatDigital = myReader["formatDigital"].ToString();
                 book.PriceExcludingTax = (float)myReader["prix_ht"];
                 book.Stock = (int)myReader["quantite"];
                 string[] subsListAuhors = myReader["listAuteur"].ToString().Split(',');
@@ -171,7 +167,6 @@ namespace api.Repository
 
         public List<Book> findBytitleOrAuthor(string search)
         {
-
             Db.Connection.Open();
                 List<Book> books = new List<Book>();
             string query = " select livres.ISBN, titre,URLImage,prix_ht from livres  left join articles on articles.id = livres.articleid left join livre_has_auteur on livres.isbn = livre_has_auteur.isbn left join auteurs on livre_has_auteur.auteurId = auteurs.id  where titre like @search or auteurs.nom like @search ORDER BY articles.dateAjoutArticle LIMIT 20" ;
@@ -196,9 +191,6 @@ namespace api.Repository
             }
             Db.Connection.Close();
             books.ForEach(elt => elt.Authors = authorRepo.AuthorsByISBN(elt.Isbn));
-
-
-
             return books;
 
         }

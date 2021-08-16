@@ -21,11 +21,11 @@ namespace api.services
             _userRepository = userRepository;
         }
 
-        public User Auth()
+        public User Auth(string email, string password)
         {
             User result = new User();
             try {
-                  result =   _userRepository.auth();
+                  result =   _userRepository.auth(email,password);
              
             }
             catch (Exception ex)

@@ -27,22 +27,22 @@ namespace api.Controllers
             _logger = logger;
         }
 
-      
 
-        
         /// <response code="200">Succès</response>
         /// <response code="204">Echec : Pas de contenu</response>
         /// <response code="500">Echec : Erreur interne</response> 
+        ///<param name="email"> </param>
+        /// /// <param name="password">ISBN</param>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Route("auth")]
-        public  IActionResult Auth()
+        public  IActionResult Auth(string email, string password)
         {
 
          
-            var result = _userService.Auth();
+            var result = _userService.Auth(email, password);
             if (result is null) { 
                 return new NotFoundResult();
             }

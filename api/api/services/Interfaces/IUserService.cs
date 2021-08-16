@@ -8,6 +8,6 @@ namespace api.services.Interfaces
 {
    public  interface IUserService
     {
-        public User Auth();
+        public User Auth(string email, string password);
     }
 }

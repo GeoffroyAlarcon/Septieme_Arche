@@ -78,6 +78,7 @@ C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\obj\Debug\net5.0\ref\a
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\obj\Debug\net5.0\api.pdb
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\obj\Debug\net5.0\api.genruntimeconfig.cache
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\obj\Debug\net5.0\api.csprojAssemblyReference.cache
+<<<<<<< Updated upstream
 C:\Users\Stagiaire\Documents\septièmeArche\Septieme_Arche\api\api\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\Stagiaire\Documents\septièmeArche\Septieme_Arche\api\api\bin\Debug\net5.0\appsettings.json
 C:\Users\Stagiaire\Documents\septièmeArche\Septieme_Arche\api\api\bin\Debug\net5.0\api.exe
@@ -118,3 +119,12 @@ C:\Users\Stagiaire\Documents\septièmeArche\Septieme_Arche\api\api\obj\Debug\net
 C:\Users\Stagiaire\Documents\septièmeArche\Septieme_Arche\api\api\obj\Debug\net5.0\ref\api.dll
 C:\Users\Stagiaire\Documents\septièmeArche\Septieme_Arche\api\api\obj\Debug\net5.0\api.pdb
 C:\Users\Stagiaire\Documents\septièmeArche\Septieme_Arche\api\api\obj\Debug\net5.0\api.genruntimeconfig.cache
+=======
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+>>>>>>> Stashed changes

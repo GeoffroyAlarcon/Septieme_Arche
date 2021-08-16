@@ -8,14 +8,14 @@
 CREATE SCHEMA IF NOT EXISTS `septiemeArche` DEFAULT CHARACTER SET utf8 ;
 use `septiemeArche` ;
 DROP TABLE  IF EXISTS CLIENT;
-drop IF EXISTS genrelivre;
-drop IF EXISTS table livre_has_genreLivre;
-drop IF EXISTS table livre_has_auteur;
-drop IF EXISTS table livres_numerique;
-drop IF EXISTS table auteurs;
-drop IF EXISTS table livres;
-drop IF EXISTS table articles;
-drop IF EXISTS table genresLivre;
+drop table  IF EXISTS genrelivre;
+drop TABLE IF EXISTS livre_has_genreLivre;
+drop table  IF EXISTS livre_has_auteur;
+drop table  IF EXISTS livres_numerique;
+drop table  IF EXISTS auteurs;
+drop table  IF EXISTS livres;
+drop  table  IF EXISTS articles;
+drop  table IF EXISTS genresLivre;
 
 
 
@@ -38,7 +38,7 @@ id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   prix_ht FLOAT NOT NULL,
 dateAjoutArticle Datetime DEFAULT  NOW(),
   URLImage VARCHAR(250) NULL,
-  quantite INT not null,
+  quantite INT null,
   nombreConsultation INT null,
   nombreVendu INT null
 )
@@ -63,9 +63,11 @@ ArticleID int NOT NULL,
 DEFAULT CHARACTER SET = utf8;
 
 
-drop TABLE if EXITS livres_numerique;
+drop TABLE if EXISTS livres_numerique;
 CREATE TABLE livres_numerique(
-ISBN varchar(13) PRIMARY KEY unique,
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+ISBN varchar(13) not null,
+DRM varchar(100) not null,
 format varchar(200) not null,
 FOREIGN KEY (ISBN) REFERENCES livres(ISBN) ON DELETE CASCADE
 )
@@ -133,105 +135,4 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
-
-
-
-drop table if exists adminstrateur
-
-CREATE TABLE `septièmeArche`.`administrateur` (
-  `idadmnistrateur` INT(11) NOT NULL,
-  `privilège` INT(11) NULL DEFAULT NULL,
-  `nom` VARCHAR(45) NULL DEFAULT NULL,
-  `prenom` VARCHAR(45) NULL DEFAULT NULL,
-  `compte_utilisateur_idcompte_utilisateur` INT(11) NOT NULL,
-  PRIMARY KEY (`idadmnistrateur`),
-  INDEX `fk_administrateur_compte_utilisateur1_idx` (`compte_utilisateur_idcompte_utilisateur` ASC),
-  CONSTRAINT `fk_administrateur_compte_utilisateur1`
-    FOREIGN KEY (`compte_utilisateur_idcompte_utilisateur`)
-    REFERENCES `septièmeArche`.`compte_utilisateur` (`idcompte_utilisateur`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
-
-
-
-
-
-
-
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`adresse de facturation` (
-  `idadresse_de_facturation` INT(11) NOT NULL,
-  `pays` VARCHAR(45) NULL DEFAULT NULL,
-  `voie` VARCHAR(45) NULL DEFAULT NULL,
-  `numéro_adresse` VARCHAR(45) NULL DEFAULT NULL,
-  `code_postal` VARCHAR(45) NULL DEFAULT NULL,
-  `numéro_d_appartement` VARCHAR(45) NULL DEFAULT NULL,
-  `batiment` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`idadresse_de_facturation`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`adresse de livraison` (
-  `idadresse_de_livraison` INT(11) NOT NULL,
-  `pays` VARCHAR(45) NULL DEFAULT NULL,
-  `voie` VARCHAR(45) NULL DEFAULT NULL,
-  `numéro_adresse` VARCHAR(45) NULL DEFAULT NULL,
-  `code_postal` VARCHAR(45) NULL DEFAULT NULL,
-  `numéro_appartement` VARCHAR(45) NULL DEFAULT NULL,
-  `batiment` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`idadresse_de_livraison`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`commande` (
-  `idcommande` INT(11) NOT NULL,
-  `date` DATE NULL DEFAULT NULL,
-  `prix_total` FLOAT(11) NULL DEFAULT NULL,
-  `Client_idClient` INT(11) NOT NULL,
-  PRIMARY KEY (`idcommande`),
-  INDEX `fk_commande_Client1_idx` (`Client_idClient` ASC),
-  CONSTRAINT `fk_commande_Client1`
-    FOREIGN KEY (`Client_idClient`)
-    REFERENCES `septièmeArche`.`Client` (`idClient`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`article_has_commande` (
-  `article_idarticle` INT(11) NOT NULL,
-  `commande_idcommande` INT(11) NOT NULL,
-  `quantite_commandee` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`article_idarticle`, `commande_idcommande`),
-  INDEX `fk_article_has_commande_commande1_idx` (`commande_idcommande` ASC) VISIBLE,
-  INDEX `fk_article_has_commande_article1_idx` (`article_idarticle` ASC) VISIBLE,
-  CONSTRAINT `fk_article_has_commande_article1`
-    FOREIGN KEY (`article_idarticle`)
-    REFERENCES `septièmeArche`.`article` (`idarticle`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_article_has_commande_commande1`
-    FOREIGN KEY (`commande_idcommande`)
-    REFERENCES `septièmeArche`.`commande` (`idcommande`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `septièmeArche`.`facture` (
-  `idfacture` INT(11) NOT NULL,
-  `commande_idcommande` INT(11) NOT NULL,
-  PRIMARY KEY (`idfacture`),
-  INDEX `fk_facture_commande1_idx` (`commande_idcommande` ASC) VISIBLE,
-  CONSTRAINT `fk_facture_commande1`
-    FOREIGN KEY (`commande_idcommande`)
-    REFERENCES `septièmeArche`.`commande` (`idcommande`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
 

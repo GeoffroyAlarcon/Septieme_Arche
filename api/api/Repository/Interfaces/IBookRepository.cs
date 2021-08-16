@@ -12,6 +12,7 @@ namespace api.Repository.Interfaces
         public List<Book> findAllBook();
         public Book findBookByISBN(string isbn);
         public List<Book> findBytitleOrAuthor(string search);
+        public DigitalBook findDigitalBookByISBN(string isbn);
     }
 
 }

@@ -27,9 +27,16 @@ namespace api.services
         public  Book findBookByISBN(string isbn)
         {
             Book result = null;
-            if (_bookRepository.isDigital(isbn) ==false){ 
+            bool isDigital = _bookRepository.isDigital(isbn);
+
+
+            if   (isDigital == false){ 
 
              result = _bookRepository.findBookByISBN(isbn);
+            }
+            else
+            {
+                result = _bookRepository.findDigitalBookByISBN(isbn);
             }
 
             return result;

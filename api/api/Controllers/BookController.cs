@@ -44,12 +44,14 @@ namespace api.Controllers
         /// <summary>
         /// Cette méthode permet de récupérer un livre en fonction de son ISBN.
         /// </summary>
-        /// /// <param name="isbn">ISBN</param>
+        ///  <param name="isbn">ISBN</param>
         /// <returns>livre avec son isbn</returns>
         /// <response code="200">Succès</response>
         /// <response code="204">Echec : Pas de contenu</response>
         /// <response code="500">Echec : Erreur interne</response> 
         [HttpGet]
+        [Produces(["application/JSON", "application/xml"])]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
