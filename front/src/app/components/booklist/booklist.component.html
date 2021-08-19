@@ -10,7 +10,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">{{book.title}} <ng-template *ngIf="book.isDigital == true"> ( livre numérique ) </ng-template></h5>
+                                    <h5 class="fw-bolder">{{book.title}} <div *ngIf="book.isDigital == true"> ( livre numérique ) </div></h5>
                                    <!-- Product Author-->
                                    <p  class="card-text text-center" *ngFor="let elt of book.authors">
                                     {{elt.firstName}} {{elt.lastName}}  </p>   

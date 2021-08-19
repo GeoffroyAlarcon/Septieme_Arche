@@ -18,10 +18,12 @@ namespace api.Repository
 
         public List<Author> AuthorsByISBN(string isbn)
         {
-            List<Author> authors = new List<Author>();
             Db.Connection.Open();
-            string query = "select nom , prenom, description from auteurs left join livre_has_auteur on auteurs.id = livre_has_auteur.auteurid where isbn="+isbn;
+            List<Author> authors = new List<Author>();
+    
             using var cmd = Db.Connection.CreateCommand();
+            string query = "select nom, prenom from auteurs join livre_has_auteur on auteurs.id = livre_has_auteur.auteurid where isbn= '"+isbn + "'";
+
             cmd.CommandText = query;
             MySqlDataReader myReader;
             myReader = cmd.ExecuteReader();
@@ -31,7 +33,6 @@ namespace api.Repository
                 Author author = new Author();
                 author.FirstName = myReader["prenom"].ToString();
                 author.LastName = myReader["nom"].ToString();
-                author.Resume = myReader["description"].ToString();
                 authors.Add(author);
             }
             Db.Connection.Close();

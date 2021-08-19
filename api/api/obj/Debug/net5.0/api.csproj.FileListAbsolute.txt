@@ -128,3 +128,5 @@ C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\Micro
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 >>>>>>> Stashed changes
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\obj\Debug\net5.0\api.csproj.AssemblyReference.cache
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\BCrypt.Net-Next.dll

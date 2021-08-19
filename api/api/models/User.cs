@@ -7,7 +7,7 @@ namespace api.models
 {
     public class User
     {
-        private readonly int? _id;
+        public int Id { get; set; }
         private String _firstName;
         private String _lastName;
         private String _email;

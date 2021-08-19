@@ -13,6 +13,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { BookListSearchComponent } from './components/book-list-search/book-list-search.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthComponent } from './components/auth/auth.component';
+import { NewUserComponent } from './components/new-user/new-user.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SingleBookComponent,
     HomePageComponent,
     BookListSearchComponent,
-    CartComponent
+    CartComponent,
+    AuthComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +38,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule
   ],
   providers: [],
-  bootstrap: [AppComponent, BookService]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

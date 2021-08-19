@@ -21,9 +21,15 @@ namespace api.services
             _userRepository = userRepository;
         }
 
+        public Customer addCustomer(Customer customer)
+
+        {
+            return            _userRepository.addCustomer(customer);
+        }
+
         public User Auth(string email, string password)
         {
-            User result = new User();
+            User result = null;
             try {
                   result =   _userRepository.auth(email,password);
              

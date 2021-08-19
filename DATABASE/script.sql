@@ -35,8 +35,8 @@ DROP TABLE IF EXISTS articles;
 CREATE TABLE articles (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nom VARCHAR(100) NULL,
-  prix_ht FLOAT NOT NULL,
-dateAjoutArticle Datetime DEFAULT  NOW(),
+  prixHt FLOAT NOT NULL,
+AjoutArticledate Datetime DEFAULT  NOW(),
   URLImage VARCHAR(250) NULL,
   quantite INT null,
   nombreConsultation INT null,
@@ -53,8 +53,8 @@ resume text not null,
 poids VARCHAR(45) NULL,
   dimension VARCHAR(45) NULL,
   editeur VARCHAR(100) not NULL ,
-  date_parution  Date NULL ,
-  nombre_page INT NOT NULL ,
+  parutionDate  Date NULL ,
+  pagesNombre int NOT NULL ,
 estNumerique tinyint not null default 0,
 ArticleID int NOT NULL,
  CONSTRAINT fk_livres_articles FOREIGN KEY (ArticleID) REFERENCES articles(id) ON DELETE CASCADE
@@ -124,7 +124,7 @@ DEFAULT CHARACTER SET = utf8;
 
 DROP TABLE  IF EXISTS CLIENT; 
 CREATE TABLE Client (
-  `idClient` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(45) NULL DEFAULT NULL,	
   `prenom` VARCHAR(45) NULL DEFAULT NULL,
   `compte_utilisateurId` INT NOT NULL,
@@ -135,4 +135,31 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
+drop table if exists Adresse;
+create table Adresse (
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+CodePostal varchar(20) NOT NULL,
+Voie varchar(250) NOT NULL,
+VoieNumero varchar(10)  NULL,
+ville varchar(150) NOT NULL ,
+pays varchar (10) NOT NULL,
+TelephoneNumero varchar(20) NOT NULL,
+batimentType varchar(100) NOT NULL,
+appartementNumero varchar(5)  NULL,
+interphoneNumero varchar(20) NULL
+
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+drop table if exists Types;
+create table types (
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+Libelle varchar(200) Not null,
+description TEXT not Null,
+dateUpdate datetime  DEFAULT  NOW()
+
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 

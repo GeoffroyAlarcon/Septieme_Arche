@@ -7,7 +7,11 @@ namespace api.models
 {
     public class Customer:User
     {
-     
+   
+       public Customer()
+        {
+
+        }
 
         public Adress BillingAdress { get; set; }
         public Adress DeliveryAdress { get; set; }

@@ -9,5 +9,7 @@ namespace api.Repository.Interfaces
    public interface IUserRepository
     {
         public User auth(string email, string password);
+        public Customer addCustomer(Customer customer);
+
     }
 }
