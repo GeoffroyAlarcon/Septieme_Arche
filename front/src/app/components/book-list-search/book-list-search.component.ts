@@ -25,6 +25,8 @@ getallResultBySearch(_search:string){
 
  this._bookService.getBooksByAuthorOrTitle(_search).subscribe((res)=>{
 this._books= res;
+this._books.forEach(elt=> elt.image = "../../../assets/img/"+elt.image)
+
 })
 }
 

@@ -23,17 +23,9 @@ export class Book extends Item{
     private _publishing: Publishing;
   
 
-constructor(isbn:string,title:string,authors:Author[],price:number,clickNumber:number, stock:number,numberSalesItem:number,image:string,bookGenres: Array<string>,resume:string,numberOfPages:number,format:string,weight:number,publishing:Publishing,id:number){
-    super(id,'',price,clickNumber,stock,numberSalesItem,image)
-this._isbn = isbn;
-this._title = title;
-this._authors = authors;
-this._bookGenres = bookGenres;
-this._resume=resume;
-this._numberOfPages=  numberOfPages;
-this._format = format;
-this._weight = weight;
-this._publishing=publishing
+constructor(){
+    super()
+
 }
 
  public get format(): string {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/UserService';
 
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/services/UserService';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-  constructor(private fb: FormBuilder, private userService:UserService) {
+  constructor(private fb: FormBuilder, private userService:UserService,private cookieService:CookieService) {
 
    }
 public authForm:FormGroup;
@@ -28,10 +29,18 @@ let user = new User();
 let formValue = this.authForm.value;
 this.userService.login(formValue["email"],formValue["password"]).subscribe((data)=>
 {
+  if(data == null){
+  alert("aucun compte n'est trouvé à cette association de mot de passe et d'email");
+  return
+  }
+ else{
+  alert("vous avez bien été identifié ! ");
+ 
   user = data["user"]
   token = data['token'];
-  sessionStorage.setItem('token', JSON.stringify(token));
-  sessionStorage.setItem('user', JSON.stringify(user));
+  this.cookieService.set('token', token);
+  this.cookieService.set('user', JSON.stringify(user));
+}
 })
   }
 }

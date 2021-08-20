@@ -70,6 +70,8 @@ namespace api
         services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()); //This line
+
             });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             RegisterServices(services);

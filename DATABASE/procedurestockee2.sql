@@ -1,13 +1,14 @@
 
-
-DROP PROCEDURE IF EXISTS afficher_livre_digital;
+DROP PROCEDURE IF EXISTS afficher_livre;
 DELIMITER | 
-CREATE PROCEDURE afficher_livre_digital(in p_isbn varchar(13) )      
+CREATE PROCEDURE afficher_livre(in p_isbn varchar(13) )      
 BEGIN
 declare isbn2 varchar(13);
-declare isbn3 varchar(13);
+
 set isbn2 =  p_isbn;
-set isbn3 =  p_isbn;
+
+
+
 
 CREATE TEMPORARY TABLE auteurs_copie -- on créer une table temporaire pour récupérer la liste des auteurs en fonction du isbn de la procédure stockée
  SELECt GROUP_CONCAT(IFNULL(auteurs.prenom,''), '+',IFNULL(auteurs.nom,'') ORDER BY auteurs.nom ASC SEPARATOR ',') as listAuteur
@@ -24,15 +25,13 @@ from genresLivre
 
 
 
-
 update articles  join livres on articles.id=livres.articleid  set nombreConsultation = nombreConsultation + 1 where isbn = p_isbn;
     SELECT livres.isbn,
 articles.nom as articleNom,
- livres.titre,
+  livres.titre,
  livres.description,
 estnumerique,
 articles.id,
- titre,
 prix_ht,
 editeur,
 parutionDate,
@@ -41,22 +40,18 @@ editeur,
 articles.quantite, 
  dimension,
 URLimage,  
-livres_numerique.format as formatDigital,
- listAuteur,
-listGenres
+listGenres,
+listAuteur
+
+
 from livres
- 
-left join livres_numerique on livres_numerique.isbn = isbn3 
-left join articles on  articles.id = livres.articleId
-CROSS  join   genreslivre_copie
+  join  articles on  articles.id = livres.articleId
+ CROSS  join   genreslivre_copie
   CROSS  join   auteurs_copie
   where livres.isbn = p_isbn;
-
   -- on supprime les tables temporaires
-
-  drop table  genreslivre_copie;
+ drop table  genreslivre_copie;
  drop table  auteurs_copie;
 END | 
-
+ 
 DELIMITER ;
-

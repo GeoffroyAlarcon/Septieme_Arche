@@ -47,45 +47,37 @@ namespace api.Controllers
         [Route("auth")]
         public  IActionResult Auth(User user)
         {
-            IActionResult response = Unauthorized();
+   
 
-            User result = null;
-            result = _userService.Auth(user.Email, user.Password);
-            if (result is null) { 
-                return new NotFoundResult();
-            }
-            else
+            
+             var result = _userService.Auth(user.Email, user.Password);
+            if (result == null)
             {
-                var tokenString = GenerateJSONWebToken(result);
-                response = Ok(new { user=result, token = tokenString });
+                return NoContent();
             }
-            return response;
-
+      
+                var tokenString = GenerateJSONWebToken(result);
+                return Ok(new { user=result, token = tokenString });
+            
+            
         }
         /// <response code="200">Succès</response>
         /// <response code="204">Echec : Pas de contenu</response>
         /// <response code="500">Echec : Erreur interne</response> 
-        ///<param name="email"> </param>
-        /// /// <param name="password">ISBN</param>
         [HttpPost]
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("auth")]
+        [Route("addCustomer")]
         public IActionResult   addCustomer(Customer customer)
 
         {
-            IActionResult response = Unauthorized();
 
-            User result = null;
-            result = _userService.addCustomer(customer);
-            if (result is null)
-            {
-                return new NotFoundResult();
-            }
-  
-            return Ok("");
+ 
+          var  result = _userService.addCustomer(customer);
+
+            return Ok(result);
 
         }
 

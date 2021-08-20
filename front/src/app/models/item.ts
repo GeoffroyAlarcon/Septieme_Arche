@@ -8,14 +8,7 @@ export class Item{
    private _numberOfSales: number;
    private _image: string;
 
-constructor(id:number,name:string, PriceExcludingTax:number,numberOfClicks:number,stock:number,numberOfSales:number,image:string){
-this._name = name;
-    this._priceExcludingTax = PriceExcludingTax;
-this._numberOfClicks=numberOfClicks;
-this._stock=stock; 
-this._numberOfSales = numberOfSales;
-this._image = image;
-this._id = id;
+constructor(){
 
 }
 

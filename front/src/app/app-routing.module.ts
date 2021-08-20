@@ -4,8 +4,8 @@ import { AuthComponent } from './components/auth/auth.component';
 import { BookListSearchComponent } from './components/book-list-search/book-list-search.component';
 import { CartComponent } from './components/cart/cart.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { NewUserComponent } from './components/new-user/new-user.component';
 import { SingleBookComponent } from './components/single-book/single-book.component';
-import { CartLine } from './models/cartline';
 
 const routes: Routes = [
   { path:"",component:HomePageComponent},
@@ -13,7 +13,8 @@ const routes: Routes = [
 {path:"booksbySearch/:search", component:   BookListSearchComponent},
 {path:"booksbySearch/:search/book/:isbn",component:SingleBookComponent}, // retourne une URL pour aller sur une page détail après une recherche
 {path:"cart",component:CartComponent},
-{path:"auth", component:AuthComponent}
+{path:"auth", component:AuthComponent},
+{path:"addUser",component:NewUserComponent}
 ];
 
 @NgModule({

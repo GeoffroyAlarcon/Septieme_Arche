@@ -17,12 +17,13 @@ authorsToString:string[] =[]
   
   ngOnInit(): void { 
     this.displayGetAll();
+ 
   }
 
   displayGetAll() {
     this._bookService.getAllNewBook().subscribe((res) => {
       this.books = res;
-
+      this.books.forEach(elt=> elt.image = "../../../assets/img/"+elt.image)
 });
 }
 }

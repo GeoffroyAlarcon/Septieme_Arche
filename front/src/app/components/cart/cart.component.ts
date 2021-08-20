@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartLine } from 'src/app/models/cartline';
 import { Item } from 'src/app/models/item';
-import { NavComponent } from '../nav/nav.component';
+import { NavComponent } from '../../share/nav/nav.component';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',

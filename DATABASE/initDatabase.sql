@@ -1,22 +1,17 @@
 ﻿
 
-insert into compte_utilisateur (prenom,nom,email,password) Values
-('Geoffroy','Alarcon','geoffroy@gmail.com', 'azerty'),
-('eric','Cantona','EricCantona@gmail.com', SHA1('test'));
-('Zlatan','Ibrahimovic','zlatan@gmail.com', SHA1('test')),
-('Carlos','Puyol','c.puyol@gmail.com', SHA1('test')
-);
 
+insert into types(libelle,description) VALUES
+('livre','livre physique'),
+('livre numérique', ' livre numérique');
 
-
-
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('la grande histoire du 7ieme art-L.DELMAS',12.21,5,0,0);
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('Tout sur le cinéma-P.Kemp',40.50,5,0,0);
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('Kubrick-M.Ciment',45,5,0,0);
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('1001 films à voir avant de mourir-Collectif',45,5,0,0);
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('Le Cinéma intérieur-L.Naccache Epub',22.99,null,0,0);
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('Hitchcock-F.Truffaut',61,50,0,0);
-insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu) VALUES('Artmedia, une histoire du cinéma français',20,10,0,0);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu,URLImage, typesId) VALUES('la grande histoire du 7ieme art-L.DELMAS',12.21,5,0,0,'Cinema-La-grande-histoire-du-7eme-art.jpg',1);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu,URLImage,typesId) VALUES('Tout sur le cinéma-P.Kemp',40.50,5,0,0,'Tout-sur-le-cinema.jpg',1);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu,URLImage,typesId) VALUES('Kubrick-M.Ciment',45,5,0,0,'Stanley-Kubrick.jpg',1);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu,URLImage,typesId) VALUES('1001 films à voir avant de mourir-Collectif',45,5,0,0,'1001-films-a-voir-avant-de-mourir.jpg',1);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu,URLImage,typesId) VALUES('Le Cinéma intérieur-L.Naccache Epub',22.99,null,0,0,'Le-Cinema-interieur.jpg',2);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu,URLImage,typesId) VALUES('Hitchcock-F.Truffaut',61,50,0,0,'Hitchcock.jpg',1);
+insert into articles(nom,prix_ht,quantite,nombreconsultation,nombreVendu,URLImage,typesId) VALUES('Artmedia, une histoire du cinéma français',20,10,0,0,'Artmedia-une-histoire-du-cinema-francais.jpg',1);
 
 
 
@@ -25,9 +20,8 @@ insert into livres VALUES ('2081266164','Tout sur le cinéma','lorem ipsum testa
 insert into livres VALUES ('2702142001','Kubrick','lorem ipsum testa', '1,4200kg','18,30 x 22cm x 27cm','Calmann-Levy','2011-02-23',336,0,3);
 insert into livres VALUES ('2258161428','1001 films à voir avant de mourir','lorem ipsum testa', '1,860kg','1164 X 212 mm','Odile Jacob','2018-10-18',960,0,4);
 insert into livres VALUES ('273815347X','Le Cinéma intérieur: Projection privée au cœur de la conscience','lorem ipsum testa', null,null,'Omnibus','2018-10-18',960,1,5);
-
 insert into livres VALUES ('2070735745','Hitchcock','lorem ipsum testa', '1,8040KG',' 23cm x 29cm','Gallimard','1993-10-01',312,0,6);
-insert into livres VALUES ('103291596X',' une histoire du cinéma français','lorem ipsum testa', '0,3240kg',' 13cm x 21cm','L''observatoire Eds De','2021-04-07',312,2,7);
+insert into livres VALUES ('103291596X',' une histoire du cinéma français','lorem ipsum testa', '0,3240kg',' 13cm x 21cm','L''observatoire Eds De','2021-04-07',312,0,7);
 
 
 
@@ -51,7 +45,7 @@ insert into livre_has_auteur(isbn,auteurid) VALUES('2035941725', 1);
 insert into livre_has_auteur(isbn,auteurid) VALUES('2081266164', 2);
 insert into livre_has_auteur(isbn,auteurid) VALUES('2702142001', 3);
 insert into livre_has_auteur(isbn,auteurid) VALUES('2258161428', 4);
-
+ insert into livre_has_auteur(isbn,auteurid) VALUES('273815347X', 6);
 insert into livre_has_auteur(isbn,auteurid) VALUES('273815347X', 5);
 insert into livre_has_auteur(isbn,auteurid) VALUES('2070735745', 6);
 insert into livre_has_auteur(isbn,auteurid) VALUES('103291596X', 7);
@@ -74,4 +68,5 @@ insert into livre_has_genreLivre(isbn,genrelivreId)values('2702142001',2);
 insert into livre_has_genreLivre(isbn,genrelivreId)values('2258161428',1);
 insert into livre_has_genreLivre(isbn,genrelivreId)values('2070735745',2);
 insert into livre_has_genreLivre(isbn,genrelivreId)values('103291596X',4);
+insert into livre_has_genreLivre(isbn,genrelivreId)values('273815347X',4);
 

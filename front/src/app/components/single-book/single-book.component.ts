@@ -1,7 +1,9 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
+import { DigitalBook } from 'src/app/models/bookDigital';
 import { CartLine } from 'src/app/models/cartline';
 import { BookService } from 'src/app/services/BookService';
 @Component({
@@ -28,7 +30,11 @@ _addCartForm:FormGroup;
 
   getDetailBook(){
   this._bookService.getBookByISBN(this._isbn).subscribe((res) => {
+    if(res["isDigital"] == true){
+    this._book= new DigitalBook();
+    }
   this._book= res;
+  this._book.image="../../../assets/img/"+this._book.image;
   
 this._replaceValue = this._book.priceExcludingTax.toString().replace(".",",");
   });

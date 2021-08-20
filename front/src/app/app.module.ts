@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './components/nav/nav.component';
+import { NavComponent } from './share/nav/nav.component';
 import { BooklistComponent } from './components/booklist/booklist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookService } from './services/BookService';
@@ -15,7 +15,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthComponent } from './components/auth/auth.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
-
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,7 @@ import { NewUserComponent } from './components/new-user/new-user.component';
     BookListSearchComponent,
     CartComponent,
     AuthComponent,
-    NewUserComponent
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +37,7 @@ import { NewUserComponent } from './components/new-user/new-user.component';
     FormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

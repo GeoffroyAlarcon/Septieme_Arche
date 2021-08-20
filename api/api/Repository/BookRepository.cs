@@ -24,7 +24,7 @@ namespace api.Repository
             Db.Connection.Open();
 
             List<Book> books = new List<Book>();
-            string query = "select livres.ISBN,estNumerique, titre,URLImage,prix_ht from livres  join articles on articles.id  = livres.articleid  where articles.quantite != 0 or livres.estnumerique = 1  ORDER BY articles.dateAjoutArticle LIMIT 20 ";
+            string query = "select livres.ISBN,estNumerique, titre,URLImage,prix_ht from livres  join articles on articles.id  = livres.articleid  where articles.quantite != 0 or livres.estnumerique = 1  ORDER BY articles.AjoutArticleDate LIMIT 20 ";
 
             using var cmd = Db.Connection.CreateCommand();
             AuthorRepository authorRepo = new AuthorRepository(Db);
@@ -74,12 +74,13 @@ namespace api.Repository
                     book.Id = (int)myReader["id"];
                     book.Isbn = myReader["isbn"].ToString();
                     book.Title = (string)myReader["titre"];
-                    book.NumberOfPages = (int)myReader["nombre_page"];
+                    book.NumberOfPages = (int)myReader["pagesNombre"];
                     book.Publishing.Name = myReader["editeur"].ToString();
                     book.Format = myReader["dimension"].ToString();
                     book.Image = myReader["URLimage"].ToString();
                 book.Name = myReader["titre"].ToString();
-                    book.PriceExcludingTax = (float)myReader["prix_ht"];
+                book.Resume = myReader["description"].ToString();
+                book.PriceExcludingTax = (float)myReader["prix_ht"];
                     book.Stock = (int)myReader["quantite"];
                 string[] subsListAuhors = myReader["listAuteur"].ToString().Split(',');
                 for (int x = 0; x < subsListAuhors.Length; x++)
@@ -119,13 +120,13 @@ namespace api.Repository
                 book.Id = (int)myReader["id"];
                 book.Isbn = myReader["isbn"].ToString();
                 book.Title = (string)myReader["titre"];
-                book.NumberOfPages = (int)myReader["nombre_page"];
+                book.NumberOfPages = (int)myReader["pagesNombre"];
                 book.Publishing.Name = myReader["editeur"].ToString();
                 book.Format = myReader["dimension"].ToString();
                 book.Image = myReader["URLimage"].ToString();
                 book.formatDigital = myReader["formatDigital"].ToString();
                 book.PriceExcludingTax = (float)myReader["prix_ht"];
-                book.Stock = (int)myReader["quantite"];
+                book.Resume = myReader["description"].ToString();
                 string[] subsListAuhors = myReader["listAuteur"].ToString().Split(',');
                 for (int x = 0; x < subsListAuhors.Length; x++)
                 {
@@ -169,7 +170,7 @@ namespace api.Repository
         {
             Db.Connection.Open();
                 List<Book> books = new List<Book>();
-            string query = " select livres.ISBN, titre,URLImage,prix_ht from livres  left join articles on articles.id = livres.articleid left join livre_has_auteur on livres.isbn = livre_has_auteur.isbn left join auteurs on livre_has_auteur.auteurId = auteurs.id  where titre like @search or auteurs.nom like @search ORDER BY articles.dateAjoutArticle LIMIT 20" ;
+            string query = " select livres.ISBN, titre,URLImage,prix_ht from livres  left join articles on articles.id = livres.articleid left join livre_has_auteur on livres.isbn = livre_has_auteur.isbn left join auteurs on livre_has_auteur.auteurId = auteurs.id  where titre like @search or auteurs.nom like @search ORDER BY articles.ajoutArticleDate LIMIT 20" ;
             using var cmd = Db.Connection.CreateCommand();
          
             AuthorRepository authorRepo = new AuthorRepository(Db);
