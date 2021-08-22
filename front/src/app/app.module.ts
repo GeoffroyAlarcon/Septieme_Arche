@@ -16,6 +16,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthComponent } from './components/auth/auth.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { CookieService } from 'ngx-cookie-service';
+import { CheckoutProcessComponent } from './components/checkout-process/checkout-process.component';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { FooterComponent } from './share/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +30,9 @@ import { CookieService } from 'ngx-cookie-service';
     CartComponent,
     AuthComponent,
     NewUserComponent,
+    CheckoutProcessComponent,
+    CartSummaryComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

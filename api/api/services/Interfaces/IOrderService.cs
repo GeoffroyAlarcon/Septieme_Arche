@@ -8,8 +8,8 @@ namespace api.services.Interfaces
 {
   public  interface IOrderService
     {
-        public List<Order> orders(int userId);
+        public List<Order> GetOrders(int userId);
         public void addOrder(Order order);
-        public Order findOrderById(int id, int userId);
+        public string ValidateOrder(List<lineItemCart> cart);
     }
 }

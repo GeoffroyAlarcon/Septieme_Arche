@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,6 +12,7 @@ import { BookService } from 'src/app/services/BookService';
 })
 export class SingleBookComponent implements OnInit {
    _isbn: string;
+  _isDigitalbook:boolean = false;
 _book:Book;
 _cartLine:CartLine = new CartLine();
 _replaceValue:string;
@@ -32,6 +32,7 @@ _addCartForm:FormGroup;
   this._bookService.getBookByISBN(this._isbn).subscribe((res) => {
     if(res["isDigital"] == true){
     this._book= new DigitalBook();
+    this._isDigitalbook = true;
     }
   this._book= res;
   this._book.image="../../../assets/img/"+this._book.image;

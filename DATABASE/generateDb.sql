@@ -1,22 +1,10 @@
 ﻿-- MySQL Workbench Synchronization
 -- Generated: 2021-05-02 19:03
 
-CREATE SCHEMA IF NOT EXISTS `septiemeArche` DEFAULT CHARACTER SET utf8 ;
+DROP SHEMA IF NOT EXISTS  `septiemeArche`;
+CREATE SCHEMA  `septiemeArche` DEFAULT CHARACTER SET utf8 ;
 use `septiemeArche` ;
 
-drop table if exists client_has_livraisonAdresse;
-drop table IF EXISTS client_has_facturationAdresse;
-DROP TABLE  IF EXISTS CLIENT;
-drop table  IF EXISTS genrelivre;
-drop TABLE IF EXISTS livre_has_genreLivre;
-drop table  IF EXISTS livre_has_auteur;
-drop table  IF EXISTS livres_numerique;
-drop table  IF EXISTS auteurs;
-drop table  IF EXISTS livres;
-drop  table  IF EXISTS articles;
-drop  table IF EXISTS genresLivre;
-
-drop table if exists Types;
 create table types (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 Libelle varchar(200) Not null,
@@ -138,8 +126,8 @@ DEFAULT CHARACTER SET = utf8;
 
 
 
-DROP TABLE  IF EXISTS CLIENT; 
-CREATE TABLE Client (
+DROP TABLE  IF EXISTS Clients; 
+CREATE TABLE Clients (
   `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 naissanceDate date Not null,
   `compte_utilisateurId` INT NOT NULL,
@@ -150,8 +138,8 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
-drop table if exists Adresse;
-create table Adresse (
+drop table if exists Adressse;
+create table Adresses (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 CodePostal varchar(20) NOT NULL,
 Voie varchar(250) NOT NULL,
@@ -173,8 +161,8 @@ create table client_has_livraisonAdresse (
  `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
  clientId int(11) not null,
  adresseLivraisonId int(11) not null,
-  FOREIGN KEY (clientId) REFERENCES client(id) ON DELETE CASCADE,
-  FOREIGN KEY (adresseLivraisonId) REFERENCES adresse(id) ON DELETE CASCADE
+  FOREIGN KEY (clientId) REFERENCES clients(id) ON DELETE CASCADE,
+  FOREIGN KEY (adresseLivraisonId) REFERENCES adresses(id) ON DELETE CASCADE
 
 )
 ENGINE = InnoDB
@@ -186,7 +174,7 @@ create table client_has_facturationAdresse (
  `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
  clientId int(11) not null,
  adresseFacturationId int(11) not null,
-  FOREIGN KEY (clientId) REFERENCES client(id) ON DELETE CASCADE,
+  FOREIGN KEY (clientId) REFERENCES clients(id) ON DELETE CASCADE,
   FOREIGN KEY (adresseFacturationId) REFERENCES adresse(id) ON DELETE CASCADE
 
 )
@@ -194,4 +182,28 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
+drop if exists commandes;
+create Table commandes(
+id int primary key AUTO_INCREMENT,
+commandeDate datetime  DEFAULT  NOW(), 
+clientId int NOT NULL,
+ FOREIGN KEY (clientId) REFERENCES clients(id) ON DELETE CASCADE
 
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+
+DROP TABLE IF EXISTS Commande_has_article; 
+CREATE TABLE  Commande_has_article(
+id INT(11) PRIMARY KEY  AUTO_INCREMENT,
+quantiteCommandee INT(11) NOT NULL,
+commandeId  INT(11) NOT NULL,
+articleId  INT(11) NOT NULL,
+ FOREIGN KEY (commandeId) REFERENCES commandes(id),
+  FOREIGN KEY (articleId) REFERENCES articles(id)
+
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;

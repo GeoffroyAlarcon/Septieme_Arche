@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Adress } from 'src/app/models/adress';
 import { Customer } from 'src/app/models/Customer';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/UserService';
@@ -14,6 +15,7 @@ export class NewUserComponent implements OnInit {
   constructor(private userService:UserService,private fb:FormBuilder) { }
   addUserForm:FormGroup;
 customer:Customer= new Customer();
+
   ngOnInit(): void {
 this.addUserForm =this.fb.group({
   email: ['', [Validators.required, Validators.email]],
@@ -24,7 +26,7 @@ this.addUserForm =this.fb.group({
 })
   }
 onSubmitForm(){
-  let response:string;
+  this.customer.DeliveryAdress = new Adress();
 let formValue = this.addUserForm.value;
 this.customer.Email= formValue["email"];
 this.customer.Password= formValue["password"];

@@ -1,5 +1,3 @@
-import{Book} from '../models/book';
-
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -11,13 +9,14 @@ import { Customer } from '../models/Customer';
   providedIn: 'root',
 })
 export class UserService{
-
+  private baseApi:string = "https://localhost:44368"
+  private _isAuth:boolean = false;
     constructor(private httpClient: HttpClient, private router: Router) {}
 
     login(email:string,password:string):Observable<any> {
  
       return this.httpClient.post<User>(
-        'https://localhost:44368/User/auth',{
+       this.baseApi+"/User/auth",{
         "email":  email,
           "password": password}
       )
@@ -25,7 +24,7 @@ export class UserService{
   addUser(customer:Customer):Observable<any> {
  
     return this.httpClient.post<Customer>(
-      'https://localhost:44368/User/addCustomer',{
+      this.baseApi+"/User/addCustomer",{
         "firstName":customer.firstName,
         "lastName":customer.lastName,
       "email": customer.Email,
@@ -34,15 +33,12 @@ export class UserService{
      "deliveryAdress": {},
      "birthDayDate": customer.BirthdayDate
   
-    }
-    )
+    });
 }
 
+isAuthenticated(){
+  if( sessionStorage.getItem('token') == null ) return false;
+else return true;
+ }
 
-
-
-
-
-
-    
 }

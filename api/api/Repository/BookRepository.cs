@@ -81,7 +81,16 @@ namespace api.Repository
                 book.Name = myReader["titre"].ToString();
                 book.Resume = myReader["description"].ToString();
                 book.PriceExcludingTax = (float)myReader["prix_ht"];
+                
+               if((int) myReader["quantite"] <10 ) // cette condition permettra d'indiqué le nombre restant à l'utilisateur s'il reste moins de 10 livres dans la bdd
+                        { 
                     book.Stock = (int)myReader["quantite"];
+                }
+                else
+                {
+                    book.Stock = -1;
+                }
+                book.Publishing.Name = myReader["editeur"].ToString();
                 string[] subsListAuhors = myReader["listAuteur"].ToString().Split(',');
                 for (int x = 0; x < subsListAuhors.Length; x++)
                 {
@@ -104,8 +113,6 @@ namespace api.Repository
         {
             DigitalBook book = new DigitalBook();
             Db.Connection.Open();
-
-
             MySqlCommand cmd = new MySqlCommand("afficher_livre_digital", Db.Connection);
             cmd.CommandType = CommandType.StoredProcedure;
 

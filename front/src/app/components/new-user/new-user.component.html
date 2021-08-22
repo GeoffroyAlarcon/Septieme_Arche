@@ -1,4 +1,6 @@
 <form [formGroup]="addUserForm" class=" text-white my-2" (ngSubmit)="onSubmitForm()">
+  
+<!-- ajout des données pour créer un utilisateur  !-->
     <h3 class=" text-center"> Nouvel utilisateur </h3>
     <div class="form-group">
       <label for="email"> Mail : </label> <input name="email" type="email" class="form-control" formControlName="email"
@@ -20,8 +22,37 @@
       <label class="px-2" for="birthDayDate"> Date de Naissance : </label> <input name="birthDayDate" type="date"
       class="form-control" formControlName="birthDayDate">
   </div>
+<!-- ajout de l'adresse de livraison  !-->
+  <h3 class=" text-center"> Nouvel utilisateur </h3>
+  <div class="form-group">
+    <label class="px-2" for="country"> Pays : </label> <input name="country" type="text"
+    class="form-control" formControlName="country" value="France">
+</div>
+<div class="form-group">
+  <label class="px-2" for="zipCode"> Code postale : </label> <input name="zipCode" type="text"
+  class="form-control" formControlName="zipCode">
+</div>
+<div class="form-group">
+  <label class="px-2" for="street"> Voie : </label> <input name="street" type="text"
+  class="form-control" formControlName="street">
+</div>
+<div class="form-group">
+  <label class="px-2" for="streetNumber"> numéro de voie : </label> <input name="streetNumber" type="text"
+  class="form-control" formControlName="streetNumber">
+</div>
+<div class="form-group">
+  <label class="px-2" for="typeBuilding"> type de Bâtiment : </label> <input name="typeBuilding" type="text"
+  class="form-control" formControlName="typeBuilding">
+</div>
+<label class="px-2" for="digitalcodeNumber"> type de Bâtiment : </label> <input name="digitalcodeNumber" type="text"
+class="form-control" formControlName="digitalcodeNumber">
+</div>
+<label class="px-2" for="phoneNumber"> numéro de téléphone  : </label> <input name="phoneNumber" type="text"
+class="form-control" formControlName="phoneNumber">
+</div>
+
     <div class="form-group text-center">
-    <button type="submit" class="btn btn-light" [disabled]="addUserForm.invalid">Connexion</button>
+    <button type="submit" class="btn btn-light" [disabled]="addUserForm.invalid">Valider formulaire</button>
     </div>
     </form>
     

@@ -14,6 +14,13 @@
                             genres :   <span *ngFor="let elt of _book.bookGenres" >  {{elt}} </span>
                            
                         </div>
+                        <div class="fs-5">
+                            Nombre de pages : {{_book.numberOfPages}}                          
+                        </div>
+                        <div class="fs-5">
+                            Editeur : {{_book.publishing.name}}                          
+                        </div>
+                       
                        
                         <div class="fs-5 mb-5">  <span> {{_replaceValue}} euros</span> </div>
                         <p class="lead">{{_book.resume}}</p>

@@ -6,28 +6,19 @@ using System.Threading.Tasks;
 namespace api.models { 
     public class Adress
     {
-        private int id;
-        private string _city;
-        private string _postCode;
-        private string _country;
-        private string _address; // voie
-        private string _adressComplement;
-        private string _phoneNumber;
-        private string _mobilePhoneNumber;
-
+        public int id { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string ZipCode { get; set; }
+        public string Street { get; set; }
+        public string StretNumber { get; set; }
+        public string PoneNumber { get; set; }
+        public string DigitalcodeNumbe { get; set; }
+        public string TypeBulding { get; set; }
         public Adress()
         {
         }
 
-        public Adress(string city, string postCode, string country, string address, string adressComplement, string phoneNumber, string mobilePhoneNumber)
-        {
-            _city = city;
-            _postCode = postCode;
-            _country = country;
-            _address = address;
-            _adressComplement = adressComplement;
-            _phoneNumber = phoneNumber;
-            _mobilePhoneNumber = mobilePhoneNumber;
-        }
+ 
     }
 }
