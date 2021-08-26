@@ -10,6 +10,6 @@ namespace api.services.Interfaces
     {
         public List<Order> GetOrders(int userId);
         public void addOrder(Order order);
-        public string ValidateOrder(List<lineItemCart> cart);
+        public string ValidateOrder(int userId);
     }
 }

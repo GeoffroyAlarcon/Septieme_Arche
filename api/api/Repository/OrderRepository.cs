@@ -15,10 +15,6 @@ namespace api.Repository
         }
 
         MySqlConnector Db { get; set; }
-        public void addOrder(Order order)
-        {
-            throw new NotImplementedException();
-        }
 
         public Order findOrderById(int id, int userId)
         {
@@ -28,6 +24,21 @@ namespace api.Repository
         public List<Order> orders(int userId)
         {
             throw new NotImplementedException();
+        }
+
+       public int addOrder(Order order)
+        {
+                Db.Connection.Open();
+
+
+                string query = "insert into commande(clientId) VALUES(@clientId) ";
+
+                using var cmd = Db.Connection.CreateCommand();
+                cmd.Parameters.AddWithValue("@clientId", order.Customer.Id);
+                cmd.ExecuteNonQuery();
+                int result =(int) cmd.LastInsertedId;
+                return result;
+                Db.Connection.Close();
         }
     }
 }

@@ -45,10 +45,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "BCrypt.Net-Next": {
-              "target": "Package",
-              "version": "[4.0.2, )"
-            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[5.0.8, )"

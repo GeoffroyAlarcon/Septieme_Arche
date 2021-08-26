@@ -7,7 +7,8 @@ namespace api.Repository.Interfaces
 {
     public interface IStockRepository
     {
-        public bool StockIsValid(int amount, int itemId);
+        public bool StockIsValid(int userId,int amount, int itemId);
+        public void DropPaymentStateByCostumerId(int costumerId);
         public void StockManager(int itemId, int amount);
 
     }

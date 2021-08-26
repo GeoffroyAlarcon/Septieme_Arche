@@ -130,3 +130,4 @@ C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\Syste
 >>>>>>> Stashed changes
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\obj\Debug\net5.0\api.csproj.AssemblyReference.cache
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\BCrypt.Net-Next.dll
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\api.xml

@@ -16,7 +16,7 @@ namespace api.Repository
         {
             Db = db;
         }
-        public  bool StockIsValid(int amount,int itemId)
+        public  bool StockIsValid(int userId ,int amount,int itemId)
         {
             Db.Connection.Open();
 
@@ -30,6 +30,11 @@ namespace api.Repository
             MySqlDataReader myReader = cmd.ExecuteReader();
             if (myReader.Read())
             {
+                cmd.Parameters.AddWithValue("@costumerId", userId);
+
+                string queryInsertStatePaiement = "insert into state_Payment_has_article(clientId, quantiteCommandee,articleId ) VALUES(@costumerId, @amount,@itemId) ";
+                cmd.CommandText = queryInsertStatePaiement;
+                cmd.ExecuteNonQuery();
                 Db.Connection.Close();
                 return true;
             }
@@ -43,7 +48,7 @@ namespace api.Repository
           
 
         }
-
+        
         public void StockManager(int itemId,int amount)
         {
             Db.Connection.Open();
@@ -56,6 +61,21 @@ namespace api.Repository
             Db.Connection.Close();
         }
 
+        public void DropPaymentStateByCostumerId(int costumerId)
+        {
+            Db.Connection.Open();
+
+      
+            using var cmd = Db.Connection.CreateCommand();
+            cmd.Parameters.AddWithValue("@costumerId", costumerId);
+
+            string queryDeleteStatePaiement = "delete from state_Payment_has_article where clientId = @costumerId";
+            cmd.CommandText = queryDeleteStatePaiement;
+            cmd.ExecuteNonQuery();
+
+
+        }
+            
     }
 
 

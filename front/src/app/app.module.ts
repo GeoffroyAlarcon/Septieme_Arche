@@ -19,6 +19,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { CheckoutProcessComponent } from './components/checkout-process/checkout-process.component';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { FooterComponent } from './share/footer/footer.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,8 @@ import { FooterComponent } from './share/footer/footer.component';
     CheckoutProcessComponent,
     CartSummaryComponent,
     FooterComponent,
+    PaymentComponent,
+    OrderSuccessComponent,
   ],
   imports: [
     BrowserModule,

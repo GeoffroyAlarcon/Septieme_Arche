@@ -136,6 +136,7 @@ naissanceDate date Not null,
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+ 
 
 
 drop table if exists Adressse;
@@ -203,6 +204,29 @@ commandeId  INT(11) NOT NULL,
 articleId  INT(11) NOT NULL,
  FOREIGN KEY (commandeId) REFERENCES commandes(id),
   FOREIGN KEY (articleId) REFERENCES articles(id)
+
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+DROP TABLE IF EXISTS state_Payment_has_article; 
+CREATE TABLE state_Payment_has_article(
+id INT(11) PRIMARY KEY  AUTO_INCREMENT,
+quantiteCommandee INT(11) NOT NULL,
+articleId  INT(11) NOT NULL,
+clientId int NOT NULL,
+ FOREIGN KEY (clientId) REFERENCES clients(id) ON DELETE CASCADE,
+  FOREIGN KEY (articleId) REFERENCES articles(id)
+
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+ DROP TABLE  IF EXISTS Administrateur; 
+CREATE TABLE AdministrateurS (
+  `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `compte_utilisateurId` INT NOT NULL,
+ FOREIGN KEY (compte_utilisateurId) REFERENCES compte_utilisateur(id) ON DELETE CASCADE
 
 )
 ENGINE = InnoDB

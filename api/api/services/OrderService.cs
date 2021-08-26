@@ -35,17 +35,17 @@ namespace api.services
             throw new NotImplementedException();
         }
 
-        public string ValidateOrder(List<lineItemCart> cart)
+        public string ValidateOrder(Customer customer,List<lineItemCart> cart)
         {
          
             try {
                 Order order = new Order();
                 foreach (lineItemCart elt in cart)
                 {
-                    bool StockIsValid = _stockRepository.StockIsValid(elt.Amount, elt.Item.Id);
+                    bool StockIsValid = _stockRepository.StockIsValid(customer.Id,elt.Amount, elt.Item.Id);
                     if (StockIsValid == false)
                     {
-
+                        _stockRepository.DropPaymentStateByCostumerId(customer.Id);
                       throw new Exception ("Votre commande n'a pas pu aboutir, l'article "+elt.Item.Name + " n'est plus disponible à la quantité souhaitée.");
                         return "";
                     }
@@ -53,16 +53,26 @@ namespace api.services
                 // méthode à implémenter pour la paiement
                 // fin de la méthode à implémenter pour le paiement
 
-            // exception si le paiement à échouer
+                // exception si le paiement à échouer
 
                 // si le paiement s'est effecuté alors on procède à la création d'une commande et on déduit les stoks des produits concernés
-           
-              }
+
+                cart.ForEach(elt => _stockRepository.StockManager(elt.Item.Id, elt.Amount));
+
+                Order newOrder = new Order();
+                int newOrderId = _orderRepository.addOrder(newOrder);
+
+
+                return " votre commande commande numéro N°" + newOrderId + " a bien été prise en compte. Vous retrouverez toutes vos commandes dans votre espace client. ";
+                _stockRepository.DropPaymentStateByCostumerId(customer.Id);
+            }
           
             catch (Exception ex) {
+                _stockRepository.DropPaymentStateByCostumerId(customer.Id);
+                return "error";
             }
 
-            return "";
+     
         }
     
             }

@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "B0Jv+9QQSMZLtEzIIxgjcR0E2+YPeH4FfbbPPZUTqW4CWHMsjr4H5DPVQzQP1cddXA9ei3KCDCVWJ+WAcpOqjQ==",
+  "dgSpecHash": "89gK3uJDkTH8eTTFSqkmXLwAb+bq5Bh6bMv4SbfdgSO5/wAHFx7/R9y/aH5AhYdyinxujJl7oCh64+a4fzUIbA==",
   "success": true,
   "projectFilePath": "C:\\Users\\geoffroy.alarcon\\Documents\\septiemeArche\\api\\api\\api.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\geoffroy.alarcon\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\geoffroy.alarcon\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\geoffroy.alarcon\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",
     "C:\\Users\\geoffroy.alarcon\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",
