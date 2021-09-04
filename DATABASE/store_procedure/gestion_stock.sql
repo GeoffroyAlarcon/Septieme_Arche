@@ -1,3 +1,7 @@
+
+
+
+
 DROP PROCEDURE IF EXISTS gestion_stock;
 DELIMITER | 
 
@@ -16,9 +20,7 @@ quantite = quantite- article_amount.quantiteCommandee;
 INSERT INTO Commandes (clientId) VALUES (param_clientId);
 
 INSERT INTO  commande_has_article(quantiteCommandee, commandeId,articleId)
-SELECT   quantiteCommandee,commandes.Id, articleId from commandes 
-join article_amount on article_amount.clientId= commandes.clientId 
-where commandes.Id = param_clientId ;
+SELECT   quantiteCommandee,LAST_INSERT_ID(), articleId  from article_amount;
 
 
 END |
