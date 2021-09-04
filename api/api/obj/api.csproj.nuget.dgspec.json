@@ -49,6 +49,10 @@
               "target": "Package",
               "version": "[5.0.8, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.16.1, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.24, )"
@@ -56,6 +60,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
             }
           },
           "imports": [

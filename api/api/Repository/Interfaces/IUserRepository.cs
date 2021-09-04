@@ -10,6 +10,7 @@ namespace api.Repository.Interfaces
     {
         public User auth(string email, string password);
         public Customer addCustomer(Customer customer);
+        public int findidbyAuth(User user);
 
     }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StockService } from 'src/app/services/StockService';
 
 @Component({
   selector: 'app-payment',
@@ -8,11 +9,11 @@ import { Router } from '@angular/router';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private stockService : StockService ) { }
 
   ngOnInit(): void {
-  
-alert("votre paiement a été valider")
+  alert("votre paiement est en cours")
+alert("votre paiement a été valider");
 this.router.navigate(['orderSucess']);
   }
 }

@@ -35,21 +35,12 @@ namespace api.services
             throw new NotImplementedException();
         }
 
-        public string ValidateOrder(Customer customer,List<lineItemCart> cart)
+        public string ValidateOrder(Customer customer)
         {
          
             try {
                 Order order = new Order();
-                foreach (lineItemCart elt in cart)
-                {
-                    bool StockIsValid = _stockRepository.StockIsValid(customer.Id,elt.Amount, elt.Item.Id);
-                    if (StockIsValid == false)
-                    {
-                        _stockRepository.DropPaymentStateByCostumerId(customer.Id);
-                      throw new Exception ("Votre commande n'a pas pu aboutir, l'article "+elt.Item.Name + " n'est plus disponible à la quantité souhaitée.");
-                        return "";
-                    }
-                }
+
                 // méthode à implémenter pour la paiement
                 // fin de la méthode à implémenter pour le paiement
 

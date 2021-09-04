@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/User';
 import { Customer } from '../models/Customer';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ import { Customer } from '../models/Customer';
 export class UserService{
   private baseApi:string = "https://localhost:44368"
   private _isAuth:boolean = false;
-    constructor(private httpClient: HttpClient, private router: Router) {}
+    constructor(private httpClient: HttpClient, private router: Router, private cookieService:CookieService) {}
 
     login(email:string,password:string):Observable<any> {
  
@@ -29,15 +30,25 @@ export class UserService{
         "lastName":customer.lastName,
       "email": customer.Email,
      "password":customer.Password,
-     "billingAdress": {},
-     "deliveryAdress": {},
+     "deliveryAdress": {
+      "country": customer.DeliveryAdress.country,
+      "city": customer.DeliveryAdress.city,
+      "zipCode": customer.DeliveryAdress.zipCode,
+      "street": customer.DeliveryAdress.street,
+      "stretNumber": customer.DeliveryAdress.streetNumber,
+      "poneNumber": customer.DeliveryAdress.phoneNumber,
+      "digitalcodeNumber": customer.DeliveryAdress.digitalCodeNumber,
+      "typeBulding":  customer.DeliveryAdress.typeBuilding
+
+     },
+     "billingAdress": customer.DeliveryAdress,
      "birthDayDate": customer.BirthdayDate
   
     });
 }
 
 isAuthenticated(){
-  if( sessionStorage.getItem('token') == null ) return false;
+  if(   this.cookieService.get('user')  == null ) return false;
 else return true;
  }
 

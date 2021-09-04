@@ -8,7 +8,7 @@ import { NavComponent } from '../../share/nav/nav.component';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
+ _sessionLength= sessionStorage.length;;
   public _cart:CartLine[]= []
   
   constructor() { }

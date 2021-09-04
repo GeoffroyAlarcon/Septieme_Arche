@@ -1,20 +1,26 @@
-
-
-
-
 DROP PROCEDURE IF EXISTS gestion_stock;
 DELIMITER | 
-CREATE PROCEDURE gestion_stock(IN inList intArray )      
+
+ 
+CREATE PROCEDURE gestion_stock(IN param_clientId int)      
 BEGIN
-DECLARE i, n INTEGER; 
 
-SET n = CARDINALITY(inList); 
-update articles   set quantite =quantite - 5 where id = 1  and 5 <= quantite;
-
+create Temporary TAble  article_amount
+select  pay.articleId ,  pay.quantiteCommandee, pay.clientId from state_Payment_has_article as pay where pay.clientId =  param_clientId ;
 
 
-END | 
+UPDATE  articles 
+join article_amount on articles.id = article_amount.articleId  set
+quantite = quantite- article_amount.quantiteCommandee;
 
+INSERT INTO Commandes (clientId) VALUES (param_clientId);
+
+INSERT INTO  commande_has_article(quantiteCommandee, commandeId,articleId)
+SELECT   quantiteCommandee,commandes.Id, articleId from commandes 
+join article_amount on article_amount.clientId= commandes.clientId 
+where commandes.Id = param_clientId ;
+
+
+END |
 DELIMITER ;
-
 

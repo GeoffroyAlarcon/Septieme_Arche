@@ -1,7 +1,7 @@
 ﻿-- MySQL Workbench Synchronization
 -- Generated: 2021-05-02 19:03
 
-DROP SHEMA IF NOT EXISTS  `septiemeArche`;
+DROP ScHEMA IF EXISTS  `septiemeArche`;
 CREATE SCHEMA  `septiemeArche` DEFAULT CHARACTER SET utf8 ;
 use `septiemeArche` ;
 
@@ -129,7 +129,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE  IF EXISTS Clients; 
 CREATE TABLE Clients (
   `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-naissanceDate date Not null,
+naissanceDate datetime Not null,
   `compte_utilisateurId` INT NOT NULL,
  FOREIGN KEY (compte_utilisateurId) REFERENCES compte_utilisateur(id) ON DELETE CASCADE
 
@@ -162,7 +162,7 @@ create table client_has_livraisonAdresse (
  `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
  clientId int(11) not null,
  adresseLivraisonId int(11) not null,
-  FOREIGN KEY (clientId) REFERENCES clients(id) ON DELETE CASCADE,
+  FOREIGN KEY (clientId) REFERENCES compte_utilisateur(id) ON DELETE CASCADE,
   FOREIGN KEY (adresseLivraisonId) REFERENCES adresses(id) ON DELETE CASCADE
 
 )
@@ -175,7 +175,7 @@ create table client_has_facturationAdresse (
  `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
  clientId int(11) not null,
  adresseFacturationId int(11) not null,
-  FOREIGN KEY (clientId) REFERENCES clients(id) ON DELETE CASCADE,
+  FOREIGN KEY (clientId) REFERENCES compte_utilisateur(id) ON DELETE CASCADE,
   FOREIGN KEY (adresseFacturationId) REFERENCES adresse(id) ON DELETE CASCADE
 
 )
@@ -188,7 +188,7 @@ create Table commandes(
 id int primary key AUTO_INCREMENT,
 commandeDate datetime  DEFAULT  NOW(), 
 clientId int NOT NULL,
- FOREIGN KEY (clientId) REFERENCES clients(id) ON DELETE CASCADE
+ FOREIGN KEY (clientId) REFERENCES compte_utilisateur(id) ON DELETE CASCADE
 
 )
 ENGINE = InnoDB
@@ -216,7 +216,7 @@ id INT(11) PRIMARY KEY  AUTO_INCREMENT,
 quantiteCommandee INT(11) NOT NULL,
 articleId  INT(11) NOT NULL,
 clientId int NOT NULL,
- FOREIGN KEY (clientId) REFERENCES clients(id) ON DELETE CASCADE,
+ FOREIGN KEY (clientId) REFERENCES compte_utilisateur(id), 
   FOREIGN KEY (articleId) REFERENCES articles(id)
 
 )

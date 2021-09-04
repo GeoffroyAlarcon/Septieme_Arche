@@ -62,15 +62,30 @@ namespace api.Repository
             string insertUserQuery = "insert into  compte_utilisateur(email,password,nom,prenom) values (@email,@password,@lastName,@firstName)";
             cmd.CommandText = insertUserQuery;
             cmd.ExecuteNonQuery();
-            long userId = cmd.LastInsertedId;
-            customer.Id = Convert.ToInt32(userId);
-            cmd.Parameters.AddWithValue("@naissanceDate", customer.BirthDayDate.Date);
-            cmd.Parameters.AddWithValue("@compteUtilisateurId", customer.Id);
+           
+            customer.Id = (int)cmd.LastInsertedId;
             cmd.Dispose();
-            string insertCustomerQuery = "insert into client(compte_utilisateurId, naissanceDate) VALUES ( @compteUtilisateurId,@naissanceDate)";
+      
+            string insertAdressQuery = "insert into  adresses(pays,ville,codePostal, voie,VoieNumero,TelephoneNumero,batimentType,interphoneNumero) values ( '" + customer.DeliveryAdress.Country + "', '" + customer.DeliveryAdress.City + "','" + customer.DeliveryAdress.ZipCode + "','" +  customer.DeliveryAdress.Street + "','" + customer.DeliveryAdress.StretNumber + "','" + customer.DeliveryAdress.PoneNumber + "','" + customer.DeliveryAdress.TypeBulding + "','" + customer.DeliveryAdress.DigitalcodeNumber + "')";
+            cmd.CommandText = insertAdressQuery;
+          
+            cmd.ExecuteNonQuery();
+            int adressDeliveryID = (int)cmd.LastInsertedId;
+            cmd.Dispose();
+            cmd.Parameters.AddWithValue("@compteUtilisateurId", customer.Id);
+            cmd.Parameters.AddWithValue("@naissanceDate",customer.BirthDayDate.ToString("yyyy-MM-dd HH:mm:ss"));
+            string insertCustomerQuery = "insert into clients(compte_utilisateurId, naissanceDate) VALUES ( @compteUtilisateurId,@naissanceDate)";
             cmd.CommandText = insertCustomerQuery;
             cmd.ExecuteNonQuery();
-            return null;
+        
+            cmd.Dispose();
+
+            cmd.Parameters.AddWithValue("@adressDeliveryId", adressDeliveryID );
+            string insertCustomerAdressQuery = "insert into client_has_livraisonadresse(adresseLivraisonId, clientId) VALUES( @adressDeliveryId, @compteUtilisateurId)";
+            cmd.CommandText = insertCustomerAdressQuery;
+            cmd.ExecuteNonQuery();
+
+            return customer;
             Db.Connection.Close();
         }
 
@@ -90,6 +105,11 @@ namespace api.Repository
             }
             return sb.ToString();
 
+        }
+
+        public int findidbyAuth(User user)
+        {
+            throw new NotImplementedException();
         }
     }
 }

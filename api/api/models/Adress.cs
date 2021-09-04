@@ -13,7 +13,7 @@ namespace api.models {
         public string Street { get; set; }
         public string StretNumber { get; set; }
         public string PoneNumber { get; set; }
-        public string DigitalcodeNumbe { get; set; }
+        public string DigitalcodeNumber { get; set; }
         public string TypeBulding { get; set; }
         public Adress()
         {

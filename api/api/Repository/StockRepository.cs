@@ -20,7 +20,7 @@ namespace api.Repository
         {
             Db.Connection.Open();
 
-            string query = "select id from article where id = @itemId  and @amount <= quantite";
+            string query = "select * from articles join state_Payment_has_article as pay on articles.id = Pay.articleId where articleId = @itemId and articles.quantite = @itemId + pay.quantiteCommandee ";
             using var cmd = Db.Connection.CreateCommand();
 
             cmd.CommandText = query;
@@ -31,7 +31,6 @@ namespace api.Repository
             if (myReader.Read())
             {
                 cmd.Parameters.AddWithValue("@costumerId", userId);
-
                 string queryInsertStatePaiement = "insert into state_Payment_has_article(clientId, quantiteCommandee,articleId ) VALUES(@costumerId, @amount,@itemId) ";
                 cmd.CommandText = queryInsertStatePaiement;
                 cmd.ExecuteNonQuery();
@@ -72,7 +71,6 @@ namespace api.Repository
             string queryDeleteStatePaiement = "delete from state_Payment_has_article where clientId = @costumerId";
             cmd.CommandText = queryDeleteStatePaiement;
             cmd.ExecuteNonQuery();
-
 
         }
             

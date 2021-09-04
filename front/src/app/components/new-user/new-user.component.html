@@ -1,7 +1,7 @@
-<form [formGroup]="addUserForm" class=" text-white my-2" (ngSubmit)="onSubmitForm()">
+<form [formGroup]="addUserForm" class=" my-2" (ngSubmit)="onSubmitForm()">
   
 <!-- ajout des données pour créer un utilisateur  !-->
-    <h3 class=" text-center"> Nouvel utilisateur </h3>
+    <h3 class=" text-center"> Nouvel utilisateur  </h3>
     <div class="form-group">
       <label for="email"> Mail : </label> <input name="email" type="email" class="form-control" formControlName="email"
       placeholder="Entrez votre email">
@@ -22,11 +22,14 @@
       <label class="px-2" for="birthDayDate"> Date de Naissance : </label> <input name="birthDayDate" type="date"
       class="form-control" formControlName="birthDayDate">
   </div>
-<!-- ajout de l'adresse de livraison  !-->
-  <h3 class=" text-center"> Nouvel utilisateur </h3>
+  <h4 class=" text-center"> Ajouter une nouvelle adresse</h4>
   <div class="form-group">
     <label class="px-2" for="country"> Pays : </label> <input name="country" type="text"
     class="form-control" formControlName="country" value="France">
+</div>
+<div class="form-group">
+  <label class="px-2" for="country"> Ville : </label> <input name="country" type="text"
+  class="form-control" formControlName="city" placeholder="paris">
 </div>
 <div class="form-group">
   <label class="px-2" for="zipCode"> Code postale : </label> <input name="zipCode" type="text"
@@ -44,9 +47,11 @@
   <label class="px-2" for="typeBuilding"> type de Bâtiment : </label> <input name="typeBuilding" type="text"
   class="form-control" formControlName="typeBuilding">
 </div>
-<label class="px-2" for="digitalcodeNumber"> type de Bâtiment : </label> <input name="digitalcodeNumber" type="text"
-class="form-control" formControlName="digitalcodeNumber">
+<div class="form-group">
+<label class="px-2" for="digitalcodeNumber"> Digi code : </label> <input name="digitalcodeNumber" type="text"
+class="form-control" formControlName="digitalCodeNumber">
 </div>
+<div class="form-group">
 <label class="px-2" for="phoneNumber"> numéro de téléphone  : </label> <input name="phoneNumber" type="text"
 class="form-control" formControlName="phoneNumber">
 </div>

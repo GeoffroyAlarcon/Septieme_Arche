@@ -1,5 +1,5 @@
 ﻿
-
+insert into compte_utilisateur(nom,prenom,email,password) VALUES ('messi','leo','leo@gmail.com','test');
 
 insert into types(libelle,description) VALUES
 ('livre','livre physique'),
@@ -70,3 +70,6 @@ insert into livre_has_genreLivre(isbn,genrelivreId)values('2070735745',2);
 insert into livre_has_genreLivre(isbn,genrelivreId)values('103291596X',4);
 insert into livre_has_genreLivre(isbn,genrelivreId)values('273815347X',4);
 
+insert into  state_payment_has_article(quantiteCommandee,articleId, clientId) VALUES (4,2,1);
+
+insert into  state_payment_has_article(quantiteCommandee,articleId, clientId) VALUES (1,3,1);

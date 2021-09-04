@@ -25,12 +25,10 @@ namespace api.Controllers
     {
         private MySqlConnector Db { get; }
        private readonly IUserService _userService;
-        private readonly ILogger<UserController> _logger;
 
         public UserController(IUserService userService, ILogger<UserController> logger, IConfiguration configuration) {
             _userService = userService;
             _configuration = configuration;
-            _logger = logger;
         }
 
     private IConfiguration _configuration { get; }

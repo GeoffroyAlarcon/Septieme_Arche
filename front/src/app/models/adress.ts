@@ -2,11 +2,12 @@ export class Adress {
     
     private id:number;
     private _country: string;
+    private _city: string; 
     private _street: string;
     private _streetNumber: string;
     private _zipCode: string;
     private _phoneNumber: string;
-    private _digitalcodeNumber: string;
+    private _digitalCodeNumber: string;
     private _typeBuilding: string;
     constructor(){
 
@@ -35,11 +36,11 @@ export class Adress {
     public set phoneNumber(value: string) {
         this._phoneNumber = value;
     }
-    public get digitalcodeNumber(): string {
-        return this._digitalcodeNumber;
+    public get digitalCodeNumber(): string {
+        return this._digitalCodeNumber;
     }
-    public set digitalcodeNumber(value: string) {
-        this._digitalcodeNumber = value;
+    public set digitalCodeNumber(value: string) {
+        this._digitalCodeNumber = value;
     }
     public get typeBuilding(): string {
         return this._typeBuilding;
@@ -52,5 +53,11 @@ export class Adress {
     }
     public set streetNumber(value: string) {
         this._streetNumber = value;
+    }
+    public get city(): string {
+        return this._city;
+    }
+    public set city(value: string) {
+        this._city = value;
     }
 }
