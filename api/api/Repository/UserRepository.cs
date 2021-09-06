@@ -24,7 +24,7 @@ namespace api.Repository
             Db.Connection.Open();
             using var cmd = Db.Connection.CreateCommand();
             password = CalculateMD5Hash(password);
-            string query = "select email, password, prenom,nom,count(*) from  compte_utilisateur where email = '" + email + "' and password = '" + password + "'";
+            string query = "select email, password, prenom,nom,count(*),id from  compte_utilisateur where email = '" + email + "' and password = '" + password + "'";
             cmd.CommandText = query;
             DbDataReader myReader;
             myReader = cmd.ExecuteReader();
@@ -33,7 +33,7 @@ namespace api.Repository
             {
                 int count = myReader.GetInt32(4);
                 if (count == 0) return null;
-
+                findUser.Id = myReader.GetInt32(5);
                 findUser.Email = myReader.GetString(0);
                 findUser.Password = myReader.GetString(1);
                 findUser.FirstName = myReader.GetString(2);

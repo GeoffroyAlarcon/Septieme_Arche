@@ -9,7 +9,6 @@ namespace api.Repository.Interfaces
     {
         public bool StockIsValid(int userId,int amount, int itemId);
         public void DropPaymentStateByCostumerId(int costumerId);
-        public void StockManager(int itemId, int amount);
 
     }
 }

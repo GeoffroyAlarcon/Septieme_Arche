@@ -26,8 +26,8 @@ export class UserService{
  
     return this.httpClient.post<Customer>(
       this.baseApi+"/User/addCustomer",{
-        "firstName":customer.firstName,
-        "lastName":customer.lastName,
+        "firstName":customer.FirstName,
+        "lastName":customer.LastName,
       "email": customer.Email,
      "password":customer.Password,
      "deliveryAdress": {
@@ -45,7 +45,8 @@ export class UserService{
      "birthDayDate": customer.BirthdayDate
   
     });
-}
+
+  }
 
 isAuthenticated(){
   if(   this.cookieService.get('user')  == null ) return false;

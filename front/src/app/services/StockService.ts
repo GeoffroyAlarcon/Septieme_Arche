@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Customer } from "../models/Customer";
-import { User } from "../models/User";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CartLine } from "../models/cartline";
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { LineItemCart } from "../models/lineItemCart";
+import { Cart } from "../models/cart";
 @Injectable({
     providedIn: 'root',
   })
@@ -13,13 +13,20 @@ constructor(private httpClient:HttpClient){
 
 }
 
-    public  StockIsValid( customer:Customer, cart:CartLine[]):Observable<any> {
+    public  StockIsValid( cartLines:LineItemCart[], customer:Customer):Observable<any> {
+
+       
+    let params=  new HttpParams();
+ let cart = new Cart()
+const headers= new HttpHeaders()
+  .set('content-type', 'application/json')
+  .set('Access-Control-Allow-Origin', '*');
+    cart.Customer = customer;
+    cart.linesItemCart = cartLines;
+   let customerJson = JSON.stringify(customer);
+   console.log(customerJson);
+   console.log(JSON.stringify (cartLines))
         return this.httpClient.post<any>(
-            this.baseApi+"/User/addCustomer",{
-"cart":cart,
-            "email": customer.Email,
-           "password":customer.Password
-    })
+            this.baseApi+"/api/stock/verifystock",{"customer":customer, "linesItemCart":cartLines},{"headers":headers})
 }
-}
-  
+  }

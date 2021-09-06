@@ -19,7 +19,7 @@ namespace api.septiemarche.Repository
         MySqlConnector Db { get; set; }
 
 
-        public int AddLinesOrder(List<lineItemCart> cart)
+        public int AddLinesOrder(List<LineItemCart> cart)
         {
             throw new NotImplementedException();
         }

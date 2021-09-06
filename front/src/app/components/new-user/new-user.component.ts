@@ -39,8 +39,8 @@ onSubmitForm(){
 let formValue = this.addUserForm.value;
 this.customer.Email= formValue["email"];
 this.customer.Password= formValue["password"];
-this.customer.firstName= formValue["firstName"];
-this.customer.lastName=formValue['lastName'];
+this.customer.FirstName= formValue["firstName"];
+this.customer.LastName=formValue['lastName'];
 this.customer.BirthdayDate=formValue["birthDayDate"];
 this.customer.DeliveryAdress.country=formValue["country"];
 this.customer.DeliveryAdress.digitalCodeNumber= formValue["digitalCodeNumber"];

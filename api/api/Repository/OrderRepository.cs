@@ -1,7 +1,9 @@
 ﻿using api.models;
 using api.Repository.Interfaces;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,19 +28,26 @@ namespace api.Repository
             throw new NotImplementedException();
         }
 
-       public int addOrder(Order order)
+        // cette méthode permet d'appeler une procédure stocket qui valide la commande et actualise le stock. 
+       public int StockManagerAndValideOrder(int clientId)
         {
-                Db.Connection.Open();
+            Db.Connection.Open();
+
+            int totalOrder = 0;
+            MySqlCommand cmd = new MySqlCommand("gestion_stock", Db.Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlParameter param = new MySqlParameter("", MySqlDbType.Int32);
+            cmd.Parameters.Add(param).Value = clientId;
 
 
-                string query = "insert into commande(clientId) VALUES(@clientId) ";
-
-                using var cmd = Db.Connection.CreateCommand();
-                cmd.Parameters.AddWithValue("@clientId", order.Customer.Id);
-                cmd.ExecuteNonQuery();
-                int result =(int) cmd.LastInsertedId;
-                return result;
-                Db.Connection.Close();
+            MySqlDataReader myReader = cmd.ExecuteReader();
+            if (myReader.Read())
+            {
+                totalOrder =myReader.GetInt32(0);
+            }
+            return totalOrder;
         }
+
     }
 }

@@ -35,7 +35,7 @@ namespace api.services
             throw new NotImplementedException();
         }
 
-        public string ValidateOrder(Customer customer)
+        public string ValidateOrder(int customerId)
         {
          
             try {
@@ -48,18 +48,15 @@ namespace api.services
 
                 // si le paiement s'est effecuté alors on procède à la création d'une commande et on déduit les stoks des produits concernés
 
-                cart.ForEach(elt => _stockRepository.StockManager(elt.Item.Id, elt.Amount));
+   
+                int newOrderId = _orderRepository.StockManagerAndValideOrder(customerId);
 
-                Order newOrder = new Order();
-                int newOrderId = _orderRepository.addOrder(newOrder);
-
-
+                _stockRepository.DropPaymentStateByCostumerId(customerId);
                 return " votre commande commande numéro N°" + newOrderId + " a bien été prise en compte. Vous retrouverez toutes vos commandes dans votre espace client. ";
-                _stockRepository.DropPaymentStateByCostumerId(customer.Id);
             }
           
             catch (Exception ex) {
-                _stockRepository.DropPaymentStateByCostumerId(customer.Id);
+                _stockRepository.DropPaymentStateByCostumerId(customerId);
                 return "error";
             }
 

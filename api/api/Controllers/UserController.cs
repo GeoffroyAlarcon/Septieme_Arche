@@ -32,6 +32,9 @@ namespace api.Controllers
         }
 
     private IConfiguration _configuration { get; }
+
+
+
         /// <response code="200">Succès</response>
         /// <response code="204">Echec : Pas de contenu</response>
         /// <response code="500">Echec : Erreur interne</response> 
@@ -45,15 +48,12 @@ namespace api.Controllers
         [Route("auth")]
         public  IActionResult Auth(User user)
         {
-   
-
-            
-             var result = _userService.Auth(user.Email, user.Password);
+                var result = _userService.Auth(user.Email, user.Password);
             if (result == null)
             {
                 return NoContent();
             }
-      
+     // J'ai commencé à implément JSON WEB TOKEN mais il n'est pas implémentée à 100 % pour utiliser pour la v1 
                 var tokenString = GenerateJSONWebToken(result);
                 return Ok(new { user=result, token = tokenString });
             

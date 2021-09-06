@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.models
 {
-    public class lineItemCart
+    public class LineItemCart
     {
         public int Id { get; set; }
         public int Amount { get; set; }

@@ -1,5 +1,7 @@
 using api.Repository;
 using api.Repository.Interfaces;
+using api.septiemarche.services;
+using api.septiemarche.services.Interfaces;
 using api.services;
 using api.services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -106,13 +108,15 @@ namespace api
         {
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IBookService, BookService>();
-            services.AddTransient<IOrderRepository, OrderRepository>();  
+            services.AddTransient<IStockService, StockService>();
+            services.AddTransient<IOrderService, OrderService>();
         }
         private void RegisterRepository(IServiceCollection services)
         {
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IStockRepository, StockRepository>();
         }
 
     }

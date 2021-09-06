@@ -34,7 +34,7 @@ namespace api.services
             User result = null;
             try {
                   result =   _userRepository.auth(email,password);
-             
+                result.Password = password;
             }
             catch (Exception ex)
             {

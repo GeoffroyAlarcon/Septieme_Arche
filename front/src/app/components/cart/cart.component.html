@@ -1,5 +1,4 @@
-
-<div class="row" *ngFor="let cartLine of this._cart;; index as i">
+<div class="row" *ngFor="let cartLine of this._cart; index as i">
   <div class="col-md-2 text-center">
     <p>
       Nom de l'article :
@@ -15,12 +14,12 @@
 
 <div class="col-md-2 text-center"> 
   <label for="input{{cartLine.item.id}}"> quantité</label>
-  <input type="numer" class=" mx-3 amount_input" value = "{{cartLine.amount}}"  name="input{{cartLine.item.id}}" (change)="updateAmount(cartLine.item.id,$event)">
+  <input type="numer" class=" mx-3 amount_input" value = "{{cartLine.Amount}}"  name="input{{cartLine.item.id}}" (change)="updateAmount(cartLine.item.id,$event)">
 </div>
 <div class="col-md-2 text-center" *ngIf="_sessionLength !=0">
   <p>
     Prix total :
-    {{  cartLine.amount * 100 * cartLine.item.priceExcludingTax/100 }}
+    {{  cartLine.Amount * 100 * cartLine.item.priceExcludingTax/100 }}
   </p>
 </div>
 <div class="col-md-1 text-center">
@@ -29,7 +28,7 @@
 </div>
 </div>
 <div class=" col text-center" *ngIf="_sessionLength!=0">
-  <button  class="btn btn-outline-dark " routerLink="/checkoutProcess"> 
+  <button  class="btn btn-outline-dark "(click)="validateCart()">
   Valider commande
   </button>
 

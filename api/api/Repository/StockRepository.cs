@@ -19,17 +19,30 @@ namespace api.Repository
         public  bool StockIsValid(int userId ,int amount,int itemId)
         {
             Db.Connection.Open();
-
-            string query = "select * from articles join state_Payment_has_article as pay on articles.id = Pay.articleId where articleId = @itemId and articles.quantite = @itemId + pay.quantiteCommandee ";
+            // d'abord je cherche dans la table en attente de paiement la quantitée totale de l'article qui est en cours de transaction
+            string querySearchQuantite = "select quantitecommandee from  state_Payment_has_article where articleId = @itemId";
             using var cmd = Db.Connection.CreateCommand();
+            int quantiteeCommaneStatePayement = 0;
+            cmd.Parameters.AddWithValue("@itemId", itemId);
+            cmd.CommandText = querySearchQuantite;
+       
+            MySqlDataReader myReader = cmd.ExecuteReader();
+            while (myReader.Read())
+            {
+                quantiteeCommaneStatePayement = myReader.GetInt32(0);
+            }
 
+            Db.Connection.Close();
+            Db.Connection.Open();
+            // maitenant je regarde si la quantitée commandée  + La quantité en cours de transaction n'est pas supérieur au stock
+            string query = "select quantite from articles where Id = @itemId and articles.quantite >=@amount +" + quantiteeCommaneStatePayement;
             cmd.CommandText = query;
             cmd.Parameters.AddWithValue("@amount", amount);
-            cmd.Parameters.AddWithValue("@itemId", itemId);
-
-            MySqlDataReader myReader = cmd.ExecuteReader();
+            myReader = cmd.ExecuteReader();
             if (myReader.Read())
             {
+                Db.Connection.Close();
+                Db.Connection.Open();
                 cmd.Parameters.AddWithValue("@costumerId", userId);
                 string queryInsertStatePaiement = "insert into state_Payment_has_article(clientId, quantiteCommandee,articleId ) VALUES(@costumerId, @amount,@itemId) ";
                 cmd.CommandText = queryInsertStatePaiement;
@@ -48,18 +61,7 @@ namespace api.Repository
 
         }
         
-        public void StockManager(int itemId,int amount)
-        {
-            Db.Connection.Open();
-            string query = "update articles   set quantite =quantite - @amount  here id = @itemId";
-            using var cmd = Db.Connection.CreateCommand();
-            cmd.CommandText = query;
-            cmd.Parameters.AddWithValue("@amount", amount);
-            cmd.Parameters.AddWithValue("@itemId", itemId);
-            cmd.ExecuteNonQuery();
-            Db.Connection.Close();
-        }
-
+     
         public void DropPaymentStateByCostumerId(int costumerId)
         {
             Db.Connection.Open();

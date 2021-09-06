@@ -9,7 +9,7 @@ namespace api.Repository.Interfaces
   public  interface IOrderRepository
     {
         public List<Order> orders( int userId);
-        public int addOrder(Order order);
+        public int StockManagerAndValideOrder(int clientId);
         public Order findOrderById(int id,int userId);
     }
 }

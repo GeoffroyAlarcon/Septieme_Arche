@@ -11,25 +11,32 @@ namespace api.septiemarche.services
     public class StockService : IStockService
     {
         public readonly IStockRepository _stockRepository;
+   public StockService(IStockRepository stockRepository)
+        {
+            _stockRepository = stockRepository;
 
+        }
         public void DropPaymentStateByCostumerId(int costumerId)
         {
             throw new NotImplementedException();
         }
 
-        public bool StockIsValid(List<lineItemCart> cart, Customer customer)
+        public string StockIsValid(List<LineItemCart> cartLines, int userId)
         {
-            foreach (lineItemCart elt in cart)
+
+            string isNotValide = "";
+            for (int x =0; x<cartLines.Count; x++)
             {
-bool StockIsValid = _stockRepository.StockIsValid(customer.Id, elt.Amount, elt.Item.Id);
+bool StockIsValid = _stockRepository.StockIsValid(userId, cartLines[x].Amount, cartLines[x].Item.Id);
                 if (StockIsValid == false)
                 {
-                    _stockRepository.DropPaymentStateByCostumerId(customer.Id);
-                    throw new Exception("Votre commande n'a pas pu aboutir, l'article " + elt.Item.Name + " n'est plus disponible à la quantité souhaitée.");
-                    return "";
+                    isNotValide = cartLines[x].Item.Name;
+                     
                 }
+                else isNotValide= cartLines.Sum(elt => elt.Item.PriceExcludingTax * elt.Amount).ToString();
+                
             }
-            cart.ForEach(elt => _stockRepository.StockManager(elt.Item.Id, elt.Amount));
+             return isNotValide;
 
         }
 
