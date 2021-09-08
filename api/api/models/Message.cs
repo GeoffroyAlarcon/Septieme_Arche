@@ -7,7 +7,7 @@ namespace api.septiemarche.models
 {
     public class Message
     {
-       public string error { get; set; }
-        public string succces { get; set; }
+       public string Error { get; set; }
+        public string Success { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace api.Repository
             Db.Connection.Close();
             Db.Connection.Open();
             // maitenant je regarde si la quantitée commandée  + La quantité en cours de transaction n'est pas supérieur au stock
-            string query = "select quantite from articles where Id = @itemId and articles.quantite >=@amount +" + quantiteeCommaneStatePayement;
+            string query = "select quantite from  articles join livres on articles.id= livres.articleId where (estNumerique=1 and articles.Id = @itemId) or (articles.Id = @itemId and estNumerique = 0 and articles.quantite >=@amount +" + quantiteeCommaneStatePayement+")";
             cmd.CommandText = query;
             cmd.Parameters.AddWithValue("@amount", amount);
             myReader = cmd.ExecuteReader();
@@ -49,7 +49,7 @@ namespace api.Repository
                 cmd.ExecuteNonQuery();
                 Db.Connection.Close();
                 return true;
-            }
+            }   
 
             else
             {

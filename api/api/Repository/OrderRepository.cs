@@ -37,7 +37,7 @@ namespace api.Repository
             MySqlCommand cmd = new MySqlCommand("gestion_stock", Db.Connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            MySqlParameter param = new MySqlParameter("", MySqlDbType.Int32);
+            MySqlParameter param = new MySqlParameter("param_clientId", MySqlDbType.Int32);
             cmd.Parameters.Add(param).Value = clientId;
 
 

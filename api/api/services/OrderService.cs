@@ -37,7 +37,7 @@ namespace api.services
 
         public string ValidateOrder(int customerId)
         {
-         
+            int newOrderId = 0;
             try {
                 Order order = new Order();
 
@@ -48,22 +48,22 @@ namespace api.services
 
                 // si le paiement s'est effecuté alors on procède à la création d'une commande et on déduit les stoks des produits concernés
 
-   
-                int newOrderId = _orderRepository.StockManagerAndValideOrder(customerId);
+
+                newOrderId = _orderRepository.StockManagerAndValideOrder(customerId);
 
                 _stockRepository.DropPaymentStateByCostumerId(customerId);
-                return " votre commande commande numéro N°" + newOrderId + " a bien été prise en compte. Vous retrouverez toutes vos commandes dans votre espace client. ";
             }
-          
             catch (Exception ex) {
                 _stockRepository.DropPaymentStateByCostumerId(customerId);
                 return "error";
             }
 
-     
+
+            return " votre commande commande numéro N°" + newOrderId + " a bien été prise en compte. Vous retrouverez toutes vos commandes dans votre espace client. ";
+
         }
-    
-            }
+
+    }
      
     }
 

@@ -34,16 +34,16 @@ namespace api.septiemarche.Controllers
             Message message = new Message();
             string result = "";
             User findUser = _userService.Auth(cart.Customer.Email, cart.Customer.Password);
-            if (findUser == null) return Ok(message.error="votre compte utilisateur  n'est pas correctes");
+            if (findUser == null) return Ok(message.Error="votre compte utilisateur  n'est pas correctes");
 
             // je vérifie si la méthode me renvoie une chaine vide ou pas. Si la chaine n'est vide alors cela signifie que le stock est invalide
             string VerifyStockString = _stockService.StockIsValid(cart.LinesItemCart, findUser.Id);
             if (VerifyStockString != string.Empty) {
-               message.error = "vootrrrraesrjfdsqjdsjdqsjdsjqjsdj qsqsdjzqj rj&&&&&é ";
+                message.Error = VerifyStockString;
                 return Ok(message);
             }
 
-             message.succces=  cart.LinesItemCart.Sum(elt => elt.Item.PriceExcludingTax * elt.Amount).ToString() ;
+             message.Success=  cart.LinesItemCart.Sum(elt => elt.Item.PriceExcludingTax * elt.Amount).ToString() ;
             return Ok(message) ;
         }
     }

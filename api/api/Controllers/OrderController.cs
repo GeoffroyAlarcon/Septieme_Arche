@@ -1,4 +1,5 @@
 ﻿using api.models;
+using api.septiemarche.models;
 using api.services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,15 +26,17 @@ namespace api.septiemarche.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("stockManagerAndValidateOrd")]
-        public string ValidateOrder(User user)
+        [Route("stockManagerAndValidateOrder")]
+        public IActionResult ValidateOrder(User user)
         {
             User findUser = _userService.Auth(user.Email, user.Password);
-            if (findUser == null) return "votre compte utilisateur  n'est pas correctes";
+            if (findUser == null) return Ok("votre compte utilisateur  n'est pas correctes");
 
+            Message message = new Message();
+            string result = _orderService.ValidateOrder(findUser.Id);
+            message.Success = result;
 
-            string result = _orderService.ValidateOrder(user.Id);
-            return result;
+            return Ok(message);
         }
     }
 }

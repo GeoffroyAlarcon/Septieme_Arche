@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
 this.articlesCart()
-
+console.log(this.cookieService.get('user'))
   }
 
 articlesCart(){
@@ -58,13 +58,13 @@ location.reload();
                                                      customer.Email=JSON.parse(userCookie)["email"];
  customer.Id=JSON.parse(userCookie)["id"];
   this.stockService.StockIsValid(this._cart,customer).subscribe((message) =>{
-
+console.log(message);
     if(message["error"] != null ){
     alert(message["error"])
       return 
     }
-    if(message["sucess"] != null){
-  alert("Vous allez être redirigé(e) vers votre moyen de paiement ");
+   else if(message["success"] != null){
+  alert("Vous allez être redirigé(e) vers votre moyen de paiement " );
   this.router.navigate(["payment"]);
     }
     

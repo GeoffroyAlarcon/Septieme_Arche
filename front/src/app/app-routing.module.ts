@@ -5,6 +5,7 @@ import { BookListSearchComponent } from './components/book-list-search/book-list
 import { CartComponent } from './components/cart/cart.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { SingleBookComponent } from './components/single-book/single-book.component';
 import { 
@@ -19,7 +20,8 @@ const routes: Routes = [
 {path:"cart",component:CartComponent},
 {path:"auth", component:AuthComponent},
 {path:"addUser",component:NewUserComponent},
-{path:"payeent", canActivate: [AuthGuard],component:PaymentComponent }
+{path:"payment", canActivate: [AuthGuard],component:PaymentComponent },
+{path:"orderSucess",canActivate:[AuthGuard],component:OrderSuccessComponent}
 ];
 
 @NgModule({

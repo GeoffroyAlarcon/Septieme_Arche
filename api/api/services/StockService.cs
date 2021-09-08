@@ -30,13 +30,14 @@ namespace api.septiemarche.services
 bool StockIsValid = _stockRepository.StockIsValid(userId, cartLines[x].Amount, cartLines[x].Item.Id);
                 if (StockIsValid == false)
                 {
-                    isNotValide = cartLines[x].Item.Name;
-                     
+
+                   _stockRepository.DropPaymentStateByCostumerId(userId);
+                        isNotValide ="l'article" + cartLines[x].Item.Name + " dans votre panier n'est plus disponible à la quantité souhaitée";
+                    return isNotValide;
                 }
-                else isNotValide= cartLines.Sum(elt => elt.Item.PriceExcludingTax * elt.Amount).ToString();
                 
             }
-             return isNotValide;
+             return "";
 
         }
 

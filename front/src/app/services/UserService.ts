@@ -49,7 +49,7 @@ export class UserService{
   }
 
 isAuthenticated(){
-  if(   this.cookieService.get('user')  == null ) return false;
+  if(   this.cookieService.get('user')  == null || this.cookieService.get('user') == "" ) return false;
 else return true;
  }
 
