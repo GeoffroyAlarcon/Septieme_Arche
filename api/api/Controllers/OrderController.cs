@@ -38,5 +38,44 @@ namespace api.septiemarche.Controllers
 
             return Ok(message);
         }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("findOrdersByUser")]
+        public IActionResult FindOrdersByUser(User user)
+        {
+            User findUser = _userService.Auth(user.Email, user.Password);
+            if (findUser == null) return Ok("votre compte utilisateur  n'est pas correctes");
+
+            List<Order> result = _orderService.FindOrdersByUser(findUser.Id);
+
+            if (result == null)
+            {
+                return NoContent();
+            }
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("findOrder")]
+        public IActionResult FindOrdersById(int orderId,User user)
+        {
+            User findUser = _userService.Auth(user.Email, user.Password);
+            if (findUser == null) return Ok("votre compte utilisateur  n'est pas correctes");
+
+            Order result = _orderService.findOrder(orderId,findUser.Id);
+
+            if (result == null)
+            {
+                return NoContent();
+            }
+            return Ok(result);
+        }
     }
+
 }

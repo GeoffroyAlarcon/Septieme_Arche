@@ -18,7 +18,7 @@ namespace api.Repository
         {
             Db = db;
         }
-        public User auth(string email, string password)
+        public User Auth(string email, string password)
         {
             User findUser = new User();
             Db.Connection.Open();
@@ -48,7 +48,7 @@ namespace api.Repository
 
         }
 
-        public Customer addCustomer(Customer customer)
+        public Customer AddCustomer(Customer customer)
         {
             Db.Connection.Open();
 

@@ -8,8 +8,8 @@ namespace api.Repository.Interfaces
 {
   public  interface IOrderRepository
     {
-        public List<Order> orders( int userId);
+        public List<Order> FindOrdersByUser( int userId);
         public int StockManagerAndValideOrder(int clientId);
-        public Order findOrderById(int id,int userId);
+        public Order findOrder(int orderId,int userId);
     }
 }

@@ -9,7 +9,7 @@ namespace api.services.Interfaces
    public  interface IUserService
     {
         public User Auth(string email, string password);
-        public Customer addCustomer(Customer customer);
+        public Customer AddCustomer(Customer customer);
 
     }
 }

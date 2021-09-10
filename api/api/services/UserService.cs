@@ -21,19 +21,19 @@ namespace api.services
             _userRepository = userRepository;
         }
 
-        public Customer addCustomer(Customer customer)
+        public Customer AddCustomer(Customer customer)
 
         {
 
 
-            return            _userRepository.addCustomer(customer);
+            return            _userRepository.AddCustomer(customer);
         }
 
         public User Auth(string email, string password)
         {
             User result = null;
             try {
-                  result =   _userRepository.auth(email,password);
+                  result =   _userRepository.Auth(email,password);
                 result.Password = password;
             }
             catch (Exception ex)

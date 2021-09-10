@@ -25,14 +25,15 @@ namespace api.services
             throw new NotImplementedException();
         }
 
-        public Order findOrderById(int id, int userId)
+        public Order findOrder(int orderId, int userId)
         {
-            throw new NotImplementedException();
+            return _orderRepository.findOrder(orderId, userId);
         }
 
-        public List<Order> GetOrders(int userId)
+        public List<Order> FindOrdersByUser(int userId)
         {
-            throw new NotImplementedException();
+        List<Order> result=    _orderRepository.FindOrdersByUser(userId);
+            return result;
         }
 
         public string ValidateOrder(int customerId)

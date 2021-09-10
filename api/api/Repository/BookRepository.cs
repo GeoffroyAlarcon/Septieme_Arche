@@ -23,7 +23,7 @@ namespace api.Repository
         {
             Db.Connection.Open();
 
-            List<Book> books = new List<Book>();
+            List<Book> books = new List<Book>() ;
             string query = "select livres.ISBN,estNumerique, titre,URLImage,prix_ht from livres  join articles on articles.id  = livres.articleid  where articles.quantite != 0 or livres.estnumerique = 1  ORDER BY articles.AjoutArticleDate LIMIT 20 ";
 
             using var cmd = Db.Connection.CreateCommand();

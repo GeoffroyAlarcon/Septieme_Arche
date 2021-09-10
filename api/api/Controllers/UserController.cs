@@ -73,7 +73,7 @@ namespace api.Controllers
         {
 
  
-          var  result = _userService.addCustomer(customer);
+          var  result = _userService.AddCustomer(customer);
 
             return Ok(result);
 

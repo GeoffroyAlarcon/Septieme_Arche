@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace api.Repository
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository :  IOrderRepository
     {
         public OrderRepository(MySqlConnector db)
         {
@@ -18,21 +18,50 @@ namespace api.Repository
 
         MySqlConnector Db { get; set; }
 
-        public Order findOrderById(int id, int userId)
+        public Order findOrder(int orderId, int userId)
         {
-            throw new NotImplementedException();
+            Db.Connection.Open();
+                Order order = new Order(); ;
+            string query = "select id, commandeDate from commandes where clientId=@userId and id= @orderId";
+            using var cmd = Db.Connection.CreateCommand();
+            cmd.Parameters.AddWithValue("@orderId", orderId);
+            cmd.Parameters.AddWithValue("@userId", userId);
+            cmd.CommandText = query;
+            MySqlDataReader myReader = cmd.ExecuteReader();
+            while (myReader.Read())
+            {
+                
+                order.OrderDate = (DateTime)myReader["commandeDate"];
+                order.Id = (int)myReader["id"];
+            }
+            return order;
+            Db.Connection.Close();
         }
 
-        public List<Order> orders(int userId)
+        public List<Order> FindOrdersByUser(int userId)
         {
-            throw new NotImplementedException();
+            List<Order> orders = new List<Order>();
+            Db.Connection.Open();
+            string query = "select id, commandeDate from commandes where clientId=@userId";
+            using var cmd = Db.Connection.CreateCommand();
+            cmd.Parameters.AddWithValue("@userId", userId);
+            cmd.CommandText = query;
+           MySqlDataReader myReader= cmd.ExecuteReader();
+            while (myReader.Read())
+            {
+                Order order = new Order();
+                order.OrderDate =(DateTime) myReader["commandeDate"];
+                order.Id = (int)myReader["id"];
+                orders.Add(order);
+            }
+            return orders;
+            Db.Connection.Close();
         }
 
         // cette méthode permet d'appeler une procédure stocket qui valide la commande et actualise le stock. 
-       public int StockManagerAndValideOrder(int clientId)
+        public int StockManagerAndValideOrder(int clientId)
         {
             Db.Connection.Open();
-
             int totalOrder = 0;
             MySqlCommand cmd = new MySqlCommand("gestion_stock", Db.Connection);
             cmd.CommandType = CommandType.StoredProcedure;
