@@ -34,10 +34,11 @@ namespace api.services
             User result = null;
             try {
                   result =   _userRepository.Auth(email,password);
-                result.Password = password;
+               if(result != null)  result.Password = password;
             }
             catch (Exception ex)
             {
+            return null;
                 throw;
             }
             return result;

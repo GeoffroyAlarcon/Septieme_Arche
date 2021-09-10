@@ -64,6 +64,7 @@ console.log(message);
       return 
     }
    else if(message["success"] != null){
+    sessionStorage.clear();
   alert("Vous allez être redirigé(e) vers votre moyen de paiement " );
   this.router.navigate(["payment"]);
     }
