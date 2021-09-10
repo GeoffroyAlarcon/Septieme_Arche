@@ -9,25 +9,25 @@ import { BookService } from 'src/app/services/BookService';
   styleUrls: ['./book-list-search.component.scss']
 })
 export class BookListSearchComponent implements OnInit {
- _books:Book[] = []
+  _books: Book[] = []
 
-  constructor(private _bookService:BookService,private route:ActivatedRoute, private router : Router ) { }
+  constructor(private _bookService: BookService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((value) => {
-    let search= value.get("search")??"".toString();
+      let search = value.get("search") ?? "".toString();
       this.getallResultBySearch(search);
     });
- 
+
   }
 
-getallResultBySearch(_search:string){
+  getallResultBySearch(_search: string) {
 
- this._bookService.getBooksByAuthorOrTitle(_search).subscribe((res)=>{
-this._books= res;
-this._books.forEach(elt=> elt.image = "../../../assets/img/"+elt.image)
+    this._bookService.getBooksByAuthorOrTitle(_search).subscribe((res) => {
+      this._books = res;
+      this._books.forEach(elt => elt.image = "../../../assets/img/" + elt.image)
 
-})
+    })
+  }
+
 }
-
- }

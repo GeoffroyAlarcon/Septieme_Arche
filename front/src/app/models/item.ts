@@ -1,14 +1,14 @@
 
-export class Item{
-    name: string;
+export class Item {
+  name: string;
   priceExcludingTax: number;
- id: number;
- numberOfClicks: number;
- stock: number;
- numberOfSales: number;
- image: string;
+  id: number;
+  numberOfClicks: number;
+  stock: number;
+  numberOfSales: number;
+  image: string;
 
-constructor(){
+  constructor() {
 
-}
+  }
 }

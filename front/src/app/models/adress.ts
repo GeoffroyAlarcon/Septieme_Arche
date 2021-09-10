@@ -1,15 +1,15 @@
 export class Adress {
-    
-    private id:number;
+
+    private id: number;
     private _country: string;
-    private _city: string; 
+    private _city: string;
     private _street: string;
     private _streetNumber: string;
     private _zipCode: string;
     private _phoneNumber: string;
     private _digitalCodeNumber: string;
     private _typeBuilding: string;
-    constructor(){
+    constructor() {
 
     }
     public get country(): string {

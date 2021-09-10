@@ -9,48 +9,49 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService{
-  private baseApi:string = "https://localhost:44368"
-  private _isAuth:boolean = false;
-    constructor(private httpClient: HttpClient, private router: Router, private cookieService:CookieService) {}
+export class UserService {
+  private baseApi: string = "https://localhost:44368"
+  private _isAuth: boolean = false;
+  constructor(private httpClient: HttpClient, private router: Router, private cookieService: CookieService) { }
 
-    login(email:string,password:string):Observable<any> {
- 
-      return this.httpClient.post<User>(
-       this.baseApi+"/User/auth",{
-        "email":  email,
-          "password": password}
-      )
+  login(email: string, password: string): Observable<any> {
+
+    return this.httpClient.post<User>(
+      this.baseApi + "/User/auth", {
+      "email": email,
+      "password": password
+    }
+    )
   }
-  addUser(customer:Customer):Observable<any> {
- 
-    return this.httpClient.post<Customer>(
-      this.baseApi+"/User/addCustomer",{
-        "firstName":customer.FirstName,
-        "lastName":customer.LastName,
-      "email": customer.Email,
-     "password":customer.Password,
-     "deliveryAdress": {
-      "country": customer.DeliveryAdress.country,
-      "city": customer.DeliveryAdress.city,
-      "zipCode": customer.DeliveryAdress.zipCode,
-      "street": customer.DeliveryAdress.street,
-      "stretNumber": customer.DeliveryAdress.streetNumber,
-      "poneNumber": customer.DeliveryAdress.phoneNumber,
-      "digitalcodeNumber": customer.DeliveryAdress.digitalCodeNumber,
-      "typeBulding":  customer.DeliveryAdress.typeBuilding
+  addUser(customer: Customer): Observable<any> {
 
-     },
-     "billingAdress": customer.DeliveryAdress,
-     "birthDayDate": customer.BirthdayDate
-  
+    return this.httpClient.post<Customer>(
+      this.baseApi + "/User/addCustomer", {
+      "firstName": customer.FirstName,
+      "lastName": customer.LastName,
+      "email": customer.Email,
+      "password": customer.Password,
+      "deliveryAdress": {
+        "country": customer.DeliveryAdress.country,
+        "city": customer.DeliveryAdress.city,
+        "zipCode": customer.DeliveryAdress.zipCode,
+        "street": customer.DeliveryAdress.street,
+        "stretNumber": customer.DeliveryAdress.streetNumber,
+        "poneNumber": customer.DeliveryAdress.phoneNumber,
+        "digitalcodeNumber": customer.DeliveryAdress.digitalCodeNumber,
+        "typeBulding": customer.DeliveryAdress.typeBuilding
+
+      },
+      "billingAdress": customer.DeliveryAdress,
+      "birthDayDate": customer.BirthdayDate
+
     });
 
   }
 
-isAuthenticated(){
-  if(   this.cookieService.get('user')  == null || this.cookieService.get('user') == "" ) return false;
-else return true;
- }
+  isAuthenticated() {
+    if (this.cookieService.get('user') == null || this.cookieService.get('user') == "") return false;
+    else return true;
+  }
 
 }

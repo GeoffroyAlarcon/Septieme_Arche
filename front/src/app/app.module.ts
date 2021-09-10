@@ -21,6 +21,7 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
 import { FooterComponent } from './share/footer/footer.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { AllOrderComponent } from './components/all-order/all-order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { OrderSuccessComponent } from './components/order-success/order-success.
     FooterComponent,
     PaymentComponent,
     OrderSuccessComponent,
+    AllOrderComponent,
   ],
   imports: [
     BrowserModule,

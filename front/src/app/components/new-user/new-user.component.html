@@ -1,63 +1,62 @@
 <form [formGroup]="addUserForm" class=" my-2" (ngSubmit)="onSubmitForm()">
-  
-<!-- ajout des données pour créer un utilisateur  !-->
-    <h3 class=" text-center"> Nouvel utilisateur  </h3>
-    <div class="form-group">
-      <label for="email"> Mail : </label> <input name="email" type="email" class="form-control" formControlName="email"
+
+  <!-- ajout des données pour créer un utilisateur  !-->
+  <h3 class=" text-center"> Nouvel utilisateur </h3>
+  <div class="form-group">
+    <label for="email"> Mail : </label> <input name="email" type="email" class="form-control" formControlName="email"
       placeholder="Entrez votre email">
-     </div>
-    <div class="form-group">
-      <label class="px-2" for="password"> Mot de passe : </label> <input name="password" type="password"
-        class="form-control" formControlName="password" placeholder="Entrez votre mot de passe ">
-    </div>
-    <div class="form-group">
-        <label class="px-2" for="firstName"> Prenom : </label> <input name="firstName" type="text"
-          class="form-control" formControlName="firstName" placeholder="Entrez votre Prénom ">
-      </div>
-      <div class="form-group">
-        <label class="px-2" for="lastName"> Nom : </label> <input name="lastName" type="text"
-          class="form-control" formControlName="lastName" placeholder="Entrez votre Nom de famille ">
-      </div>
-      <div class="form-group">
-      <label class="px-2" for="birthDayDate"> Date de Naissance : </label> <input name="birthDayDate" type="date"
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="password"> Mot de passe : </label> <input name="password" type="password"
+      class="form-control" formControlName="password" placeholder="Entrez votre mot de passe ">
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="firstName"> Prenom : </label> <input name="firstName" type="text" class="form-control"
+      formControlName="firstName" placeholder="Entrez votre Prénom ">
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="lastName"> Nom : </label> <input name="lastName" type="text" class="form-control"
+      formControlName="lastName" placeholder="Entrez votre Nom de famille ">
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="birthDayDate"> Date de Naissance : </label> <input name="birthDayDate" type="date"
       class="form-control" formControlName="birthDayDate">
   </div>
   <h4 class=" text-center"> Ajouter une nouvelle adresse</h4>
   <div class="form-group">
-    <label class="px-2" for="country"> Pays : </label> <input name="country" type="text"
-    class="form-control" formControlName="country" value="France">
-</div>
-<div class="form-group">
-  <label class="px-2" for="country"> Ville : </label> <input name="country" type="text"
-  class="form-control" formControlName="city" placeholder="paris">
-</div>
-<div class="form-group">
-  <label class="px-2" for="zipCode"> Code postale : </label> <input name="zipCode" type="text"
-  class="form-control" formControlName="zipCode">
-</div>
-<div class="form-group">
-  <label class="px-2" for="street"> Voie : </label> <input name="street" type="text"
-  class="form-control" formControlName="street">
-</div>
-<div class="form-group">
-  <label class="px-2" for="streetNumber"> numéro de voie : </label> <input name="streetNumber" type="text"
-  class="form-control" formControlName="streetNumber">
-</div>
-<div class="form-group">
-  <label class="px-2" for="typeBuilding"> type de Bâtiment : </label> <input name="typeBuilding" type="text"
-  class="form-control" formControlName="typeBuilding">
-</div>
-<div class="form-group">
-<label class="px-2" for="digitalcodeNumber"> Digi code : </label> <input name="digitalcodeNumber" type="text"
-class="form-control" formControlName="digitalCodeNumber">
-</div>
-<div class="form-group">
-<label class="px-2" for="phoneNumber"> numéro de téléphone  : </label> <input name="phoneNumber" type="text"
-class="form-control" formControlName="phoneNumber">
-</div>
+    <label class="px-2" for="country"> Pays : </label> <input name="country" type="text" class="form-control"
+      formControlName="country" value="France">
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="country"> Ville : </label> <input name="country" type="text" class="form-control"
+      formControlName="city" placeholder="paris">
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="zipCode"> Code postale : </label> <input name="zipCode" type="text" class="form-control"
+      formControlName="zipCode">
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="street"> Voie : </label> <input name="street" type="text" class="form-control"
+      formControlName="street">
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="streetNumber"> numéro de voie : </label> <input name="streetNumber" type="text"
+      class="form-control" formControlName="streetNumber">
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="typeBuilding"> type de Bâtiment : </label> <input name="typeBuilding" type="text"
+      class="form-control" formControlName="typeBuilding">
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="digitalcodeNumber"> Digi code : </label> <input name="digitalcodeNumber" type="text"
+      class="form-control" formControlName="digitalCodeNumber">
+  </div>
+  <div class="form-group">
+    <label class="px-2" for="phoneNumber"> numéro de téléphone : </label> <input name="phoneNumber" type="text"
+      class="form-control" formControlName="phoneNumber">
+  </div>
 
-    <div class="form-group text-center">
+  <div class="form-group text-center">
     <button type="submit" class="btn btn-light" [disabled]="addUserForm.invalid">Valider formulaire</button>
-    </div>
-    </form>
-    
+  </div>
+</form>

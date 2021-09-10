@@ -1,11 +1,11 @@
 import { Item } from "./item";
 
-export class LineItemCart  {
- Amount: number;
+export class LineItemCart {
+    Amount: number;
 
-item: Item;
-    constructor(){
-    
+    item: Item;
+    constructor() {
+
     }
-    
+
 }

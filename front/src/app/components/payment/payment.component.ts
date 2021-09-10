@@ -9,12 +9,12 @@ import { StockService } from 'src/app/services/StockService';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor(private router:Router ) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-  alert("votre paiement est en cours")
-alert("votre paiement a été valider");
+    alert("votre paiement est en cours")
+    alert("votre paiement a été valider");
 
-this.router.navigate(['orderSucess']);
+    this.router.navigate(['orderSucess']);
   }
 }

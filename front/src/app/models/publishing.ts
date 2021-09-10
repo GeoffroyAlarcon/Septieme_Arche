@@ -1,7 +1,7 @@
-export class Publishing{
-   private _name: string; 
+export class Publishing {
+    private _name: string;
 
-    constructor(){
+    constructor() {
 
     }
     public get name(): string {

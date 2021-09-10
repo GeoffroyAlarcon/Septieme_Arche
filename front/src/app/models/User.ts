@@ -1,10 +1,10 @@
-export class User{
+export class User {
     Id: number;
-   LastName: string;  
+    LastName: string;
     FirstName: string;
     Email: string;
     Password: string;
-constructor(){
-    
-}
+    constructor() {
+
+    }
 }

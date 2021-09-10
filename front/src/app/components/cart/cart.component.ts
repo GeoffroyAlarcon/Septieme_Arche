@@ -13,64 +13,64 @@ import { UserService } from 'src/app/services/UserService';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
- _sessionLength= sessionStorage.length;;
-  public _cart:LineItemCart[]= []
-  
-  constructor(private userService:UserService, private stockService:StockService,private cookieService: CookieService, private router:Router) { }
+  _sessionLength = sessionStorage.length;;
+  public _cart: LineItemCart[] = []
+
+  constructor(private userService: UserService, private stockService: StockService, private cookieService: CookieService, private router: Router) { }
 
   ngOnInit(): void {
-this.articlesCart()
-console.log(this.cookieService.get('user'))
+    this.articlesCart()
+    console.log(this.cookieService.get('user'))
   }
 
-articlesCart(){
-for( let x = 0; x<sessionStorage.length;x++){
-let session= sessionStorage.getItem( sessionStorage.key(x) ||"");
-let lineCart:LineItemCart=new LineItemCart();
-lineCart.Amount = JSON.parse(session || "").Amount;
-lineCart.item= JSON.parse(session || "").item;
-  this._cart.push(lineCart);
-console.log(lineCart.item);
-}
-}
-deleteItemStorage(index:number){
-sessionStorage.removeItem(sessionStorage.key(index) || "");
-location.reload();
-
-}
-updateAmount(inputId:number, event:any){
- var inputValue:number = event.target.value;
-  let cartlineJSON:any
- cartlineJSON = JSON.parse( sessionStorage.getItem(inputId.toString()) || "");
-cartlineJSON["Amount"] = inputValue;
-console.log(cartlineJSON);
-sessionStorage.setItem(inputId.toString(), JSON.stringify(cartlineJSON));
-location.reload();
+  articlesCart() {
+    for (let x = 0; x < sessionStorage.length; x++) {
+      let session = sessionStorage.getItem(sessionStorage.key(x) || "");
+      let lineCart: LineItemCart = new LineItemCart();
+      lineCart.Amount = JSON.parse(session || "").Amount;
+      lineCart.item = JSON.parse(session || "").item;
+      this._cart.push(lineCart);
+      console.log(lineCart.item);
+    }
   }
-  validateCart(){
+  deleteItemStorage(index: number) {
+    sessionStorage.removeItem(sessionStorage.key(index) || "");
+    location.reload();
+
+  }
+  updateAmount(inputId: number, event: any) {
+    var inputValue: number = event.target.value;
+    let cartlineJSON: any
+    cartlineJSON = JSON.parse(sessionStorage.getItem(inputId.toString()) || "");
+    cartlineJSON["Amount"] = inputValue;
+    console.log(cartlineJSON);
+    sessionStorage.setItem(inputId.toString(), JSON.stringify(cartlineJSON));
+    location.reload();
+  }
+  validateCart() {
 
     if (!this.userService.isAuthenticated()) {
       this.router.navigate(["auth"]);
     }
     let userCookie = this.cookieService.get("user");
     let customer = new Customer();
- customer.Password  =JSON.parse(userCookie)["password"];
-                                                     customer.Email=JSON.parse(userCookie)["email"];
- customer.Id=JSON.parse(userCookie)["id"];
-  this.stockService.StockIsValid(this._cart,customer).subscribe((message) =>{
-console.log(message);
-    if(message["error"] != null ){
-    alert(message["error"])
-      return 
-    }
-   else if(message["success"] != null){
-    sessionStorage.clear();
-  alert("Vous allez être redirigé(e) vers votre moyen de paiement " );
-  this.router.navigate(["payment"]);
-    }
-    
-      })
-       }
-  
-  
+    customer.Password = JSON.parse(userCookie)["password"];
+    customer.Email = JSON.parse(userCookie)["email"];
+    customer.Id = JSON.parse(userCookie)["id"];
+    this.stockService.StockIsValid(this._cart, customer).subscribe((message) => {
+      console.log(message);
+      if (message["error"] != null) {
+        alert(message["error"])
+        return
+      }
+      else if (message["success"] != null) {
+        sessionStorage.clear();
+        alert("Vous allez être redirigé(e) vers votre moyen de paiement ");
+        this.router.navigate(["payment"]);
+      }
+
+    })
+  }
+
+
 }

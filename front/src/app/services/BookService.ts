@@ -1,4 +1,4 @@
-import{Book} from '../models/book';
+import { Book } from '../models/book';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -9,31 +9,31 @@ import { UserService } from './UserService';
 })
 export class BookService {
   private books: Book[] = [];
-private baseApi:string = "https://localhost:44368"
+  private baseApi: string = "https://localhost:44368"
   messageSubject = new Subject<Book[]>();
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
-  getAllNewBook():Observable<Array<Book>> {
+  getAllNewBook(): Observable<Array<Book>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     })
     return this.httpClient.get<Array<Book>>(
-      this.baseApi+'/api/book/findAllBook',{headers:headers}
+      this.baseApi + '/api/book/findAllBook', { headers: headers }
     );
   }
 
-  getBookByISBN(isbn:string):Observable<Book> {
+  getBookByISBN(isbn: string): Observable<Book> {
 
     return this.httpClient.get<Book>(
-      this.baseApi+"/api/book/findBookByISBN/"+isbn
-      );
+      this.baseApi + "/api/book/findBookByISBN/" + isbn
+    );
   }
 
 
-  getBooksByAuthorOrTitle(search:string):Observable<Array<Book>> {
+  getBooksByAuthorOrTitle(search: string): Observable<Array<Book>> {
 
     return this.httpClient.get<Array<Book>>(
-      this.baseApi+"/api/book/findByTitleOrAuthor/"+search
+      this.baseApi + "/api/book/findByTitleOrAuthor/" + search
     );
   }
 
