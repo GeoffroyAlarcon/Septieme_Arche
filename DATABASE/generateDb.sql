@@ -111,7 +111,6 @@ DEFAULT CHARACTER SET = utf8;
 
 
 
-DROP TABLE IF EXISTS profil_utilisateur;
 CREATE TABLE profil_utilisateur (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 libelle varchar(200) not null
@@ -119,9 +118,6 @@ libelle varchar(200) not null
 ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8;
 
-
-
-DROP TABLE IF EXISTS compte_utilisateur;
 CREATE TABLE compte_utilisateur (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nom VARCHAR(100) NOT NULL,
@@ -133,6 +129,7 @@ id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   )
 ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8;
+
 
 
 
@@ -233,12 +230,4 @@ clientId int NOT NULL,
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
- DROP TABLE  IF EXISTS Administrateur; 
-CREATE TABLE AdministrateurS (
-  `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `compte_utilisateurId` INT NOT NULL,
- FOREIGN KEY (compte_utilisateurId) REFERENCES compte_utilisateur(id) ON DELETE CASCADE
 
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;

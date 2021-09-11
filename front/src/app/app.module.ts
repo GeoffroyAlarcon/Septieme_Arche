@@ -17,7 +17,6 @@ import { AuthComponent } from './components/auth/auth.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { CookieService } from 'ngx-cookie-service';
 import { CheckoutProcessComponent } from './components/checkout-process/checkout-process.component';
-import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { FooterComponent } from './share/footer/footer.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
@@ -35,7 +34,6 @@ import { DetailsOrderComponent } from './components/details-order/details-order.
     AuthComponent,
     NewUserComponent,
     CheckoutProcessComponent,
-    CartSummaryComponent,
     FooterComponent,
     PaymentComponent,
     OrderSuccessComponent,
