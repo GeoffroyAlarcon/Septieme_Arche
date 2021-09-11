@@ -24,7 +24,7 @@ namespace api.Repository
             Db.Connection.Open();
             using var cmd = Db.Connection.CreateCommand();
            string passwordHash = CalculateMD5Hash(password);
-            string query = "select email, password, prenom,nom,count(*),id from  compte_utilisateur where( email = '" + email +"' and password = '" + passwordHash + "')or( email = '" + email + "' and password = '" + password +"')" ;
+            string query = "select email, password, prenom,nom,id from  compte_utilisateur where( email = '" + email +"' and password = '" + passwordHash + "')or( email = '" + email + "' and password = '" + password +"')" ;
             cmd.CommandText = query;
             DbDataReader myReader;
             myReader = cmd.ExecuteReader();
@@ -32,7 +32,7 @@ namespace api.Repository
             while (myReader.Read())
             {
                 findUser = new User();
-                findUser.Id = myReader.GetInt32(5);
+                findUser.Id = myReader.GetInt32(4);
                 findUser.Email = myReader.GetString(0);
                 findUser.Password = myReader.GetString(1);
                 findUser.FirstName = myReader.GetString(2);
@@ -57,8 +57,9 @@ namespace api.Repository
             cmd.Parameters.AddWithValue("@password", customer.Password);
             cmd.Parameters.AddWithValue("@firstName", customer.FirstName);
             cmd.Parameters.AddWithValue("@lastName", customer.LastName);
+            cmd.Parameters.AddWithValue("@profil_utilisateurId", 1);
 
-            string insertUserQuery = "insert into  compte_utilisateur(email,password,nom,prenom) values (@email,@password,@lastName,@firstName)";
+            string insertUserQuery = "insert into  compte_utilisateur(email,password,nom,prenom, profil_utilisateurId) values (@email,@password,@lastName,@firstName)";
             cmd.CommandText = insertUserQuery;
             cmd.ExecuteNonQuery();
            

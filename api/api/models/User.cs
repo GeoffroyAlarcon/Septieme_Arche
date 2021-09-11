@@ -12,7 +12,7 @@ namespace api.models
         private String _lastName;
         private String _email;
         private String _password;
-     
+
         public User()
         {
         }
@@ -29,9 +29,9 @@ namespace api.models
             _lastName = lastName;
             _email = emailAdress;
             _password = password;
-          
-        }
 
+        }
+        public int UserProfileId {get;set;}
         public string FirstName { get => _firstName; set => _firstName = value; }
         public string LastName { get => _lastName; set => _lastName = value; }
         public string Email { get => _email; set => _email = value; }

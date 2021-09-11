@@ -1,5 +1,7 @@
 using api.Repository;
 using api.Repository.Interfaces;
+using api.septiemarche.Repository;
+using api.septiemarche.Repository.Interfaces;
 using api.septiemarche.services;
 using api.septiemarche.services.Interfaces;
 using api.services;
@@ -113,6 +115,7 @@ namespace api
         }
         private void RegisterRepository(IServiceCollection services)
         {
+            services.AddTransient<IOrderLineRepository, OrderLineRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
