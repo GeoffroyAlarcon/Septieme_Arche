@@ -22,6 +22,9 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { AllOrderComponent } from './components/all-order/all-order.component';
 import { DetailsOrderComponent } from './components/details-order/details-order.component';
+import { AuthByMarketingComponent } from './components/auth-by-marketing/auth-by-marketing.component';
+import { DashboardReportingComponent } from './components/dashboard-reporting/dashboard-reporting.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +42,9 @@ import { DetailsOrderComponent } from './components/details-order/details-order.
     OrderSuccessComponent,
     AllOrderComponent,
     DetailsOrderComponent,
+    AuthByMarketingComponent,
+    DashboardReportingComponent,
+    UserAccountComponent,
   ],
   imports: [
     BrowserModule,

@@ -53,5 +53,13 @@ export class UserService {
     if (this.cookieService.get('user') == null || this.cookieService.get('user') == "") return false;
     else return true;
   }
+  loginbyMarketing(email: string, password: string): Observable<any> {
 
+    return this.httpClient.post<User>(
+      this.baseApi + "/User/authByMarketing", {
+      "email": email,
+      "password": password
+    }
+    )
+  }
 }
