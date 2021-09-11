@@ -8,6 +8,8 @@ namespace api.services.Interfaces
 {
    public  interface IUserService
     {
+
+        public User AuthbyMarketing(string email, string password);
         public User Auth(string email, string password);
         public Customer AddCustomer(Customer customer);
 

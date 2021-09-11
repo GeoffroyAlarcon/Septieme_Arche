@@ -42,6 +42,20 @@ namespace api.services
             }
             return result;
         }
+        public User AuthbyMarketing(string email, string password)
+        {
+            User result = null;
+            try
+            {
+                result = _userRepository.AuthbyMarketing(email, password);
+            }
+            catch (Exception ex)
+            {
+                return null;
+                throw;
+            }
+            return result;
+        }
 
     }
 }

@@ -18,6 +18,8 @@ namespace api.Repository
         {
             Db = db;
         }
+
+
         public User Auth(string email, string password)
         {
             User findUser = null;
@@ -25,6 +27,34 @@ namespace api.Repository
             using var cmd = Db.Connection.CreateCommand();
            string passwordHash = CalculateMD5Hash(password);
             string query = "select email, password, prenom,nom,id from  compte_utilisateur where( email = '" + email +"' and password = '" + passwordHash + "')or( email = '" + email + "' and password = '" + password +"')" ;
+            cmd.CommandText = query;
+            DbDataReader myReader;
+            myReader = cmd.ExecuteReader();
+
+            while (myReader.Read())
+            {
+                findUser = new User();
+                findUser.Id = myReader.GetInt32(4);
+                findUser.Email = myReader.GetString(0);
+                findUser.Password = myReader.GetString(1);
+                findUser.FirstName = myReader.GetString(2);
+                findUser.LastName = myReader.GetString(3);
+
+            }
+            Db.Connection.Close();
+
+
+            return findUser;
+
+
+        }
+        public User AuthbyMarketing(string email, string password)
+        {
+            User findUser = null;
+            Db.Connection.Open();
+            using var cmd = Db.Connection.CreateCommand();
+            string passwordHash = CalculateMD5Hash(password);
+            string query = "select email, password, prenom,nom,id,profil_utilisateurId from  compte_utilisateur where( email = '" + email + "' and password = '" + passwordHash + "')or( email = '" + email + "' and password = '" + password + "') and profil_utilisateur=2;";
             cmd.CommandText = query;
             DbDataReader myReader;
             myReader = cmd.ExecuteReader();

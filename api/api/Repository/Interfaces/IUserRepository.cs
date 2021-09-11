@@ -8,6 +8,7 @@ namespace api.Repository.Interfaces
 {
    public interface IUserRepository
     {
+        public User AuthbyMarketing(string email, string password);
         public User Auth(string email, string password);
         public Customer AddCustomer(Customer customer);
         public int findidbyAuth(User user);

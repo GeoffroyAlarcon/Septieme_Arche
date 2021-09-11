@@ -59,6 +59,32 @@ namespace api.Controllers
             
             
         }
+
+
+
+        /// <response code="200">Succès</response>
+        /// <response code="204">Echec : Pas de contenu</response>
+        /// <response code="500">Echec : Erreur interne</response> 
+        ///<param name="email"> </param>
+        /// /// <param name="password">ISBN</param>
+        [HttpPost]
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("authByMarketing")]
+        public IActionResult AuthByMarketing(User user)
+        {
+            var result = _userService.AuthbyMarketing(user.Email, user.Password);
+            if (result == null)
+            {
+                return NoContent();
+            }
+         
+            return Ok(new { user = result });
+
+
+        }
         /// <response code="200">Succès</response>
         /// <response code="204">Echec : Pas de contenu</response>
         /// <response code="500">Echec : Erreur interne</response> 
