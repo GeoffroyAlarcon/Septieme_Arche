@@ -1,5 +1,5 @@
 ﻿
-insert into compte_utilisateur(nom,prenom,email,password) VALUES ('messi','leo','leo@gmail.com','test');
+insert into compte_utilisateur(nom,prenom,email,password) VALUES ('messi','leo','leo@gmail.com','MD5(test)');
 
 insert into types(libelle,description) VALUES
 ('livre','livre physique'),

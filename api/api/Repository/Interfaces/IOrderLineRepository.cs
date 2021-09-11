@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace api.septiemarche.Repository.Interfaces
 {
-    interface IOrderLineRepository
+   public  interface IOrderLineRepository
     {
-        public List<LineItemOrder> GetAllLineOrderByOrder(int id);
-        public int AddLinesOrder(List<LineItemCart> cart); 
+        public List<LineItemOrder> GetAllLineOrderByOrder(int orderId);
     }
 }

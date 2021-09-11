@@ -1,6 +1,7 @@
 ﻿using api.models;
 using api.septiemarche.models;
 using api.septiemarche.Repository.Interfaces;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +20,25 @@ namespace api.septiemarche.Repository
         MySqlConnector Db { get; set; }
 
 
-        public int AddLinesOrder(List<LineItemCart> cart)
-        {
-            throw new NotImplementedException();
-        }
 
-        public List<LineItemOrder> GetAllLineOrderByOrder(int id)
+        public List<LineItemOrder> GetAllLineOrderByOrder(int orderId)
         {
-            throw new NotImplementedException();
+            Db.Connection.Open();
+            List<LineItemOrder> orderLinesArray = new List<LineItemOrder>();
+            string query = " select quantiteCommandee,articles.nom,articles.prix_ht  from commande_has_article as ligneCommande join articles on articles.id=ligneCommande.articleId where commandeId=5;";
+            using var cmd = Db.Connection.CreateCommand();
+            cmd.Parameters.AddWithValue("@orderId", orderId);
+
+            cmd.CommandText = query;
+            MySqlDataReader myReader = cmd.ExecuteReader();
+            while (myReader.Read())
+            {
+
+                LineItemOrder orderLine = new LineItemOrder();
+
+                orderLinesArray.Add(orderLine);
+            }
+            return orderLinesArray;
         }
     }
 }

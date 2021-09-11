@@ -1,5 +1,6 @@
 ﻿using api.models;
 using api.Repository.Interfaces;
+using api.septiemarche.Repository.Interfaces;
 using api.services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,13 @@ namespace api.services
         private readonly IUserRepository _userRepository;
            private readonly IOrderRepository _orderRepository;
         private readonly IStockRepository _stockRepository;
-        public OrderService(IUserRepository userRepository, IOrderRepository orderRepository, IStockRepository stockRepository)
+        private readonly IOrderLineRepository _orderLineRepository;
+        public OrderService(IUserRepository userRepository, IOrderRepository orderRepository, IStockRepository stockRepository,IOrderLineRepository orderLineRepository)
         {
             _userRepository = userRepository;
             _orderRepository = orderRepository;
             _stockRepository = stockRepository;
+            _orderLineRepository = orderLineRepository;
         }
 
         public void addOrder(Order order)
@@ -27,7 +30,12 @@ namespace api.services
 
         public Order findOrder(int orderId, int userId)
         {
-            return _orderRepository.findOrder(orderId, userId);
+            Order result = _orderRepository.findOrder(orderId, userId);
+            if(result != null)
+            {
+              result.Items=  _orderLineRepository.GetAllLineOrderByOrder(orderId);
+            }
+            return result;
         }
 
         public List<Order> FindOrdersByUser(int userId)
