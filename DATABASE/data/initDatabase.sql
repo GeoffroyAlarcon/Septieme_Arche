@@ -4,7 +4,7 @@ insert into profil_utilisateur(libelle) VALUES ('client');
 insert into profil_utilisateur(libelle) VALUES ('pilote des ventes');
 
 insert into compte_utilisateur(nom,prenom,email,password, profil_utilisateuriD) VALUES ('messi','leo','leo@gmail.com','MD5(test)',1);
-insert into compte_utilisateur(nom,prenom,email,password, profil_utilisateuriD) VALUES ('Alarcon','Geoffroy','geoffroy@septiemearche.com','MD5(azerty)',2);
+insert into compte_utilisateur(nom,prenom,email,password, profil_utilisateuriD) VALUES ('alarcon','geoffroy','geoffroy@septiemearche.com','MD5(azerty)',2);
 
 insert into types(libelle,description) VALUES
 ('livre','livre physique'),
@@ -24,7 +24,7 @@ insert into livres VALUES ('2035941725','La grande histoire du 7ème art','lorem
 insert into livres VALUES ('2081266164','Tout sur le cinéma','lorem ipsum testa ','1,77 Kg','18,30 x 25,70 x 4,30 cm','Flammarion','2019-05-01',576,0,2);
 insert into livres VALUES ('2702142001','Kubrick','lorem ipsum testa', '1,4200kg','18,30 x 22cm x 27cm','Calmann-Levy','2011-02-23',336,0,3);
 insert into livres VALUES ('2258161428','1001 films à voir avant de mourir','lorem ipsum testa', '1,860kg','1164 X 212 mm','Odile Jacob','2018-10-18',960,0,4);
-insert into livres VALUES ('273815347X','Le Cinéma intérieur: Projection privée au cœur de la conscience','lorem ipsum testa', null,null,'Omnibus','2018-10-18',960,1,5);
+insert into livres VALUES ('273815347X','Le Cinéma intérieur: Projection privée au coeur de la conscience','lorem ipsum testa', null,null,'Omnibus','2018-10-18',960,1,5);
 insert into livres VALUES ('2070735745','Hitchcock','lorem ipsum testa', '1,8040KG',' 23cm x 29cm','Gallimard','1993-10-01',312,0,6);
 insert into livres VALUES ('103291596X',' une histoire du cinéma français','lorem ipsum testa', '0,3240kg',' 13cm x 21cm','L''observatoire Eds De','2021-04-07',312,0,7);
 

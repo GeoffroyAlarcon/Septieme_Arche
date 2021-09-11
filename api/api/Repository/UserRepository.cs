@@ -87,9 +87,9 @@ namespace api.Repository
             cmd.Parameters.AddWithValue("@password", customer.Password);
             cmd.Parameters.AddWithValue("@firstName", customer.FirstName);
             cmd.Parameters.AddWithValue("@lastName", customer.LastName);
-            cmd.Parameters.AddWithValue("@profil_utilisateurId", 1);
 
-            string insertUserQuery = "insert into  compte_utilisateur(email,password,nom,prenom, profil_utilisateurId) values (@email,@password,@lastName,@firstName)";
+
+            string insertUserQuery = "insert into  compte_utilisateur(email,password,nom,prenom, profil_utilisateurId) values (@email,@password,@lastName,@firstName,1)";
             cmd.CommandText = insertUserQuery;
             cmd.ExecuteNonQuery();
            
