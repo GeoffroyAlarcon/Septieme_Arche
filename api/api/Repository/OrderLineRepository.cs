@@ -24,7 +24,7 @@ namespace api.septiemarche.Repository
             throw new NotImplementedException();
         }
 
-        public List<OrderLine> GetAllLineOrderByOrder(int id)
+        public List<LineItemOrder> GetAllLineOrderByOrder(int id)
         {
             throw new NotImplementedException();
         }

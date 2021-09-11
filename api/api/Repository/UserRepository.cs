@@ -20,19 +20,18 @@ namespace api.Repository
         }
         public User Auth(string email, string password)
         {
-            User findUser = new User();
+            User findUser = null;
             Db.Connection.Open();
             using var cmd = Db.Connection.CreateCommand();
-            password = CalculateMD5Hash(password);
-            string query = "select email, password, prenom,nom,count(*),id from  compte_utilisateur where email = '" + email + "' and password = '" + password + "'";
+           string passwordHash = CalculateMD5Hash(password);
+            string query = "select email, password, prenom,nom,count(*),id from  compte_utilisateur where( email = '" + email +"' and password = '" + passwordHash + "')or( email = '" + email + "' and password = '" + password +"')" ;
             cmd.CommandText = query;
             DbDataReader myReader;
             myReader = cmd.ExecuteReader();
 
             while (myReader.Read())
             {
-                int count = myReader.GetInt32(4);
-                if (count == 0) return null;
+                findUser = new User();
                 findUser.Id = myReader.GetInt32(5);
                 findUser.Email = myReader.GetString(0);
                 findUser.Password = myReader.GetString(1);

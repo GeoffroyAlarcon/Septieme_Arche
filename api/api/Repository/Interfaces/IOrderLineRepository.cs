@@ -9,7 +9,7 @@ namespace api.septiemarche.Repository.Interfaces
 {
     interface IOrderLineRepository
     {
-        public List<OrderLine> GetAllLineOrderByOrder(int id);
+        public List<LineItemOrder> GetAllLineOrderByOrder(int id);
         public int AddLinesOrder(List<LineItemCart> cart); 
     }
 }

@@ -22,6 +22,7 @@ import { FooterComponent } from './share/footer/footer.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { AllOrderComponent } from './components/all-order/all-order.component';
+import { DetailsOrderComponent } from './components/details-order/details-order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +40,7 @@ import { AllOrderComponent } from './components/all-order/all-order.component';
     PaymentComponent,
     OrderSuccessComponent,
     AllOrderComponent,
+    DetailsOrderComponent,
   ],
   imports: [
     BrowserModule,

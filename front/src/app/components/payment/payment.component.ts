@@ -15,6 +15,6 @@ export class PaymentComponent implements OnInit {
     alert("votre paiement est en cours")
     alert("votre paiement a été valider");
 
-    this.router.navigate(['orderSucess']);
+    this.router.navigate(['orderSuccess']);
   }
 }

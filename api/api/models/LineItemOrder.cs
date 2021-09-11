@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace api.septiemarche.models
 {
-    public class OrderLine
+    public class LineItemOrder
     {
-public int Id { get; set; }
-        public Order Order { get; set; }
+        public int Id { get; set; }
         public int Aount { get; set; }
         public Item Item { get; set; } 
     }
