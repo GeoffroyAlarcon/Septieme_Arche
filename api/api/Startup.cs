@@ -112,6 +112,7 @@ namespace api
             services.AddTransient<IBookService, BookService>();
             services.AddTransient<IStockService, StockService>();
             services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IReportingService, ReportingService>();
         }
         private void RegisterRepository(IServiceCollection services)
         {
@@ -120,6 +121,7 @@ namespace api
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IStockRepository, StockRepository>();
+            services.AddTransient<IReportingRepository, ReportingRepository>();
         }
 
     }

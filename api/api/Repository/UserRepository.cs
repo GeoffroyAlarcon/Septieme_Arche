@@ -54,12 +54,12 @@ namespace api.Repository
             Db.Connection.Open();
             using var cmd = Db.Connection.CreateCommand();
             string passwordHash = CalculateMD5Hash(password);
-            string query = "select email, password, prenom,nom,id,profil_utilisateurId from  compte_utilisateur where( email = '" + email + "' and password = '" + passwordHash + "')or( email = '" + email + "' and password = '" + password + "') and profil_utilisateur=2;";
+            string query = "select email, password, prenom,nom,id from  compte_utilisateur where( email = '" + email + "' and password = '" + passwordHash + "' and profil_utilisateurId =2)or( email = '" + email + "' and password = '" + password + "' and profil_utilisateurId =2)";
             cmd.CommandText = query;
             DbDataReader myReader;
             myReader = cmd.ExecuteReader();
 
-            while (myReader.Read())
+            if (myReader.Read())
             {
                 findUser = new User();
                 findUser.Id = myReader.GetInt32(4);

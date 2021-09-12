@@ -52,5 +52,26 @@
             <response code="204">Echec : Pas de contenu</response>
             <response code="500">Echec : Erreur interne</response> 
         </member>
+        <member name="M:api.septiemarche.Controllers.ReportingController.Stockisempty(api.models.User)">
+             <response code="200">Succès</response>
+             <response code="204">Echec : Pas de contenu</response>
+             <response code="500">Echec : Erreur interne</response> 
+            <param name="email"> </param>
+             /// <param name="password">ISBN</param>
+        </member>
+        <member name="M:api.septiemarche.Controllers.ReportingController.TopTenItemMostSold(api.models.User)">
+             <response code="200">Succès</response>
+             <response code="204">Echec : Pas de contenu</response>
+             <response code="500">Echec : Erreur interne</response> 
+            <param name="email"> </param>
+             /// <param name="password">ISBN</param>
+        </member>
+        <member name="M:api.septiemarche.Controllers.ReportingController.TopTenItemMostView(api.models.User)">
+             <response code="200">Succès</response>
+             <response code="204">Echec : Pas de contenu</response>
+             <response code="500">Echec : Erreur interne</response> 
+            <param name="email"> </param>
+             /// <param name="password">ISBN</param>
+        </member>
     </members>
 </doc>
