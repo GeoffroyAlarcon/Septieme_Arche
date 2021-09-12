@@ -15,7 +15,7 @@ select  pay.articleId ,  pay.quantiteCommandee, pay.clientId from state_Payment_
 
 UPDATE  articles 
 join article_amount on articles.id = article_amount.articleId  set
-quantite = quantite- article_amount.quantiteCommandee;
+quantite = quantite- article_amount.quantiteCommandee, articles.nombreVendu = nombreVendu + article_amount.quantiteCommandee ;
 
 INSERT INTO Commandes (clientId) VALUES (param_clientId);
 

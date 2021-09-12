@@ -47,7 +47,7 @@ listAuteur
 from livres
   join  articles on  articles.id = livres.articleId
  CROSS  join   genreslivre_copie
-  CROSS  join   auteurs_copie
+  CROSS  join   auteurs_copie 
   where livres.isbn = p_isbn;
   -- on supprime les tables temporaires
  drop table  genreslivre_copie;
