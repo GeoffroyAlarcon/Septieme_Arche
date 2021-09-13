@@ -35,7 +35,9 @@ namespace api.septiemarche.Repository
             {
 
                 LineItemOrder orderLine = new LineItemOrder();
-
+                orderLine.Aount = (int)myReader["quantiteCommandee"];
+                orderLine.Item.Name = myReader["articles.nom"].ToString();
+                orderLine.Item.PriceExcludingTax =(float) myReader["articles.prix_ht"];
                 orderLinesArray.Add(orderLine);
             }
             return orderLinesArray;

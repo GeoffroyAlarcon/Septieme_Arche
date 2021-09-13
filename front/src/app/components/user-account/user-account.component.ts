@@ -12,9 +12,7 @@ export class UserAccountComponent implements OnInit {
 
   ngOnInit(): void {
   }
-getAllOrder(){
 
-}
   disconnect(){
 this.cookieService.deleteAll();
     location.reload();

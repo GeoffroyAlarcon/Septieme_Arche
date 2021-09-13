@@ -24,8 +24,9 @@ export class SingleBookComponent implements OnInit {
       this._isbn = value.get("isbn") ?? "".toString();
 
     });
-    this.initForm();
+ 
     this.getDetailBook();
+    this.initForm();
   }
 
   getDetailBook() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Order } from 'src/app/models/order';
 import { User } from 'src/app/models/User';
 import { OrderService } from 'src/app/services/OrderService';
 
@@ -11,7 +12,7 @@ import { OrderService } from 'src/app/services/OrderService';
 export class AllOrderComponent implements OnInit {
 
   constructor(private cookieService: CookieService, private orderService:OrderService) { }
-
+_orders:Order[]= []
   ngOnInit(): void {
     this.getAllOrder();
   }
@@ -22,7 +23,14 @@ export class AllOrderComponent implements OnInit {
     user.Password = JSON.parse(userCookie)["password"];
     user.Email = JSON.parse(userCookie)["email"];
 this.orderService.findAllOrder(user).subscribe((result)=>{
-  console.log(result);
+  this._orders = result;
+this._orders.forEach(elt => console.log(elt.id))
+
 })
   }
+  disconnect(){
+    this.cookieService.deleteAll();
+        location.reload();
+      }
+    
 }

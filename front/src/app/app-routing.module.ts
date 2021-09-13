@@ -6,6 +6,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { BookListSearchComponent } from './components/book-list-search/book-list-search.component';
 import { CartComponent } from './components/cart/cart.component';
 import { DashboardReportingComponent } from './components/dashboard-reporting/dashboard-reporting.component';
+import { DetailsOrderComponent } from './components/details-order/details-order.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: "payment", canActivate: [AuthGuard], component: PaymentComponent },
   { path: "orderSuccess", canActivate: [AuthGuard], component: OrderSuccessComponent },
   { path: "allOrder", canActivate: [AuthGuard], component: AllOrderComponent },
+  { path: "allOrder/detailsOrder/:orderid", canActivate: [AuthGuard], component: DetailsOrderComponent },
   { path: "dashBoardReporting", canActivate: [AuthGuard], component: DashboardReportingComponent },
  { path:"useraccount", canActivate: [AuthGuard],component:UserAccountComponent}
 ];
