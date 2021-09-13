@@ -1,7 +1,13 @@
-<div class="row"> 
+<div class="row py-5"> 
     <div class="list-group col-4">
     <button type="button" class="list-group-item list-group-item-action"    routerLink="/allOrder">liste des commandes</button>
-    <button type="button" class="list-group-item list-group-item-action">gestion du compte </button>
+    <button type="button" class="list-group-item list-group-item-action active" routerLink="/useraccount">gestion du compte </button>
     <button type="button" (click)="  disconnect()" class="list-group-item list-group-item-action">deconnection</button>
-  </div></div>
+  </div>
+  <div class="col-6">
+    <p> Dans la première version de l'application. Nous vous enverrons par mail  les informations que vous nous avez forunies.</p>
+  <p> S'il y a des erreur veuillez contacter notre support en cliquant sur ce boutton : </p>         <a href="mailto:support@septiemearche.fr"> 
+    <button class="btn btn-light" style="width: 10%;"> Cliquez-ici </button></a>
+   </div>
+</div>
 

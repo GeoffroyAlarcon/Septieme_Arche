@@ -17,5 +17,7 @@ export class UserAccountComponent implements OnInit {
 this.cookieService.deleteAll();
     location.reload();
   }
-
+getDetailUser(){
+  
+}
 }
