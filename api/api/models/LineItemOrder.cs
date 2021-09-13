@@ -9,7 +9,7 @@ namespace api.septiemarche.models
     public class LineItemOrder
     {
         public int Id { get; set; }
-        public int Aount { get; set; }
+        public int Amount { get; set; }
         public Item Item { get; set; } 
     }
 }

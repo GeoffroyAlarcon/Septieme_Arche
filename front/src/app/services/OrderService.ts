@@ -19,4 +19,8 @@ export class OrderService {
     return this.httpClient.post<Order[]>(this.baseApi + "/api/Order/findOrdersByUser", user);
 
   }
+  findOrderById(order:Order): Observable<Order> {
+    return this.httpClient.post<Order>(this.baseApi + "/api/Order/findOrdersByUser", order);
+
+  }
 }

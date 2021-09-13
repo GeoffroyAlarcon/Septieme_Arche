@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Item } from 'src/app/models/item';
 import { LineItemOrder } from 'src/app/models/lineItemOrder';
+import { OrderService } from 'src/app/services/OrderService';
 
 @Component({
   selector: 'app-details-order',
@@ -8,11 +10,16 @@ import { LineItemOrder } from 'src/app/models/lineItemOrder';
   styleUrls: ['./details-order.component.scss']
 })
 export class DetailsOrderComponent implements OnInit {
-
-  constructor() { }
+_orderId :number;
+  constructor(private route: ActivatedRoute, private orderService:OrderService) { }
 
   ngOnInit(): void {
-  }
+    this.route.paramMap.subscribe((value) => {
+     this._orderId= parseInt( value.get("orderId")??"".toString());
+     console.log(this._orderId);
+  });
+
+}
 
 
 articlesCart(arr:LineItemOrder[]) {

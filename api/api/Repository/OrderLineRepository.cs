@@ -25,7 +25,7 @@ namespace api.septiemarche.Repository
         {
             Db.Connection.Open();
             List<LineItemOrder> orderLinesArray = new List<LineItemOrder>();
-            string query = " select quantiteCommandee,articles.nom,articles.prix_ht  from commande_has_article as ligneCommande join articles on articles.id=ligneCommande.articleId where commandeId=5;";
+            string query = " select quantiteCommandee,articles.nom as articleNom,articles.prix_ht  from commande_has_article as ligneCommande join articles on articles.id=ligneCommande.articleId where commandeId=" + orderId;
             using var cmd = Db.Connection.CreateCommand();
             cmd.Parameters.AddWithValue("@orderId", orderId);
 
@@ -35,9 +35,10 @@ namespace api.septiemarche.Repository
             {
 
                 LineItemOrder orderLine = new LineItemOrder();
-                orderLine.Aount = (int)myReader["quantiteCommandee"];
-                orderLine.Item.Name = myReader["articles.nom"].ToString();
-                orderLine.Item.PriceExcludingTax =(float) myReader["articles.prix_ht"];
+                orderLine.Amount = (int)myReader["quantiteCommandee"];
+                orderLine.Item = new Item();
+                orderLine.Item.Name = myReader["articleNom"].ToString();
+                orderLine.Item.PriceExcludingTax =(float) myReader["prix_ht"];
                 orderLinesArray.Add(orderLine);
             }
             return orderLinesArray;

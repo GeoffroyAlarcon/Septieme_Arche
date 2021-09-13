@@ -1,5 +1,6 @@
 ﻿using api.models;
 using api.Repository.Interfaces;
+using api.septiemarche.Repository;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace api.Repository
 
         public Order findOrder(int orderId, int userId)
         {
+
             Db.Connection.Open();
                 Order order = new Order(); ;
             string query = "select id, commandeDate from commandes where clientId=@userId and id= @orderId";
@@ -27,6 +29,7 @@ namespace api.Repository
             cmd.Parameters.AddWithValue("@orderId", orderId);
             cmd.Parameters.AddWithValue("@userId", userId);
             cmd.CommandText = query;
+            OrderLineRepository orderLineRepo = new OrderLineRepository(Db);
             MySqlDataReader myReader = cmd.ExecuteReader();
             while (myReader.Read())
             {
@@ -34,8 +37,10 @@ namespace api.Repository
                 order.OrderDate = (DateTime)myReader["commandeDate"];
                 order.Id = (int)myReader["id"];
             }
-            return order;
             Db.Connection.Close();
+            order.Items = orderLineRepo.GetAllLineOrderByOrder(order.Id);
+            return order;
+
         }
 
         public List<Order> FindOrdersByUser(int userId)

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Order } from 'src/app/models/order';
@@ -24,8 +25,7 @@ _orders:Order[]= []
     user.Email = JSON.parse(userCookie)["email"];
 this.orderService.findAllOrder(user).subscribe((result)=>{
   this._orders = result;
-this._orders.forEach(elt => console.log(elt.id))
-
+ 
 })
   }
   disconnect(){
