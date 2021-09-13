@@ -37,7 +37,7 @@ export class AuthComponent implements OnInit {
     this.userService.login(formValue["email"], formValue["password"]).subscribe((data) => {
       if (data == null) {
         alert("aucun compte n'est trouvé à cette association de mot de passe et d'email");
-        return
+        return location.reload();
       }
       else {
         alert("vous avez bien été identifié ! ");
