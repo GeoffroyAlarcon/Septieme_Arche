@@ -51,6 +51,7 @@ export class CartComponent implements OnInit {
 
     if (!this.userService.isAuthenticated()) {
       this.router.navigate(["auth"]);
+      return;
     }
     let userCookie = this.cookieService.get("user");
     let customer = new Customer();
