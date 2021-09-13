@@ -5,7 +5,7 @@ import { LineItemOrder } from "./lineItemOrder";
 export class Order {
     id: number;
     orderDate : Date;
-    Items: LineItemOrder[];
-    customr: Customer;
+    items: LineItemOrder[];
+    customer: Customer;
 
 }

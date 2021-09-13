@@ -63,12 +63,12 @@ namespace api.septiemarche.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Route("findOrder")]
-        public IActionResult FindOrdersById(int orderId,User user)
+        public IActionResult FindOrdersById(Order order)
         {
-            User findUser = _userService.Auth(user.Email, user.Password);
+            User findUser = _userService.Auth(order.Customer.Email, order.Customer.Password);
             if (findUser == null) return Ok("votre compte utilisateur  n'est pas correctes");
 
-            Order result = _orderService.findOrder(orderId,findUser.Id);
+            Order result = _orderService.findOrder(order.Id,findUser.Id);
 
             if (result == null)
             {

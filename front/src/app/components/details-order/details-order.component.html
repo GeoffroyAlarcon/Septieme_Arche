@@ -1,1 +1,21 @@
-<p>details-order works!</p>
+<div class="row">
+<div class="list-group col-4">
+  <button type="button" class="list-group-item list-group-item-action active" routerLink="/allOrder">liste des
+      commandes</button>
+  <button type="button" class="list-group-item list-group-item-action">gestion du compte </button>
+  <button type="button" (click)="  disconnect()"
+      class="list-group-item list-group-item-action">deconnection</button>
+</div>
+
+<div class="col 6">
+<h3> Numéro de la commande : {{_order.id}}</h3>
+<h5> date de la commande : {{_order.orderDate}}</h5>
+
+<div class="row" *ngFor="let elt of this._order.items; index as i">
+      <p>
+        Nom de l'article :
+        {{elt.item.name}}        prix de l'article :
+        {{elt.item.priceExcludingTax}}  quantitée commandée : {{elt.amount}}</p>
+  </div>
+</div>
+</div>

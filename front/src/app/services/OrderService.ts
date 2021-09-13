@@ -20,7 +20,7 @@ export class OrderService {
 
   }
   findOrderById(order:Order): Observable<Order> {
-    return this.httpClient.post<Order>(this.baseApi + "/api/Order/findOrdersByUser", order);
+    return this.httpClient.post<Order>(this.baseApi + "/api/Order/findOrder", order);
 
   }
 }

@@ -1,0 +1,4 @@
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\testsCode\testsCode\obj\Debug\net5.0\testsCode.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\testsCode\testsCode\obj\Debug\net5.0\testsCode.AssemblyInfoInputs.cache
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\testsCode\testsCode\obj\Debug\net5.0\testsCode.AssemblyInfo.cs
+C:\Users\geoffroy.alarcon\Documents\septiemeArche\testsCode\testsCode\obj\Debug\net5.0\testsCode.csproj.CoreCompileInputs.cache
