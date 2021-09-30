@@ -8,7 +8,7 @@ import { Cart } from "../models/cart";
   providedIn: 'root',
 })
 export class StockService {
-  private baseApi: string = "https://localhost:44368"
+  private baseApi: string = "https://localhost"
   constructor(private httpClient: HttpClient) {
 
   }

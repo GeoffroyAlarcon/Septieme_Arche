@@ -9,7 +9,7 @@ import { UserService } from './UserService';
 })
 export class BookService {
   private books: Book[] = [];
-  private baseApi: string = "https://localhost:44368"
+  private baseApi: string = "https://localhost"
   messageSubject = new Subject<Book[]>();
   constructor(private httpClient: HttpClient, private router: Router) { }
 

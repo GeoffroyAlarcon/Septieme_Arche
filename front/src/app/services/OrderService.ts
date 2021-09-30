@@ -8,7 +8,7 @@ import { User } from "../models/User";
   providedIn: 'root',
 })
 export class OrderService {
-  private baseApi: string = "https://localhost:44368"
+  private baseApi: string = "https://localhost"
   constructor(private httpClient: HttpClient) {
 
   }

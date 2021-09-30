@@ -184,14 +184,14 @@ create table client_has_facturationAdresse (
  clientId int(11) not null,
  adresseFacturationId int(11) not null,
   FOREIGN KEY (clientId) REFERENCES compte_utilisateur(id) ON DELETE CASCADE,
-  FOREIGN KEY (adresseFacturationId) REFERENCES adresse(id) ON DELETE CASCADE
+  FOREIGN KEY (adresseFacturationId) REFERENCES adresses(id) ON DELETE CASCADE
 
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
-drop if exists commandes;
+drop table if exists commandes;
 create Table commandes(
 id int primary key AUTO_INCREMENT,
 commandeDate datetime  DEFAULT  NOW(), 

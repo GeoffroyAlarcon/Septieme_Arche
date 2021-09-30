@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class UserService {
-  private baseApi: string = "https://localhost:44368"
+  private baseApi: string = "https://localhost"
   private _isAuth: boolean = false;
   constructor(private httpClient: HttpClient, private router: Router, private cookieService: CookieService) { }
 
