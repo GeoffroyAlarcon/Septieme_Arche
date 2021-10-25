@@ -11,7 +11,7 @@ namespace api.services
 {
     public class BookService : IBookService
     {
-  private readonly IBookRepository _bookRepository;
+        private readonly IBookRepository _bookRepository;
 
         public BookService(IBookRepository bookRepository)
         {
@@ -24,15 +24,13 @@ namespace api.services
 
         }
 
-        public  Book findBookByISBN(string isbn)
+        public Book findBookByISBN(string isbn)
         {
             Book result = null;
             bool isDigital = _bookRepository.isDigital(isbn);
-
-
-            if   (isDigital == false){ 
-
-             result = _bookRepository.findBookByISBN(isbn);
+            if (isDigital == false)
+            {
+                result = _bookRepository.findBookByISBN(isbn);
             }
             else
             {

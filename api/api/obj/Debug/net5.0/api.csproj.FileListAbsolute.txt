@@ -7,7 +7,6 @@ C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\api.r
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\api.dll
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\ref\api.dll
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\api.pdb
-C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\api.xml
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\Google.Protobuf.dll
 C:\Users\geoffroy.alarcon\Documents\septiemeArche\api\api\bin\Debug\net5.0\K4os.Compression.LZ4.dll
