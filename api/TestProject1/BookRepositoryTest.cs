@@ -38,7 +38,7 @@ namespace TestProject1
             Assert.Equal(MockBook.Title, book.Title);
 
         }
-    [Fact]
+        [Fact]
         public void VerifyListBookCount()
         {
             BookRepository bookRepository = new BookRepository(base.DB);

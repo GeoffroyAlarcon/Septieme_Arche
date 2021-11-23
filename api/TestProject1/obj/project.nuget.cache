@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HyiMoFnGnPa9q2+3355F6r3rrSjkdusHk5jm37gik76EwSgVU1j7kybOCZ6AuZBY88EnCD/AhH3OCXgmz99kNQ==",
+  "dgSpecHash": "bIa+IZRiVQK2oHXF7Dak6Iy/UM8XKDjNMgMTX9U/T1EVvNsOJRYw5i997gjjBXjb7IrzhEZBez9kryhZRYMYgg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\geoffroy.alarcon\\Documents\\septiemeArche\\api\\TestProject1\\TestProject1.csproj",
+  "projectFilePath": "C:\\Users\\geoffroy.alarcon\\Documents\\Septieme_Arche\\api\\TestProject1\\TestProject1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\geoffroy.alarcon\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\geoffroy.alarcon\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
